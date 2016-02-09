@@ -1,0 +1,17 @@
+
+// Base grid
+@for $i from 1 through $total-columns {
+  .#{$NS}grid-#{$i} {
+    width: grid-width($i);
+  }
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 1 through $total-columns {
+      .#{$NS}grid-#{$size}-#{$i}, .#{$NS}row.#{$NS}grid-#{$size}-#{$i} {
+        width: grid-width($i);
+      }
+    }
+  }
+}

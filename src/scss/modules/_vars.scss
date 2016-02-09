@@ -1,6 +1,10 @@
 $total-columns: 12;
 $column-gutter: 30px;
-$special-font-stack: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+
+// Use to namespace the whole grid-system. IE 'flex-' or 'cool-'
+$global-name-space: '' !default;
+$NS: $global-name-space;
 
 $breakpoints: (
   'small': 480px,
