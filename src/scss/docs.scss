@@ -1,5 +1,5 @@
 $base-bgd: #eee;
-$base-color: #000;
+$base-color: #444;
 
 @for $i from 1 through 5 {
   .bgd-#{$i} {
@@ -8,6 +8,14 @@ $base-color: #000;
   }
 }
 
+h1 {font-weight: 300; color: #444}
+
 .demo {
-  min-height: 100px;
+  line-height: 50px;
+}
+
+.demo-row {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
 }

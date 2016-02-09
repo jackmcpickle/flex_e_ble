@@ -25,8 +25,8 @@ _paths = {
   build: './dist'
   build_scss: './src/scss/modules/*.scss'
   dist_file: '_flex_e_ble.scss'
-  jade: './src/docs/*.jade'
-  docs: './docs'
+  jade: './src/tmpl/*.jade'
+  docs: './examples'
 }
 
 gulp.task 'styles', ->
