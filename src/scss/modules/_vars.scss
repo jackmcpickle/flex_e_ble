@@ -1,0 +1,10 @@
+$total-columns: 12;
+$column-gutter: 30px;
+$special-font-stack: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+$breakpoints: (
+  'small': 480px,
+  'medium': 768px,
+  'large': 1024px,
+  'xlarge': 1180px
+) !default;

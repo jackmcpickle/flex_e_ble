@@ -1,0 +1,31 @@
+{
+  "name": "flex_e_ble",
+  "description": "Just a Flex based grid",
+  "main": "dist/grid.scss",
+  "authors": [
+    "Jack McNicol <jack@mcpickle.com.au>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "flex",
+    "box",
+    "flex",
+    "grid",
+    "scss",
+    "sass",
+    "grid",
+    "system"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "include-media": "^1.4.2"
+  }
+}

@@ -1,0 +1,13 @@
+$base-bgd: #eee;
+$base-color: #000;
+
+@for $i from 1 through 5 {
+  .bgd-#{$i} {
+    background-color: darken($base-bgd, $i * 5);
+    color: $base-color;
+  }
+}
+
+.demo {
+  min-height: 100px;
+}
