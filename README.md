@@ -24,8 +24,8 @@ A basic grid class structure is a follows ```.$global-name-space-$grid-name-$bre
 @import "flex_e_ble"
 $grid-name: 'col-'
 $grid-base-name: 'xs'
-$column-gutter: 15px;
-$auto-column-gutters: true;
+$column-gutter: 15px
+$auto-column-gutters: true
 ```
 
 Outputs a grid using the bootstrap naming convention
