@@ -10,7 +10,7 @@
   @each $size, $breakpoint in $breakpoints {
     @include media("screen", ">=#{$breakpoint}") {
       @for $i from 1 through 5 {
-        .#{$NS}#{$G}-#{$size}-#{$i}-fifth, .#{$NS}#{R}.#{$NS}#{$G}-#{$size}-#{$i}-fifth {
+        .#{$NS}#{$G}-#{$size}-#{$i}-fifth, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i}-fifth {
           width: grid-size-special($i);
         }
       }

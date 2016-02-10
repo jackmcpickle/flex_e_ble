@@ -9,7 +9,7 @@
 @each $size, $breakpoint in $breakpoints {
   @include media("screen", ">=#{$breakpoint}") {
     @for $i from 1 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{R}.#{$NS}#{$G}-#{$size}-#{$i} {
+      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i} {
         width: grid-size($i);
       }
     }
