@@ -1,21 +1,27 @@
-$total-columns: 12;
+// Must be added to html tag either manaully or feature detect eg modernizr
+$flexbox-enable-class: '.flexbox' !default;
+$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif !default;
 
-$enable-fifth-grid: false;
-$special-columns: 5;
+$total-columns: 12 !default;
 
-$column-gutter: 30px;
-$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+// Change to make grid break inclusive or exculsive
 
-// Use to namespace the whole grid-system. IE 'flex-' or 'cool-'
+
+$column-gutter: 15px !default;
+$auto-column-gutters: false !default;
+$grid-padding-name: 'pad' !default;
+$independant-grid-definition: false !default;
+
+// Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
-$NS: $global-name-space;
+$container-name: 'container' !default; // Could be wrapper
+$grid-name: 'grid-' !default; // Could be col or column
+$default-grid-name: '' !default;
+$row-name: 'row' !default; // Could be flex
+$right-name: 'right' !default; // Could be push
+$left-name: 'left' !default; // Could be push
 
-$grid-name: 'col';
-$G: $grid-name;
-
-$row-name: 'row';
-$R: $row-name;
-
+// Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
   'sm': 480px,
   'md': 768px,
@@ -23,10 +29,17 @@ $breakpoints: (
   'xl': 1180px
 ) !default;
 
+$break-dir: '>=' !default;
+
+$enable-extra-grid: false !default;
+$extra-grid-name: 'fifth' !default;
+$extra-columns: 5 !default;
+
 @mixin build-row() {
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
   text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
   box-sizing: border-box;
+  position: relative;
   display: block;
 }
 
@@ -39,14 +52,12 @@ $breakpoints: (
 }
 
 @mixin build-grid() {
+  box-sizing: border-box;
   display: inline-block;
   letter-spacing: normal;
   word-spacing: normal;
   vertical-align: top;
   text-rendering: auto;
-  text-align: initial;
-  box-sizing: border-box;
-  position: relative;
 }
 
 @function grid-size($n) {
@@ -54,74 +65,141 @@ $breakpoints: (
 }
 
 @function grid-size-special($n) {
-  @return percentage( $n / $special-columns)
+  @return percentage( $n / $extra-columns)
 }
 
-.#{$NS}#{$R} {
-  @include build-row();
-  width: 100%;
-}
+@mixin build-column-gutter() {
 
-.flexbox .#{$NS}#{$R} {
-  @include build-flex-row();
-  // &.clearfix:before, &.clearfix:after {
-  //   content: initial; // breaks flexgrid row
-  // }
-}
+  $smallest-size: nth(nth($breakpoints, 1),1);
 
-[class*=#{$NS}#{$G}-] {
-  @include build-grid();
-  &.#{$NS}#{$R} {
-    @include build-row();
-    display: inline-block;
-  }
-  .flexbox &.#{$NS}#{$R} {
-    @include build-flex-row();
-  }
-}
-
-$smallest-size: nth(nth($breakpoints, 1),1);
-
-.#{$NS}pad {
   padding-left: ($column-gutter / 2);
   padding-right: ($column-gutter / 2);
+
   @include media("screen", ">=#{$smallest-size}") {
     padding-left: ($column-gutter);
     padding-right: ($column-gutter);
   }
 }
 
+// see http://purecss.io/grids/#using-grids-with-custom-fonts
+@if $independant-grid-definition {
+  html,
+  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-padding-name}-] {
+    font-family: $special-font-stack;
+  }
 
-// Base grid
+} @else {
+  html,
+  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-name}] {
+    font-family: $special-font-stack;
+  }
+}
+
+.#{$global-name-space}#{$container-name} {
+  margin-left: auto;
+  margin-right: auto;
+
+  @each $size, $breakpoint in $breakpoints {
+    @include media("screen", "#{$break-dir}#{$size}") {
+      max-width: $breakpoint;
+    }
+  }
+}
+
+.#{$global-name-space}#{$row-name} {
+  @include build-row();
+  width: 100%;
+}
+
+#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
+  @include build-flex-row();
+
+  // clearfix breaks flexgrid row
+  &.clearfix:before, &.clearfix:after {
+    content: initial;
+  }
+}
+
+@if $independant-grid-definition == false {
+
+  [class*=#{$global-name-space}#{$grid-name}] {
+    @include build-grid();
+    @if $auto-column-gutters {
+      @include build-column-gutter()
+    }
+
+    // For grids that are also rows
+    &.#{$global-name-space}#{$row-name} {
+      @include build-row();
+      display: inline-block;
+    }
+
+    #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
+      @include build-flex-row();
+    }
+  }
+}
+
+.#{$global-name-space}#{$grid-padding-name} {
+  @include build-column-gutter()
+  @if $independant-grid-definition {
+    @include build-grid();
+  }
+}
+
 @for $i from 1 through $total-columns {
-  .#{$NS}#{$G}-#{$i} {
-    width: grid-size($i);
+  $local-size: grid-size($i);
+
+  // Base grid
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$i} {
+    width: $local-size;
+  }
+
+  // Offset right
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$right-name}-#{$i} {
+    margin-right: $local-size;
+  }
+
+  // Offset left
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$left-name}-#{$i} {
+    margin-left: $local-size;
   }
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
+  @include media("screen", "#{$break-dir}#{$breakpoint}") {
     @for $i from 1 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i} {
-        width: grid-size($i);
+      $local-size: grid-size($i);
+      // Responsive Grid
+
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
+        width: $local-size;
+      }
+        // Responsive offset right
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
+        margin-right: $local-size;
+      }
+        // Responsive offset left
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
+        margin-left: $local-size;
       }
     }
   }
 }
 
-@if $enable-fifth-grid {
+@if $enable-extra-grid {
 
   // Base grid
-  @for $i from 1 through 5 {
-    .#{$NS}#{$G}-#{$i}-fifth {
+  @for $i from 1 through $extra-columns {
+    .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$i}-#{$extra-grid-name} {
       width: grid-size-special($i);
     }
   }
 
   @each $size, $breakpoint in $breakpoints {
-    @include media("screen", ">=#{$breakpoint}") {
-      @for $i from 1 through 5 {
-        .#{$NS}#{$G}-#{$size}-#{$i}-fifth, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i}-fifth {
+    @include media("screen", "#{$break-dir}#{$breakpoint}") {
+      @for $i from 1 through $extra-columns {
+        .#{$global-name-space}#{$grid-name}#{$size}-#{$i}-#{$extra-grid-name} {
           width: grid-size-special($i);
         }
       }
@@ -130,38 +208,37 @@ $smallest-size: nth(nth($breakpoints, 1),1);
 
 }
 
-// see http://purecss.io/grids/#using-grids-with-custom-fonts
-html, .#{$R} [class*=#{$NS}#{$G}-] {
-  font-family: $special-font-stack;
+.#{$global-name-space}#{$grid-name} {
+
+  &left {
+    right: auto
+  }
+
+  &right {
+    left: auto
+  }
 }
 
-.#{$NS}contain {
-  max-width: 1180px;
-  margin-left: auto;
-  margin-right: auto;
-}
+#{$flexbox-enable-class} .#{$global-name-space}#{$grid-name} {
 
-
-.#{$NS}#{$G} {
-
-  &-grow {
+  &grow {
     flex-grow: 1;
   }
 
-  &-bottom {
+  &bottom {
     align-self: flex-end;
   }
 
-  &-left {
+  &left {
     margin-right: auto
   }
 
-  &-right {
+  &right {
     margin-left: auto
   }
 }
 
-.#{$NS}#{$R} {
+.#{$global-name-space}#{$row-name} {
 
   &-right {
     text-align: right;
@@ -179,7 +256,7 @@ html, .#{$R} [class*=#{$NS}#{$G}-] {
 }
 
 // ordering of items flow
-.flexbox .#{$NS}#{$R} {
+#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
 
   &-right {
     justify-content: flex-end;
@@ -206,37 +283,5 @@ html, .#{$R} [class*=#{$NS}#{$G}-] {
 
   &-around {
     justify-content: space-around;
-  }
-}
-
-@for $i from 0 through $total-columns {
-  .#{$NS}#{$G}-left-#{$i} {
-    margin-left: grid-size($i);
-  }
-}
-
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 0 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-left-#{$i} {
-        margin-left: grid-size($i);
-      }
-    }
-  }
-}
-
-@for $i from 0 through $total-columns {
-  .#{$NS}#{$G}-left-#{$i} {
-    margin-right: grid-size($i);
-  }
-}
-
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 0 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-right-#{$i} {
-        margin-right: grid-size($i);
-      }
-    }
   }
 }
