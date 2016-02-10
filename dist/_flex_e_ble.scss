@@ -1,72 +1,60 @@
-@if $enable-fifth-grid {
+$total-columns: 12;
 
-  // Base grid
-  @for $i from 1 through 5 {
-    .#{$NS}#{$G}-#{$i}-fifth {
-      width: grid-size-special($i);
-    }
-  }
+$enable-fifth-grid: false;
+$special-columns: 5;
 
-  @each $size, $breakpoint in $breakpoints {
-    @include media("screen", ">=#{$breakpoint}") {
-      @for $i from 1 through 5 {
-        .#{$NS}#{$G}-#{$size}-#{$i}-fifth, .#{$NS}#{R}.#{$NS}#{$G}-#{$size}-#{$i}-fifth {
-          width: grid-size-special($i);
-        }
-      }
-    }
-  }
+$column-gutter: 30px;
+$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
 
+// Use to namespace the whole grid-system. IE 'flex-' or 'cool-'
+$global-name-space: '' !default;
+$NS: $global-name-space;
+
+$grid-name: 'col';
+$G: $grid-name;
+
+$row-name: 'row';
+$R: $row-name;
+
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1180px
+) !default;
+
+@mixin build-row() {
+  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+  box-sizing: border-box;
+  display: block;
 }
 
+@mixin build-flex-row() {
+  display: flex;
+  flex-flow: row wrap;
 
-// Base grid
-@for $i from 1 through $total-columns {
-  .#{$NS}#{$G}-#{$i} {
-    width: grid-size($i);
-  }
+  display: -ms-flexbox;
+  -ms-flex-flow: row wrap;
 }
 
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 1 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{R}.#{$NS}#{$G}-#{$size}-#{$i} {
-        width: grid-size($i);
-      }
-    }
-  }
+@mixin build-grid() {
+  display: inline-block;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  text-align: initial;
+  box-sizing: border-box;
+  position: relative;
 }
 
-@for $i from 0 through $total-columns {
-  .#{$NS}#{$G}-left-#{$i} {
-    margin-left: grid-size($i);
-  }
+@function grid-size($n) {
+  @return percentage( $n / $total-columns)
 }
 
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 0 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-left-#{$i} {
-        margin-left: grid-size($i);
-      }
-    }
-  }
-}
-
-@for $i from 0 through $total-columns {
-  .#{$NS}#{$G}-left-#{$i} {
-    margin-right: grid-size($i);
-  }
-}
-
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 0 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-right-#{$i} {
-        margin-right: grid-size($i);
-      }
-    }
-  }
+@function grid-size-special($n) {
+  @return percentage( $n / $special-columns)
 }
 
 .#{$NS}#{$R} {
@@ -101,6 +89,45 @@ $smallest-size: nth(nth($breakpoints, 1),1);
     padding-left: ($column-gutter);
     padding-right: ($column-gutter);
   }
+}
+
+
+// Base grid
+@for $i from 1 through $total-columns {
+  .#{$NS}#{$G}-#{$i} {
+    width: grid-size($i);
+  }
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 1 through $total-columns {
+      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i} {
+        width: grid-size($i);
+      }
+    }
+  }
+}
+
+@if $enable-fifth-grid {
+
+  // Base grid
+  @for $i from 1 through 5 {
+    .#{$NS}#{$G}-#{$i}-fifth {
+      width: grid-size-special($i);
+    }
+  }
+
+  @each $size, $breakpoint in $breakpoints {
+    @include media("screen", ">=#{$breakpoint}") {
+      @for $i from 1 through 5 {
+        .#{$NS}#{$G}-#{$size}-#{$i}-fifth, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i}-fifth {
+          width: grid-size-special($i);
+        }
+      }
+    }
+  }
+
 }
 
 // see http://purecss.io/grids/#using-grids-with-custom-fonts
@@ -182,63 +209,34 @@ html, .#{$R} [class*=#{$NS}#{$G}-] {
   }
 }
 
-@import "vars";
-
-@mixin build-row() {
-  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-  box-sizing: border-box;
-  display: block;
+@for $i from 0 through $total-columns {
+  .#{$NS}#{$G}-left-#{$i} {
+    margin-left: grid-size($i);
+  }
 }
 
-@mixin build-flex-row() {
-  display: flex;
-  flex-flow: row wrap;
-
-  display: -ms-flexbox;
-  -ms-flex-flow: row wrap;
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 0 through $total-columns {
+      .#{$NS}#{$G}-#{$size}-left-#{$i} {
+        margin-left: grid-size($i);
+      }
+    }
+  }
 }
 
-@mixin build-grid() {
-  display: inline-block;
-  letter-spacing: normal;
-  word-spacing: normal;
-  vertical-align: top;
-  text-rendering: auto;
-  text-align: initial;
-  box-sizing: border-box;
-  position: relative;
+@for $i from 0 through $total-columns {
+  .#{$NS}#{$G}-left-#{$i} {
+    margin-right: grid-size($i);
+  }
 }
 
-@function grid-size($n) {
-  @return percentage( $n / $total-columns)
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 0 through $total-columns {
+      .#{$NS}#{$G}-#{$size}-right-#{$i} {
+        margin-right: grid-size($i);
+      }
+    }
+  }
 }
-
-@function grid-size-special($n) {
-  @return percentage( $n / $special-columns)
-}
-
-$total-columns: 12;
-
-$enable-fifth-grid: true;
-$special-columns: 5;
-
-$column-gutter: 30px;
-$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-
-// Use to namespace the whole grid-system. IE 'flex-' or 'cool-'
-$global-name-space: '' !default;
-$NS: $global-name-space;
-
-$grid-name: 'grid';
-$G: $grid-name;
-
-$row-name: 'row';
-$R: $row-name;
-
-$breakpoints: (
-  'small': 480px,
-  'medium': 768px,
-  'large': 1024px,
-  'xlarge': 1180px
-) !default;
