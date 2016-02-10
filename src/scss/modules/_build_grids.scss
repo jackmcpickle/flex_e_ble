@@ -2,21 +2,18 @@
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name} {
-
-    &-#{$i} {
-      width: $local-size;
-    }
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$i} {
+    width: $local-size;
+  }
 
   // Offset right
-    &-#{$right-name}-#{$i} {
-      margin-right: $local-size;
-    }
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$right-name}-#{$i} {
+    margin-right: $local-size;
+  }
 
-    // Offset left
-    &-#{$left-name}-#{$i} {
-      margin-left: $local-size;
-    }
+  // Offset left
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$left-name}-#{$i} {
+    margin-left: $local-size;
   }
 }
 

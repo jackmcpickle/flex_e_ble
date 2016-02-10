@@ -1,29 +1,29 @@
 .#{$global-name-space}#{$grid-name} {
 
-  &-left {
+  &left {
     right: auto
   }
 
-  &-right {
+  &right {
     left: auto
   }
 }
 
 #{$flexbox-enable-class} .#{$global-name-space}#{$grid-name} {
 
-  &-grow {
+  &grow {
     flex-grow: 1;
   }
 
-  &-bottom {
+  &bottom {
     align-self: flex-end;
   }
 
-  &-left {
+  &left {
     margin-right: auto
   }
 
-  &-right {
+  &right {
     margin-left: auto
   }
 }
