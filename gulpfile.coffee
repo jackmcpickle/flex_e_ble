@@ -4,6 +4,7 @@ sourcemaps   = require 'gulp-sourcemaps'
 postcss      = require 'gulp-postcss'
 autoprefixer = require 'autoprefixer'
 minifyCSS    = require 'gulp-minify-css'
+rename       = require 'gulp-rename'
 runSequence  = require 'run-sequence'
 concat       = require 'gulp-concat'
 clean        = require 'gulp-clean'
@@ -26,7 +27,6 @@ _paths = {
   build_scss: './src/scss/modules/*.scss'
   dist_file: '_flex_e_ble.scss'
   jade: './src/tmpl/*.jade'
-  docs: './examples'
 }
 
 gulp.task 'styles', ->
@@ -38,12 +38,12 @@ gulp.task 'styles', ->
 
 gulp.task 'minify', [ 'styles' ], ->
   gulp.src _paths.build + '/*.css'
-  .pipe sourcemaps.init()
   .pipe minifyCSS
     keepBreaks: false
     aggressiveMerging: false
     roundingPrecision: -1
-  .pipe sourcemaps.write './.'
+  .pipe rename
+    suffix: '.min'
   .pipe gulp.dest _paths.build
 
 gulp.task 'merge', ->
@@ -56,7 +56,7 @@ gulp.task 'jade', ->
   .pipe jade
     locals: _jadeLocals
     pretty: true
-  .pipe gulp.dest _paths.docs
+  .pipe gulp.dest _paths.build
 
 
 gulp.task 'clean', ->
