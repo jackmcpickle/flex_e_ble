@@ -1,7 +1,7 @@
 {
   "name": "flex_e_ble",
   "description": "Just a Flex based grid",
-  "main": "dist/grid.scss",
+  "main": "dist/_flex_e_ble.scss",
   "authors": [
     "Jack McNicol <jack@mcpickle.com.au>"
   ],

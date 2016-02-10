@@ -2,7 +2,7 @@
   "name": "flex_e_ble",
   "version": "1.0.0",
   "description": "Just a Flex based grid",
-  "main": "dist/grid.scss",
+  "main": "dist/_flex_e_ble.scss",
   "scripts": {
     "prepare": "bower install && npm install",
     "start": "gulp",
