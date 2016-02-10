@@ -1,5 +1,5 @@
 // see http://purecss.io/grids/#using-grids-with-custom-fonts
-html, .row [class*=#{$NS}grid-] {
+html, .#{$R} [class*=#{$NS}#{$G}-] {
   font-family: $special-font-stack;
 }
 
@@ -10,7 +10,7 @@ html, .row [class*=#{$NS}grid-] {
 }
 
 
-.#{$NS}grid {
+.#{$NS}#{$G} {
 
   &-grow {
     flex-grow: 1;
@@ -29,7 +29,7 @@ html, .row [class*=#{$NS}grid-] {
   }
 }
 
-.#{$NS}row {
+.#{$NS}#{$R} {
 
   &-right {
     text-align: right;
@@ -47,7 +47,7 @@ html, .row [class*=#{$NS}grid-] {
 }
 
 // ordering of items flow
-.flexbox .#{$NS}row {
+.flexbox .#{$NS}#{$R} {
 
   &-right {
     justify-content: flex-end;

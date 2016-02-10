@@ -6,6 +6,12 @@ $special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif
 $global-name-space: '' !default;
 $NS: $global-name-space;
 
+$grid-name: 'grid';
+$G: $grid-name;
+
+$row-name: 'row';
+$R: $row-name;
+
 $breakpoints: (
   'small': 480px,
   'medium': 768px,
