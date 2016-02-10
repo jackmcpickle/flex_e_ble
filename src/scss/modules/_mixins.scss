@@ -26,6 +26,10 @@
   position: relative;
 }
 
-@function grid-width($n) {
+@function grid-size($n) {
   @return percentage( $n / $total-columns)
+}
+
+@function grid-size-special($n) {
+  @return percentage( $n / $special-columns)
 }
