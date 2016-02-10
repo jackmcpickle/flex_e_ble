@@ -1,6 +1,6 @@
 $total-columns: 12;
 
-$enable-fifth-grid: true;
+$enable-fifth-grid: false;
 $special-columns: 5;
 
 $column-gutter: 30px;
@@ -10,15 +10,15 @@ $special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif
 $global-name-space: '' !default;
 $NS: $global-name-space;
 
-$grid-name: 'grid';
+$grid-name: 'col';
 $G: $grid-name;
 
 $row-name: 'row';
 $R: $row-name;
 
 $breakpoints: (
-  'small': 480px,
-  'medium': 768px,
-  'large': 1024px,
-  'xlarge': 1180px
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1180px
 ) !default;
