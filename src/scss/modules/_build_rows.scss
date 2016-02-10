@@ -1,33 +1,35 @@
-.#{$NS}#{$R} {
+.#{$global-name-space}#{$row-name} {
   @include build-row();
   width: 100%;
 }
 
-.flexbox .#{$NS}#{$R} {
+#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
   @include build-flex-row();
-  // &.clearfix:before, &.clearfix:after {
-  //   content: initial; // breaks flexgrid row
-  // }
+
+  // clearfix breaks flexgrid row
+  &.clearfix:before, &.clearfix:after {
+    content: initial;
+  }
 }
 
-[class*=#{$NS}#{$G}-] {
+
+[class*=#{$global-name-space}#{$grid-name}-] {
   @include build-grid();
-  &.#{$NS}#{$R} {
+  @if $auto-column-gutters {
+    @include build-column-gutter()
+  }
+
+  // For grids that are also rows
+  &.#{$global-name-space}#{$row-name} {
     @include build-row();
     display: inline-block;
   }
-  .flexbox &.#{$NS}#{$R} {
+
+  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
     @include build-flex-row();
   }
 }
 
-$smallest-size: nth(nth($breakpoints, 1),1);
-
-.#{$NS}pad {
-  padding-left: ($column-gutter / 2);
-  padding-right: ($column-gutter / 2);
-  @include media("screen", ">=#{$smallest-size}") {
-    padding-left: ($column-gutter);
-    padding-right: ($column-gutter);
-  }
+.#{$global-name-space}pad {
+  @include build-column-gutter()
 }

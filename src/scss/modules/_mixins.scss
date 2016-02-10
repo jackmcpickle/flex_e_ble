@@ -2,6 +2,7 @@
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
   text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
   box-sizing: border-box;
+  position: relative;
   display: block;
 }
 
@@ -14,14 +15,12 @@
 }
 
 @mixin build-grid() {
+  box-sizing: border-box;
   display: inline-block;
   letter-spacing: normal;
   word-spacing: normal;
   vertical-align: top;
   text-rendering: auto;
-  text-align: initial;
-  box-sizing: border-box;
-  position: relative;
 }
 
 @function grid-size($n) {
@@ -29,5 +28,18 @@
 }
 
 @function grid-size-special($n) {
-  @return percentage( $n / $special-columns)
+  @return percentage( $n / $extra-columns)
+}
+
+@mixin build-column-gutter() {
+
+  $smallest-size: nth(nth($breakpoints, 1),1);
+
+  padding-left: ($column-gutter / 2);
+  padding-right: ($column-gutter / 2);
+
+  @include media("screen", ">=#{$smallest-size}") {
+    padding-left: ($column-gutter);
+    padding-right: ($column-gutter);
+  }
 }

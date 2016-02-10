@@ -1,16 +1,39 @@
-
-// Base grid
 @for $i from 1 through $total-columns {
-  .#{$NS}#{$G}-#{$i} {
-    width: grid-size($i);
+  $local-size: grid-size($i);
+
+  // Base grid
+  .#{$global-name-space}#{$grid-name}-#{$i} {
+    width: $local-size;
+  }
+
+  // Offset right
+  .#{$global-name-space}#{$grid-name}-#{$right-name}-#{$i} {
+    margin-right: $local-size;
+  }
+
+  // Offset left
+  .#{$global-name-space}#{$grid-name}-#{$left-name}-#{$i} {
+    margin-left: $local-size;
   }
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media("screen", ">=#{$breakpoint}") {
-    @for $i from 1 through $total-columns {
-      .#{$NS}#{$G}-#{$size}-#{$i}, .#{$NS}#{$R}.#{$NS}#{$G}-#{$size}-#{$i} {
-        width: grid-size($i);
+  @include media("screen", "#{$break-dir}#{$breakpoint}") {
+    @for $i from 0 through $total-columns {
+      $local-size: grid-size($i);
+      // Responsive Grid
+      .#{$global-name-space}#{$grid-name}-#{$size}-#{$i}, .#{$global-name-space}.#{$global-name-space}-#{$size}-#{$i} {
+        width: $local-size;
+      }
+
+      // Responsive offset right
+      .#{$global-name-space}#{$grid-name}-#{$size}-#{$right-name}-#{$i} {
+        margin-right: $local-size;
+      }
+
+      // Responsive offset left
+      .#{$global-name-space}#{$grid-name}-#{$size}-#{$left-name}-#{$i} {
+        margin-left: $local-size;
       }
     }
   }

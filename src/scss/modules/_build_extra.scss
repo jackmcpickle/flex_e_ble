@@ -1,0 +1,20 @@
+@if $enable-extra-grid {
+
+  // Base grid
+  @for $i from 1 through $extra-columns {
+    .#{$NS}-#{$i}-#{$EX} {
+      width: grid-size-special($i);
+    }
+  }
+
+  @each $size, $breakpoint in $breakpoints {
+    @include media("screen", "#{$break-dir}#{$breakpoint}") {
+      @for $i from 1 through $extra-columns {
+        .#{$NS}-#{$size}-#{$i}-#{$EX}, .#{$NS}.#{$NS}-#{$size}-#{$i}-#{$EX} {
+          width: grid-size-special($i);
+        }
+      }
+    }
+  }
+
+}

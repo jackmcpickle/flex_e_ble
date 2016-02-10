@@ -1,24 +1,33 @@
-$total-columns: 12;
+// Must be added to html tag either manaully or feature detect eg modernizr
+$flexbox-enable-class: '.flexbox' !default;
 
-$enable-fifth-grid: false;
-$special-columns: 5;
+$total-columns: 12 !default;
 
-$column-gutter: 30px;
-$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+// Change to make grid break inclusive or exculsive
+$break-dir: '>=' !default;
 
-// Use to namespace the whole grid-system. IE 'flex-' or 'cool-'
+$column-gutter: 30px !default;
+$auto-column-gutters: false !default;
+$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif !default;
+
+// Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
-$NS: $global-name-space;
 
-$grid-name: 'col';
-$G: $grid-name;
+$container-name: 'container' !default; // Could be wrapper
+$grid-name: 'grid' !default; // Could be col or column
+$row-name: 'row' !default; // Could be flex
+$right-name: 'right' !default; // Could be push
+$left-name: 'left' !default; // Could be push
 
-$row-name: 'row';
-$R: $row-name;
-
+// Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
   'sm': 480px,
   'md': 768px,
   'lg': 1024px,
   'xl': 1180px
 ) !default;
+
+
+$enable-extra-grid: false !default;
+$extra-grid-name: 'fifth' !default;
+$extra-columns: 5 !default;
