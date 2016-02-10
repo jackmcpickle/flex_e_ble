@@ -36,7 +36,7 @@ gulp.task 'styles', ->
   .pipe sourcemaps.write()
   .pipe gulp.dest _paths.build
 
-gulp.task 'minify', [ 'styles' ], ->
+gulp.task 'minify', ->
   gulp.src _paths.build + '/*.css'
   .pipe minifyCSS
     keepBreaks: false
@@ -73,4 +73,4 @@ gulp.task 'watch', (cb) ->
 gulp.task 'default', ['jade', 'styles', 'watch']
 
 gulp.task 'build', ->
-  runSequence ['clean'], ['styles'], ['merge'], ['minify']
+  runSequence ['clean'], ['styles', 'jade'], ['merge'], ['minify']
