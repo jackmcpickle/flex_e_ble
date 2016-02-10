@@ -1,5 +1,3 @@
-@import "vars";
-
 @mixin build-row() {
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
   text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
