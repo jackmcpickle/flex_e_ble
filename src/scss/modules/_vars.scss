@@ -1,20 +1,22 @@
 // Must be added to html tag either manaully or feature detect eg modernizr
 $flexbox-enable-class: '.flexbox' !default;
+$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif !default;
 
 $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
-$break-dir: '>=' !default;
 
-$column-gutter: 30px !default;
+
+$column-gutter: 15px !default;
 $auto-column-gutters: false !default;
-$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif !default;
+$grid-padding-name: 'pad' !default;
+$independant-grid-definition: false !default;
 
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
-
 $container-name: 'container' !default; // Could be wrapper
-$grid-name: 'grid' !default; // Could be col or column
+$grid-name: 'grid-' !default; // Could be col or column
+$default-grid-name: '' !default;
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
@@ -27,6 +29,7 @@ $breakpoints: (
   'xl': 1180px
 ) !default;
 
+$break-dir: '>=' !default;
 
 $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;

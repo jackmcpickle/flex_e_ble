@@ -1,6 +1,15 @@
 // see http://purecss.io/grids/#using-grids-with-custom-fonts
-html, .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-name}-] {
-  font-family: $special-font-stack;
+@if $independant-grid-definition {
+  html,
+  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-padding-name}-] {
+    font-family: $special-font-stack;
+  }
+
+} @else {
+  html,
+  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-name}] {
+    font-family: $special-font-stack;
+  }
 }
 
 .#{$global-name-space}#{$container-name} {
