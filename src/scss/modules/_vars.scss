@@ -6,11 +6,10 @@ $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
 
-
 $column-gutter: 15px !default;
 $auto-column-gutters: false !default;
 $grid-padding-name: 'pad' !default;
-$independant-grid-definition: false !default;
+$independant-grid-name: '' !default;
 
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
@@ -34,3 +33,40 @@ $break-dir: '>=' !default;
 $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
+
+$grid-framework: 'bootstrap' !default;
+
+@if $grid-framework == 'bootstrap' {
+  $grid-name: 'col-';
+  $default-grid-name: 'xs';
+  $column-gutter: 15px;
+  $auto-column-gutters: true;
+  $right-name: 'push';
+  $left-name: 'pull';
+  $breakpoints: (
+    'sm': 480px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1180px
+  );
+
+}
+
+@if $grid-framework == 'foundation' {
+  $column-gutter: 0.9375rem;
+  $auto-column-gutters: false;
+  $independant-grid-name: 'column';
+  $grid-name: '';
+  $default-grid-name: 'small';
+  $breakpoints: (
+    'medium': 768px,
+    'large': 1024px
+  );
+}
+
+
+@if $independant-grid-name == '' {
+  $master-grid-name: #{$global-name-space}#{$grid-name};
+} @else {
+  $master-grid-name: $independant-grid-name;
+}

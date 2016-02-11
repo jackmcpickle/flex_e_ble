@@ -9,7 +9,12 @@
   }
 }
 
-#{$flexbox-enable-class} .#{$global-name-space}#{$grid-name} {
+@if str-index($master-grid-name, '-') == null {
+  $local-dash: '-';
+} @else { $local-dash: ''; }
+
+
+#{$flexbox-enable-class} .#{$master-grid-name}#{$local-dash} {
 
   &grow {
     flex-grow: 1;

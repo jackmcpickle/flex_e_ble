@@ -12,29 +12,24 @@
   }
 }
 
-@if $independant-grid-definition == false {
+[class*=#{$master-grid-name}] {
+  @include build-grid();
+  @if $auto-column-gutters {
+    @include build-column-gutter()
+  }
 
-  [class*=#{$global-name-space}#{$grid-name}] {
-    @include build-grid();
-    @if $auto-column-gutters {
-      @include build-column-gutter()
-    }
+  // For grids that are also rows
+  &.#{$global-name-space}#{$row-name} {
+    @include build-row();
+    display: inline-block;
+  }
 
-    // For grids that are also rows
-    &.#{$global-name-space}#{$row-name} {
-      @include build-row();
-      display: inline-block;
-    }
-
-    #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-      @include build-flex-row();
-    }
+  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
+    @include build-flex-row();
   }
 }
 
+
 .#{$global-name-space}#{$grid-padding-name} {
   @include build-column-gutter()
-  @if $independant-grid-definition {
-    @include build-grid();
-  }
 }
