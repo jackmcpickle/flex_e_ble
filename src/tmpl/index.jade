@@ -4,36 +4,76 @@ html(lang="en" class="flexbox")
     title= pageTitle
     link(rel="stylesheet", href="flex_e_ble.css")
     link(rel="stylesheet", href="docs.css")
-    
+    script.
+      window.toggleFlexbox = function(e) {
+        e.preventDefault
+        var html = document.getElementsByTagName('html')[0]
+        html.className = html.className === 'flexbox' ? '' : 'flexbox'
+      }
   body
     a(href="https://github.com/jackmcpickle/flex_e_ble/")
       img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png")
+    
     .container
-      h1 flex_e_ble examples
+      h1.heading-1 flex_e_ble examples
 
+      h2.heading-2 Basic - 
+        em (IE8,9) Compatibility 
+      button.button(onclick='toggleFlexbox(event)') Toggle Compatibility
+
+      p Centered aligned grid with 
+      
       .row.row-center.demo-row
-        .grid-base.pad.demo.bgd-1 .row-center > .grid-6
-
+        .grid-base.pad.demo.bgd-1 .row-center > .grid-base
+        
+      p Right aligned grids
+      
       .row.row-right.demo-row
         .grid-10.demo.bgd-2.pad .row-right > .grid-10
+        
+      p Push right grid
+      
+      .row.demo-row
+        .grid-4.grid-right-4.demo.bgd-5.pad .grid-4.grid-right-4
+        
+      p Basic wrap grid
+      
+      .row.demo-row
+        .grid-3.demo.bgd-1.pad .grid-3
+        .grid-5.demo.bgd-1.pad .grid-5
+        .grid-4.demo.bgd-1.pad .grid-4
+        .grid-3.demo.bgd-1.pad .grid-3
+        .grid-3.demo.bgd-1.pad .grid-3
+        .grid-6.demo.bgd-1.pad .grid-6
+        
 
+      h2.heading-2 Advanced - 
+        em (IE10,11, Chrome, Safari, Firefox) Compatibility
+      
+      p Flex grid with space-around
+      
       .row.row-around.demo-row
         .grid-4.demo.bgd-3.pad .row-around > .grid-4
         .grid-4.demo.bgd-3.pad .row-around > .grid-4
-
+        
+      p Flex grid with space-between
+      
       .row.row-between.demo-row
         .grid-4.demo.bgd-4.pad .row-between > .grid-4
         .grid-4.demo.bgd-4.pad .row-between > .grid-4
 
-      .row.demo-row
-        .grid-4.grid-left-4.demo.bgd-5.pad .grid-4.grid-left-4
-
-      .row.demo-row
-        .grid-4.grid-right.demo.bgd-1.pad .grid-4.grid-right
-
+      p Fill gaps on flex grid 
       .row.demo-row
         .grid-4.demo.bgd-1.pad .grid-4
-        .grid-4.demo.bgd-2.pad .grid-4
+        .grid-4.grid-grow.demo.bgd-2.pad .grid-4.grid-grow
+        .grid-6.demo.bgd-1.grid-grow.pad .grid-6.grid-grow
         .grid-4.demo.bgd-3.pad .grid-4
-        .grid-4.grid-grow.demo.bgd-4.pad .grid-4
+        .grid-4.grid-grow.demo.bgd-4.pad .grid-4.grid-grow
+        
+      p Auto spreading flex grid 
+      .row.demo-row
+        .grid-grow.demo.bgd-1.pad .grid-grow
+        .grid-grow.demo.bgd-2.pad .grid-grow
+        .grid-grow.demo.bgd-3.pad .grid-grow
+        .grid-grow.demo.bgd-4.pad .grid-grow
     
