@@ -33,6 +33,17 @@ Row css looks like
   flex-flow: row wrap
 ```
 
+Grid css looks like
+```sass
+[class*=grid-]
+  display: inline-block
+  letter-spacing: normal
+  text-rendering: auto
+  word-spacing: normal
+  vertical-align: top
+  box-sizing: border-box
+```
+
 ## Usage
 
 A basic grid class structure is a follows ```.$global-name-space-$grid-name-$breakpointsize-$columnindex```
