@@ -1,11 +1,12 @@
 $base-bgd: #eee;
 $base-color: #444;
-
+$border-color: rgba(0, 0, 0, 0.1);
+$white: #fff;
 
 @for $i from 1 through 5 {
   .bgd-#{$i} {
+    border: 1px solid $border-color;
     background-color: darken($base-bgd, $i * 5);
-    border: 1px solid rgba(0,0,0,0.05);
     color: $base-color;
   }
 }
@@ -33,12 +34,15 @@ $base-color: #444;
 }
 
 .button {
-  border: 1px solid rgba(0,0,0,0.2);
-  background-color: $base-color;
-  color: #FFF;
   padding: 10px 20px;
+  border: 1px solid $border-color;
+  background-color: $base-color;
+  color: $white;
   cursor: pointer;
-  &:hover, &:focus, &:active {
+
+  &:hover,
+  &:focus,
+  &:active {
     background-color: darken($base-color, 10%);
   }
 }

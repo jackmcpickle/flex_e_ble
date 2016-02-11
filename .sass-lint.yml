@@ -54,7 +54,11 @@ rules:
     - 1
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
-  mixins-before-declarations: 1
+  mixins-before-declarations:
+    - 1
+    -
+      exclude:
+        - 'media'
   nesting-depth:
     - 1
     - max-depth: 3
