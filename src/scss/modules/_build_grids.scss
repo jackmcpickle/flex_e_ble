@@ -2,7 +2,7 @@
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$i} {
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$i} {
     width: $local-size;
   }
 
