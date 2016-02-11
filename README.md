@@ -16,40 +16,68 @@ Use a grid system is the the same across your projects but adapts to the naming 
 * `npm install flex_e_ble include-media`
 * `bower install flex_e_ble include-media`
 
+## How it works
+
+Flex_e_ble grid system is based on [purecss.io](http://purecss.io/)
+
+[Read why](http://purecss.io/grids/#using-grids-with-custom-fonts) they using negative letter-spacing to remove the white-space from the inline-block fallback display
+
+Row css looks like
+```sass
+.row
+  letter-spacing: -0.31em
+  text-rendering: optimizespeed
+  box-sizing: border-box
+  position: relative
+  display: flex
+  flex-flow: row wrap
+```
+
 ## Usage
 
 A basic grid class structure is a follows ```.$global-name-space-$grid-name-$breakpointsize-$columnindex```
 
+
+Make a simple 5 column grid with 30px padding either side
 ```sass
 @import "flex_e_ble"
-$grid-name: 'col-'
-$grid-base-name: 'xs'
-$column-gutter: 15px
-$auto-column-gutters: true
+$total-columns: 5
+$column-gutter: 30px
+$auto-column-gutters: true;
 ```
 
 Outputs a grid using the bootstrap naming convention
 
 ```css
 
-.col-xs-1 { width: 8.33333%; }
+.grid-1 { width: 20%; }
 
-.col-xs-2 { width: 16.66667%; }
+.grid-2 { width: 40%; }
 
 /*...etc... */
 
 ```
 
+
+Want a Bootstrap class structure?
+```sass
+@import "flex_e_ble"
+$grid-framework: 'bootstrap'
+```
+
+Will output our grid as follows
+```css
+.col-xs-1 { width: 8.33333%; }
+
+.col-xs-2 { width: 16.66667%; }
+
+/*...etc... */
+```
+
 Want a Foundation class structure?
 ```sass
 @import "flex_e_ble"
-$column-gutter: 0.9375rem
-$auto-column-gutters: false
-$grid-padding-name: 'column'
-$grid-name: ''
-$default-grid-name: 'small'
-// needed as our grid-name is blank
-$independant-grid-definition: true
+$grid-framework: 'foundation'
 ```
 
 Will output our grid as follows
