@@ -8,12 +8,12 @@
 
   // Offset right
   .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$right-name}-#{$i} {
-    margin-right: $local-size;
+    margin-left: $local-size;
   }
 
   // Offset left
   .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
-    margin-left: $local-size;
+    margin-right: $local-size;
   }
 
   @if $enable-extra-grid {
@@ -36,12 +36,12 @@
 
       // Responsive offset right
       .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
-        margin-right: $local-size;
+        margin-left: $local-size;
       }
 
       // Responsive offset left
       .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
-        margin-left: $local-size;
+        margin-right: $local-size;
       }
 
       @if $enable-extra-grid {
