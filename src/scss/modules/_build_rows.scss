@@ -1,10 +1,10 @@
 .#{$global-name-space}#{$row-name} {
-  @include build-row();
+  @include build-row;
   width: 100%;
 }
 
 #{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row();
+  @include build-flex-row;
 
   // clearfix breaks flexgrid row
   &.clearfix:before, &.clearfix:after {
@@ -13,23 +13,23 @@
 }
 
 [class*=#{$master-grid-name}] {
-  @include build-grid();
+  @include build-grid;
   @if $auto-column-gutters {
-    @include build-column-gutter()
+    @include build-column-gutter;
   }
 
   // For grids that are also rows
   &.#{$global-name-space}#{$row-name} {
-    @include build-row();
+    @include build-row;
     display: inline-block;
   }
 
   #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-    @include build-flex-row();
+    @include build-flex-row;
   }
 }
 
 
 .#{$global-name-space}#{$grid-padding-name} {
-  @include build-column-gutter()
+  @include build-column-gutter;
 }

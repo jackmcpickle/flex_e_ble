@@ -1,45 +1,46 @@
-@mixin build-row() {
-  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-  box-sizing: border-box;
-  position: relative;
+@mixin build-row {
   display: block;
+  position: relative;
+
+  letter-spacing: -0.31em; // Webkit: collapse white-space between units
+  text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+  box-sizing: border-box;
 }
 
-@mixin build-flex-row() {
+@mixin build-flex-row {
   display: flex;
   flex-flow: row wrap;
-
-  display: -ms-flexbox;
-  -ms-flex-flow: row wrap;
 }
 
-@mixin build-grid() {
-  box-sizing: border-box;
+@mixin build-grid {
   display: inline-block;
+
   letter-spacing: normal;
+  text-rendering: auto;
   word-spacing: normal;
   vertical-align: top;
-  text-rendering: auto;
+
+  box-sizing: border-box;
 }
 
 @function grid-size($n) {
-  @return percentage( $n / $total-columns)
+  @return percentage($n / $total-columns)
 }
 
 @function grid-size-special($n) {
-  @return percentage( $n / $extra-columns)
+  @return percentage($n / $extra-columns)
 }
 
-@mixin build-column-gutter() {
+$smallest-size: nth(nth($breakpoints, 1), 1);
 
-  $smallest-size: nth(nth($breakpoints, 1),1);
+@mixin build-column-gutter {
 
-  padding-left: ($column-gutter / 2);
   padding-right: ($column-gutter / 2);
+  padding-left: ($column-gutter / 2);
 
-  @include media("screen", ">=#{$smallest-size}") {
-    padding-left: ($column-gutter);
+
+  @include media('screen', '>=#{$smallest-size}') {
     padding-right: ($column-gutter);
+    padding-left: ($column-gutter);
   }
 }

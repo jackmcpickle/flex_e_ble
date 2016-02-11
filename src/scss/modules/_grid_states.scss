@@ -1,11 +1,11 @@
 .#{$global-name-space}#{$grid-name} {
 
   &left {
-    right: auto
+    right: auto;
   }
 
   &right {
-    left: auto
+    left: auto;
   }
 }
 
@@ -25,11 +25,11 @@
   }
 
   &left {
-    margin-right: auto
+    margin-right: auto;
   }
 
   &right {
-    margin-left: auto
+    margin-left: auto;
   }
 }
 
@@ -38,9 +38,11 @@
   &-right {
     text-align: right;
   }
+
   &-center {
     text-align: center;
   }
+
   &-left {
     text-align: left;
   }

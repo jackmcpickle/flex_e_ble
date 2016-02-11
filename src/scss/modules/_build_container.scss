@@ -1,5 +1,3 @@
-// see http://purecss.io/grids/#using-grids-with-custom-fonts
-
 html,
 .#{$global-name-space}#{$row-name} [class*=#{$master-grid-name}] {
   font-family: $special-font-stack;
@@ -11,7 +9,7 @@ html,
   margin-right: auto;
 
   @each $size, $breakpoint in $breakpoints {
-    @include media("screen", "#{$break-dir}#{$size}") {
+    @include media('screen', '#{$break-dir}#{$size}') {
       max-width: $breakpoint;
     }
   }

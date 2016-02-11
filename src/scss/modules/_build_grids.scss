@@ -25,19 +25,21 @@
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media("screen", "#{$break-dir}#{$breakpoint}") {
+  @include media('screen', '#{$break-dir}#{$breakpoint}') {
     @for $i from 1 through $total-columns {
       $local-size: grid-size($i);
-      // Responsive Grid
 
+      // Responsive Grid
       .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
         width: $local-size;
       }
-        // Responsive offset right
+
+      // Responsive offset right
       .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
         margin-right: $local-size;
       }
-        // Responsive offset left
+
+      // Responsive offset left
       .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
         margin-left: $local-size;
       }
