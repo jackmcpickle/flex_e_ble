@@ -10,6 +10,8 @@ concat       = require 'gulp-concat'
 clean        = require 'gulp-clean'
 watch        = require 'gulp-watch'
 jade         = require 'gulp-jade'
+csslint      = require 'gulp-csslint'
+sassLint     = require 'gulp-sass-lint'
 
 _browsers = [ '> 2%', 'last 3 versions' ]
 
@@ -34,11 +36,14 @@ _paths = {
   ]
   dist_file: '_flex_e_ble.scss'
   jade: './src/tmpl/*.jade'
+  build_css: ['./dist/*.css', '!./dist/*.min.css']
 }
 
 gulp.task 'styles', ->
   gulp.src _paths.scss
-  .pipe sass().on('error', sass.logError)
+  .pipe sass
+    outputStyle: 'expanded'
+  .on('error', sass.logError)
   .pipe postcss _processors
   .pipe sourcemaps.write()
   .pipe gulp.dest _paths.build
@@ -65,6 +70,15 @@ gulp.task 'jade', ->
     pretty: true
   .pipe gulp.dest _paths.build
 
+gulp.task 'csslint', ->
+  gulp.src(_paths.build_css)
+  .pipe csslint()
+  .pipe csslint.reporter()
+
+gulp.task 'sassLint', ['styles'], ->
+  gulp.src(_paths.scss)
+  .pipe sassLint()
+  .pipe sassLint.format()
 
 gulp.task 'clean', ->
   gulp.src _paths.build, read: false
@@ -72,12 +86,14 @@ gulp.task 'clean', ->
 
 gulp.task 'watch', (cb) ->
   watch _paths.scss, ->
-    gulp.start 'styles'
+    gulp.start 'sassLint'
 
   watch _paths.jade, ->
     gulp.start 'jade'
 
-gulp.task 'default', ['jade', 'styles', 'watch']
+gulp.task 'default', ['jade', 'sassLint', 'watch']
+
+gulp.task 'lint', ['sassLint', 'csslint']
 
 gulp.task 'build', ->
-  runSequence ['clean'], ['styles', 'jade'], ['merge'], ['minify']
+  runSequence ['clean'], ['sassLint', 'jade'], ['merge'], ['minify']
