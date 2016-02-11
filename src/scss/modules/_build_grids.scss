@@ -15,6 +15,13 @@
   .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
     margin-left: $local-size;
   }
+
+  @if $enable-extra-grid {
+    .#{$global-name-space}#{$grid-name}#{$base-grid-name}-#{$i}-#{$extra-grid-name} {
+      width: grid-size-special($i);
+    }
+  }
+
 }
 
 @each $size, $breakpoint in $breakpoints {
@@ -34,6 +41,13 @@
       .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
         margin-left: $local-size;
       }
+
+      @if $enable-extra-grid {
+        .#{$global-name-space}#{$grid-name}#{$size}-#{$i}-#{$extra-grid-name} {
+          width: grid-size-special($i);
+        }
+      }
+
     }
   }
 }
