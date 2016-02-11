@@ -30,7 +30,6 @@ _paths = {
     './src/scss/modules/_build_container.scss'
     './src/scss/modules/_build_rows.scss'
     './src/scss/modules/_build_grids.scss'
-    './src/scss/modules/_build_extra.scss'
     './src/scss/modules/_grid_states.scss'
   ]
   dist_file: '_flex_e_ble.scss'
