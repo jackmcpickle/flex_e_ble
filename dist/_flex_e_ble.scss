@@ -1,32 +1,31 @@
 // Must be added to html tag either manaully or feature detect eg modernizr
 $flexbox-enable-class: '.flexbox' !default;
-$special-font-stack: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif !default;
-
+$special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
+$default-text-align: left;
 $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
 
-
 $column-gutter: 15px !default;
 $auto-column-gutters: false !default;
 $grid-padding-name: 'pad' !default;
-$independant-grid-definition: false !default;
+$independant-grid-name: '' !default;
 
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
 $container-name: 'container' !default; // Could be wrapper
 $grid-name: 'grid-' !default; // Could be col or column
-$default-grid-name: '' !default;
+$base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
 
 // Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
-  'sm': 480px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1180px
+  'small': 480px,
+  'medium': 768px,
+  'large': 1024px,
+  'xlarge': 1180px
 ) !default;
 
 $break-dir: '>=' !default;
@@ -35,84 +34,115 @@ $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
 
-@mixin build-row() {
-  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-  box-sizing: border-box;
-  position: relative;
-  display: block;
+$grid-framework: '' !default;
+
+@if $grid-framework == 'bootstrap' {
+  $grid-name: 'col-';
+  $base-grid-name: 'xs-';
+  $column-gutter: 15px;
+  $auto-column-gutters: true;
+  $right-name: 'push';
+  $left-name: 'pull';
+  $breakpoints: (
+    'sm': 480px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1180px
+  );
+
 }
 
-@mixin build-flex-row() {
+@if $grid-framework == 'foundation' {
+  $column-gutter: 0.9375rem;
+  $auto-column-gutters: false;
+  $independant-grid-name: 'column';
+  $grid-name: '';
+  $base-grid-name: 'small';
+  $breakpoints: (
+    'medium': 768px,
+    'large': 1024px
+  );
+}
+
+
+@if $independant-grid-name == '' {
+  $master-grid-name: #{$global-name-space}#{$grid-name};
+} @else {
+  $master-grid-name: $independant-grid-name;
+}
+
+@mixin build-row {
+  display: block;
+  position: relative;
+
+  letter-spacing: -0.31em; // Webkit: collapse white-space between units
+  text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+  box-sizing: border-box;
+}
+
+@mixin build-flex-row {
   display: flex;
   flex-flow: row wrap;
-
-  display: -ms-flexbox;
-  -ms-flex-flow: row wrap;
 }
 
-@mixin build-grid() {
-  box-sizing: border-box;
+@mixin build-grid {
   display: inline-block;
+
   letter-spacing: normal;
+  text-align: $default-text-align;
+  text-rendering: auto;
   word-spacing: normal;
   vertical-align: top;
-  text-rendering: auto;
+
+  box-sizing: border-box;
 }
 
 @function grid-size($n) {
-  @return percentage( $n / $total-columns)
+  @return percentage($n / $total-columns)
 }
 
 @function grid-size-special($n) {
-  @return percentage( $n / $extra-columns)
+  @return percentage($n / $extra-columns)
 }
 
-@mixin build-column-gutter() {
+$smallest-size: nth(nth($breakpoints, 1), 1);
 
-  $smallest-size: nth(nth($breakpoints, 1),1);
+@mixin build-column-gutter {
 
-  padding-left: ($column-gutter / 2);
   padding-right: ($column-gutter / 2);
+  padding-left: ($column-gutter / 2);
 
-  @include media("screen", ">=#{$smallest-size}") {
-    padding-left: ($column-gutter);
+
+  @include media('screen', '>=#{$smallest-size}') {
     padding-right: ($column-gutter);
+    padding-left: ($column-gutter);
   }
 }
 
-// see http://purecss.io/grids/#using-grids-with-custom-fonts
-@if $independant-grid-definition {
-  html,
-  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-padding-name}-] {
-    font-family: $special-font-stack;
-  }
-
-} @else {
-  html,
-  .#{$global-name-space}#{$row-name} [class*=#{$global-name-space}#{$grid-name}] {
-    font-family: $special-font-stack;
-  }
+html,
+.#{$global-name-space}#{$row-name} [class*=#{$master-grid-name}] {
+  font-family: $special-font-stack;
 }
+
 
 .#{$global-name-space}#{$container-name} {
   margin-left: auto;
   margin-right: auto;
 
   @each $size, $breakpoint in $breakpoints {
-    @include media("screen", "#{$break-dir}#{$size}") {
+    @include media('screen', '#{$break-dir}#{$size}') {
       max-width: $breakpoint;
     }
   }
 }
 
 .#{$global-name-space}#{$row-name} {
-  @include build-row();
+  @include build-row;
   width: 100%;
 }
 
 #{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row();
+  @include build-flex-row;
 
   // clearfix breaks flexgrid row
   &.clearfix:before, &.clearfix:after {
@@ -120,106 +150,101 @@ $extra-columns: 5 !default;
   }
 }
 
-@if $independant-grid-definition == false {
+[class*=#{$master-grid-name}] {
+  @include build-grid;
+  @if $auto-column-gutters {
+    @include build-column-gutter;
+  }
 
-  [class*=#{$global-name-space}#{$grid-name}] {
-    @include build-grid();
-    @if $auto-column-gutters {
-      @include build-column-gutter()
-    }
+  // For grids that are also rows
+  &.#{$global-name-space}#{$row-name} {
+    @include build-row;
+    display: inline-block;
+  }
 
-    // For grids that are also rows
-    &.#{$global-name-space}#{$row-name} {
-      @include build-row();
-      display: inline-block;
-    }
-
-    #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-      @include build-flex-row();
-    }
+  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
+    @include build-flex-row;
   }
 }
 
+
 .#{$global-name-space}#{$grid-padding-name} {
-  @include build-column-gutter()
-  @if $independant-grid-definition {
-    @include build-grid();
-  }
+  @include build-column-gutter;
 }
 
 @for $i from 1 through $total-columns {
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$i} {
+  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$i} {
     width: $local-size;
   }
 
   // Offset right
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$right-name}-#{$i} {
-    margin-right: $local-size;
+  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$right-name}-#{$i} {
+    margin-left: $local-size;
   }
 
   // Offset left
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$left-name}-#{$i} {
-    margin-left: $local-size;
+  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
+    margin-right: $local-size;
   }
-}
 
-@each $size, $breakpoint in $breakpoints {
-  @include media("screen", "#{$break-dir}#{$breakpoint}") {
-    @for $i from 1 through $total-columns {
-      $local-size: grid-size($i);
-      // Responsive Grid
-
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
-        width: $local-size;
-      }
-        // Responsive offset right
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
-        margin-right: $local-size;
-      }
-        // Responsive offset left
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
-        margin-left: $local-size;
-      }
-    }
-  }
-}
-
-@if $enable-extra-grid {
-
-  // Base grid
-  @for $i from 1 through $extra-columns {
-    .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$i}-#{$extra-grid-name} {
+  @if $enable-extra-grid {
+    .#{$global-name-space}#{$grid-name}#{$base-grid-name}-#{$i}-#{$extra-grid-name} {
       width: grid-size-special($i);
     }
   }
 
-  @each $size, $breakpoint in $breakpoints {
-    @include media("screen", "#{$break-dir}#{$breakpoint}") {
-      @for $i from 1 through $extra-columns {
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media('screen', '#{$break-dir}#{$breakpoint}') {
+    @for $i from 1 through $total-columns {
+      $local-size: grid-size($i);
+
+      // Responsive Grid
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
+        width: $local-size;
+      }
+
+      // Responsive offset right
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
+        margin-left: $local-size;
+      }
+
+      // Responsive offset left
+      .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
+        margin-right: $local-size;
+      }
+
+      @if $enable-extra-grid {
         .#{$global-name-space}#{$grid-name}#{$size}-#{$i}-#{$extra-grid-name} {
           width: grid-size-special($i);
         }
       }
+
     }
   }
-
 }
 
 .#{$global-name-space}#{$grid-name} {
 
   &left {
-    right: auto
+    right: auto;
   }
 
   &right {
-    left: auto
+    left: auto;
   }
 }
 
-#{$flexbox-enable-class} .#{$global-name-space}#{$grid-name} {
+@if str-index($master-grid-name, '-') == null {
+  $local-dash: '-';
+} @else { $local-dash: ''; }
+
+
+#{$flexbox-enable-class} .#{$master-grid-name}#{$local-dash} {
 
   &grow {
     flex-grow: 1;
@@ -230,11 +255,11 @@ $extra-columns: 5 !default;
   }
 
   &left {
-    margin-right: auto
+    margin-right: auto;
   }
 
   &right {
-    margin-left: auto
+    margin-left: auto;
   }
 }
 
@@ -243,9 +268,11 @@ $extra-columns: 5 !default;
   &-right {
     text-align: right;
   }
+
   &-center {
     text-align: center;
   }
+
   &-left {
     text-align: left;
   }
