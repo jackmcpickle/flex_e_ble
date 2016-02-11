@@ -34,7 +34,7 @@ $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
 
-$grid-framework: 'bootstrap' !default;
+$grid-framework: '' !default;
 
 @if $grid-framework == 'bootstrap' {
   $grid-name: 'col-';
