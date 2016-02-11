@@ -1,7 +1,7 @@
 // Must be added to html tag either manaully or feature detect eg modernizr
 $flexbox-enable-class: '.flexbox' !default;
 $special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
-
+$default-text-align: left;
 $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
