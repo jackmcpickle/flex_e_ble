@@ -2,17 +2,17 @@
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$i} {
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$i} {
     width: $local-size;
   }
 
   // Offset right
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$right-name}-#{$i} {
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$right-name}-#{$i} {
     margin-right: $local-size;
   }
 
   // Offset left
-  .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$left-name}-#{$i} {
+  .#{$global-name-space}#{$grid-name}#{$default-grid-name}#{$left-name}-#{$i} {
     margin-left: $local-size;
   }
 }

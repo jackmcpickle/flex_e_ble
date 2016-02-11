@@ -38,7 +38,7 @@ $grid-framework: 'bootstrap' !default;
 
 @if $grid-framework == 'bootstrap' {
   $grid-name: 'col-';
-  $default-grid-name: 'xs';
+  $default-grid-name: 'xs-';
   $column-gutter: 15px;
   $auto-column-gutters: true;
   $right-name: 'push';
