@@ -15,7 +15,7 @@ $independant-grid-name: '' !default;
 $global-name-space: '' !default;
 $container-name: 'container' !default; // Could be wrapper
 $grid-name: 'grid-' !default; // Could be col or column
-$default-grid-name: '' !default;
+$base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
@@ -38,7 +38,7 @@ $grid-framework: 'bootstrap' !default;
 
 @if $grid-framework == 'bootstrap' {
   $grid-name: 'col-';
-  $default-grid-name: 'xs-';
+  $base-grid-name: 'xs-';
   $column-gutter: 15px;
   $auto-column-gutters: true;
   $right-name: 'push';
@@ -57,7 +57,7 @@ $grid-framework: 'bootstrap' !default;
   $auto-column-gutters: false;
   $independant-grid-name: 'column';
   $grid-name: '';
-  $default-grid-name: 'small';
+  $base-grid-name: 'small';
   $breakpoints: (
     'medium': 768px,
     'large': 1024px

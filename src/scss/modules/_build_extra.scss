@@ -2,7 +2,7 @@
 
   // Base grid
   @for $i from 1 through $extra-columns {
-    .#{$global-name-space}#{$grid-name}#{$default-grid-name}-#{$i}-#{$extra-grid-name} {
+    .#{$global-name-space}#{$grid-name}#{$base-grid-name}-#{$i}-#{$extra-grid-name} {
       width: grid-size-special($i);
     }
   }
