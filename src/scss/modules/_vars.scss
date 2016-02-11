@@ -22,10 +22,10 @@ $left-name: 'left' !default; // Could be push
 
 // Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
-  'sm': 480px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1180px
+  'small': 480px,
+  'medium': 768px,
+  'large': 1024px,
+  'xlarge': 1180px
 ) !default;
 
 $break-dir: '>=' !default;
