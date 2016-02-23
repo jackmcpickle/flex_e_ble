@@ -26,6 +26,7 @@
 
   #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
     @include build-flex-row;
+    display: inline-block;
   }
 }
 
