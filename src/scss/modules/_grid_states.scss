@@ -1,10 +1,10 @@
 .#{$global-name-space}#{$grid-name} {
 
-  &left {
+  &#{$left-name} {
     right: auto;
   }
 
-  &right {
+  &#{$right-name} {
     left: auto;
   }
 }
@@ -26,11 +26,11 @@ $local-dash: '' !default;
     align-self: flex-end;
   }
 
-  &left {
+  &#{$left-name} {
     margin-right: auto;
   }
 
-  &right {
+  &#{$right-name} {
     margin-left: auto;
   }
 }
