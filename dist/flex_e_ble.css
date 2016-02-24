@@ -76,6 +76,7 @@ html,
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  display: inline-block;
 }
 
 .pad {
