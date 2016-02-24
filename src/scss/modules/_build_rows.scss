@@ -7,12 +7,15 @@
   @include build-flex-row;
 
   // clearfix breaks flexgrid row
-  &.clearfix:before, &.clearfix:after {
-    content: initial;
+  &.clearfix {
+    &:before,
+    &:after {
+      content: initial;
+    }
   }
 }
 
-[class*=#{$master-grid-name}] {
+[class*='#{$master-grid-name}'] {
   @include build-grid;
   @if $auto-column-gutters {
     @include build-column-gutter;

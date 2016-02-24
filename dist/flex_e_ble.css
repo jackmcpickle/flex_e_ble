@@ -1,11 +1,14 @@
-html,
-.row [class*=grid-] {
+html {
+  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+}
+
+.row [class*='grid-'] {
   font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
 }
 
 .container {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 @media screen and (min-width: 320px) {
@@ -49,7 +52,7 @@ html,
   content: initial;
 }
 
-[class*=grid-] {
+[class*='grid-'] {
   display: inline-block;
   letter-spacing: normal;
   text-align: left;
@@ -59,7 +62,7 @@ html,
   box-sizing: border-box;
 }
 
-[class*=grid-].row {
+[class*='grid-'].row {
   display: block;
   position: relative;
   letter-spacing: -0.31em;
@@ -68,7 +71,7 @@ html,
   display: inline-block;
 }
 
-.flexbox [class*=grid-].row {
+.flexbox [class*='grid-'].row {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
