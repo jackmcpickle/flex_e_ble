@@ -9,9 +9,11 @@
   }
 }
 
+$local-dash: '' !default;
+
 @if str-index($master-grid-name, '-') == null {
-  $local-dash: '-';
-} @else { $local-dash: ''; }
+  $local-dash: '-' !default;
+}
 
 
 #{$flexbox-enable-class} .#{$master-grid-name}#{$local-dash} {

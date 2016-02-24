@@ -64,9 +64,8 @@ $grid-framework: '' !default;
   );
 }
 
+$master-grid-name: #{$global-name-space}#{$grid-name} !default;
 
-@if $independant-grid-name == '' {
-  $master-grid-name: #{$global-name-space}#{$grid-name};
-} @else {
-  $master-grid-name: $independant-grid-name;
+@if $independant-grid-name != '' {
+  $master-grid-name: $independant-grid-name !default;
 }
