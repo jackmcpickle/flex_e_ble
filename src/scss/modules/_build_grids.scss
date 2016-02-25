@@ -19,7 +19,7 @@
   }
 
   @if $enable-extra-grid {
-    .#{$global-name-space}#{$grid-name}#{$base-grid-name}-#{$i}-#{$extra-grid-name} {
+    .#{$global-name-space}#{$extra-grid-name}-#{$i}- {
       width: grid-size-special($i);
     }
   }
@@ -49,7 +49,7 @@
       }
 
       @if $enable-extra-grid {
-        .#{$global-name-space}#{$grid-name}#{$size}-#{$i}-#{$extra-grid-name} {
+        .#{$global-name-space}#{$extra-grid-name}#{$size}-#{$i} {
           width: grid-size-special($i);
         }
       }
