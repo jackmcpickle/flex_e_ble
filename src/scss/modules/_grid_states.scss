@@ -1,14 +1,3 @@
-.#{$global-name-space}#{$grid-name} {
-
-  &#{$left-name} {
-    right: auto;
-  }
-
-  &#{$right-name} {
-    left: auto;
-  }
-}
-
 $local-dash: '' !default;
 
 @if str-index($master-grid-name, '-') == null {
@@ -24,14 +13,6 @@ $local-dash: '' !default;
 
   &bottom {
     align-self: flex-end;
-  }
-
-  &#{$left-name} {
-    margin-right: auto;
-  }
-
-  &#{$right-name} {
-    margin-left: auto;
   }
 }
 

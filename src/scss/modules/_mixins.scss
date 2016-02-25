@@ -14,6 +14,7 @@
 
 @mixin build-grid {
   display: inline-block;
+  position: relative;
 
   letter-spacing: normal;
   text-align: $default-text-align;
