@@ -86,6 +86,7 @@ $master-grid-name: #{$global-name-space}#{$grid-name} !default;
 
 @mixin build-grid {
   display: inline-block;
+  position: relative;
 
   letter-spacing: normal;
   text-align: $default-text-align;
@@ -189,16 +190,18 @@ html {
 
   // Offset right
   .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$right-name}-#{$i} {
-    margin-left: $local-size;
+    right: auto;
+    left: $local-size;
   }
 
   // Offset left
   .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
-    margin-right: $local-size;
+    right: $local-size;
+    left: auto;
   }
 
   @if $enable-extra-grid {
-    .#{$global-name-space}#{$grid-name}#{$base-grid-name}-#{$i}-#{$extra-grid-name} {
+    .#{$global-name-space}#{$extra-grid-name}-#{$i}- {
       width: grid-size-special($i);
     }
   }
@@ -217,32 +220,23 @@ html {
 
       // Responsive offset right
       .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
-        margin-left: $local-size;
+        right: auto;
+        left: $local-size;
       }
 
       // Responsive offset left
       .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
-        margin-right: $local-size;
+        right: $local-size;
+        left: auto;
       }
 
       @if $enable-extra-grid {
-        .#{$global-name-space}#{$grid-name}#{$size}-#{$i}-#{$extra-grid-name} {
+        .#{$global-name-space}#{$extra-grid-name}#{$size}-#{$i} {
           width: grid-size-special($i);
         }
       }
 
     }
-  }
-}
-
-.#{$global-name-space}#{$grid-name} {
-
-  &#{$left-name} {
-    right: auto;
-  }
-
-  &#{$right-name} {
-    left: auto;
   }
 }
 
@@ -261,14 +255,6 @@ $local-dash: '' !default;
 
   &bottom {
     align-self: flex-end;
-  }
-
-  &#{$left-name} {
-    margin-right: auto;
-  }
-
-  &#{$right-name} {
-    margin-left: auto;
   }
 }
 

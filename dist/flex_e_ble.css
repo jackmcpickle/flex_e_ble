@@ -54,6 +54,7 @@ html {
 
 [class*='grid-'] {
   display: inline-block;
+  position: relative;
   letter-spacing: normal;
   text-align: left;
   text-rendering: auto;
@@ -99,11 +100,13 @@ html {
 }
 
 .grid-right-1 {
-  margin-left: 8.33333%;
+  right: auto;
+  left: 8.33333%;
 }
 
 .grid-left-1 {
-  margin-right: 8.33333%;
+  right: 8.33333%;
+  left: auto;
 }
 
 .grid-2 {
@@ -111,11 +114,13 @@ html {
 }
 
 .grid-right-2 {
-  margin-left: 16.66667%;
+  right: auto;
+  left: 16.66667%;
 }
 
 .grid-left-2 {
-  margin-right: 16.66667%;
+  right: 16.66667%;
+  left: auto;
 }
 
 .grid-3 {
@@ -123,11 +128,13 @@ html {
 }
 
 .grid-right-3 {
-  margin-left: 25%;
+  right: auto;
+  left: 25%;
 }
 
 .grid-left-3 {
-  margin-right: 25%;
+  right: 25%;
+  left: auto;
 }
 
 .grid-4 {
@@ -135,11 +142,13 @@ html {
 }
 
 .grid-right-4 {
-  margin-left: 33.33333%;
+  right: auto;
+  left: 33.33333%;
 }
 
 .grid-left-4 {
-  margin-right: 33.33333%;
+  right: 33.33333%;
+  left: auto;
 }
 
 .grid-5 {
@@ -147,11 +156,13 @@ html {
 }
 
 .grid-right-5 {
-  margin-left: 41.66667%;
+  right: auto;
+  left: 41.66667%;
 }
 
 .grid-left-5 {
-  margin-right: 41.66667%;
+  right: 41.66667%;
+  left: auto;
 }
 
 .grid-6 {
@@ -159,11 +170,13 @@ html {
 }
 
 .grid-right-6 {
-  margin-left: 50%;
+  right: auto;
+  left: 50%;
 }
 
 .grid-left-6 {
-  margin-right: 50%;
+  right: 50%;
+  left: auto;
 }
 
 .grid-7 {
@@ -171,11 +184,13 @@ html {
 }
 
 .grid-right-7 {
-  margin-left: 58.33333%;
+  right: auto;
+  left: 58.33333%;
 }
 
 .grid-left-7 {
-  margin-right: 58.33333%;
+  right: 58.33333%;
+  left: auto;
 }
 
 .grid-8 {
@@ -183,11 +198,13 @@ html {
 }
 
 .grid-right-8 {
-  margin-left: 66.66667%;
+  right: auto;
+  left: 66.66667%;
 }
 
 .grid-left-8 {
-  margin-right: 66.66667%;
+  right: 66.66667%;
+  left: auto;
 }
 
 .grid-9 {
@@ -195,11 +212,13 @@ html {
 }
 
 .grid-right-9 {
-  margin-left: 75%;
+  right: auto;
+  left: 75%;
 }
 
 .grid-left-9 {
-  margin-right: 75%;
+  right: 75%;
+  left: auto;
 }
 
 .grid-10 {
@@ -207,11 +226,13 @@ html {
 }
 
 .grid-right-10 {
-  margin-left: 83.33333%;
+  right: auto;
+  left: 83.33333%;
 }
 
 .grid-left-10 {
-  margin-right: 83.33333%;
+  right: 83.33333%;
+  left: auto;
 }
 
 .grid-11 {
@@ -219,11 +240,13 @@ html {
 }
 
 .grid-right-11 {
-  margin-left: 91.66667%;
+  right: auto;
+  left: 91.66667%;
 }
 
 .grid-left-11 {
-  margin-right: 91.66667%;
+  right: 91.66667%;
+  left: auto;
 }
 
 .grid-12 {
@@ -231,11 +254,13 @@ html {
 }
 
 .grid-right-12 {
-  margin-left: 100%;
+  right: auto;
+  left: 100%;
 }
 
 .grid-left-12 {
-  margin-right: 100%;
+  right: 100%;
+  left: auto;
 }
 
 @media screen and (min-width: 320px) {
@@ -243,109 +268,133 @@ html {
     width: 8.33333%;
   }
   .grid-phone-right-1 {
-    margin-left: 8.33333%;
+    right: auto;
+    left: 8.33333%;
   }
   .grid-phone-left-1 {
-    margin-right: 8.33333%;
+    right: 8.33333%;
+    left: auto;
   }
   .grid-phone-2 {
     width: 16.66667%;
   }
   .grid-phone-right-2 {
-    margin-left: 16.66667%;
+    right: auto;
+    left: 16.66667%;
   }
   .grid-phone-left-2 {
-    margin-right: 16.66667%;
+    right: 16.66667%;
+    left: auto;
   }
   .grid-phone-3 {
     width: 25%;
   }
   .grid-phone-right-3 {
-    margin-left: 25%;
+    right: auto;
+    left: 25%;
   }
   .grid-phone-left-3 {
-    margin-right: 25%;
+    right: 25%;
+    left: auto;
   }
   .grid-phone-4 {
     width: 33.33333%;
   }
   .grid-phone-right-4 {
-    margin-left: 33.33333%;
+    right: auto;
+    left: 33.33333%;
   }
   .grid-phone-left-4 {
-    margin-right: 33.33333%;
+    right: 33.33333%;
+    left: auto;
   }
   .grid-phone-5 {
     width: 41.66667%;
   }
   .grid-phone-right-5 {
-    margin-left: 41.66667%;
+    right: auto;
+    left: 41.66667%;
   }
   .grid-phone-left-5 {
-    margin-right: 41.66667%;
+    right: 41.66667%;
+    left: auto;
   }
   .grid-phone-6 {
     width: 50%;
   }
   .grid-phone-right-6 {
-    margin-left: 50%;
+    right: auto;
+    left: 50%;
   }
   .grid-phone-left-6 {
-    margin-right: 50%;
+    right: 50%;
+    left: auto;
   }
   .grid-phone-7 {
     width: 58.33333%;
   }
   .grid-phone-right-7 {
-    margin-left: 58.33333%;
+    right: auto;
+    left: 58.33333%;
   }
   .grid-phone-left-7 {
-    margin-right: 58.33333%;
+    right: 58.33333%;
+    left: auto;
   }
   .grid-phone-8 {
     width: 66.66667%;
   }
   .grid-phone-right-8 {
-    margin-left: 66.66667%;
+    right: auto;
+    left: 66.66667%;
   }
   .grid-phone-left-8 {
-    margin-right: 66.66667%;
+    right: 66.66667%;
+    left: auto;
   }
   .grid-phone-9 {
     width: 75%;
   }
   .grid-phone-right-9 {
-    margin-left: 75%;
+    right: auto;
+    left: 75%;
   }
   .grid-phone-left-9 {
-    margin-right: 75%;
+    right: 75%;
+    left: auto;
   }
   .grid-phone-10 {
     width: 83.33333%;
   }
   .grid-phone-right-10 {
-    margin-left: 83.33333%;
+    right: auto;
+    left: 83.33333%;
   }
   .grid-phone-left-10 {
-    margin-right: 83.33333%;
+    right: 83.33333%;
+    left: auto;
   }
   .grid-phone-11 {
     width: 91.66667%;
   }
   .grid-phone-right-11 {
-    margin-left: 91.66667%;
+    right: auto;
+    left: 91.66667%;
   }
   .grid-phone-left-11 {
-    margin-right: 91.66667%;
+    right: 91.66667%;
+    left: auto;
   }
   .grid-phone-12 {
     width: 100%;
   }
   .grid-phone-right-12 {
-    margin-left: 100%;
+    right: auto;
+    left: 100%;
   }
   .grid-phone-left-12 {
-    margin-right: 100%;
+    right: 100%;
+    left: auto;
   }
 }
 
@@ -354,109 +403,133 @@ html {
     width: 8.33333%;
   }
   .grid-tablet-right-1 {
-    margin-left: 8.33333%;
+    right: auto;
+    left: 8.33333%;
   }
   .grid-tablet-left-1 {
-    margin-right: 8.33333%;
+    right: 8.33333%;
+    left: auto;
   }
   .grid-tablet-2 {
     width: 16.66667%;
   }
   .grid-tablet-right-2 {
-    margin-left: 16.66667%;
+    right: auto;
+    left: 16.66667%;
   }
   .grid-tablet-left-2 {
-    margin-right: 16.66667%;
+    right: 16.66667%;
+    left: auto;
   }
   .grid-tablet-3 {
     width: 25%;
   }
   .grid-tablet-right-3 {
-    margin-left: 25%;
+    right: auto;
+    left: 25%;
   }
   .grid-tablet-left-3 {
-    margin-right: 25%;
+    right: 25%;
+    left: auto;
   }
   .grid-tablet-4 {
     width: 33.33333%;
   }
   .grid-tablet-right-4 {
-    margin-left: 33.33333%;
+    right: auto;
+    left: 33.33333%;
   }
   .grid-tablet-left-4 {
-    margin-right: 33.33333%;
+    right: 33.33333%;
+    left: auto;
   }
   .grid-tablet-5 {
     width: 41.66667%;
   }
   .grid-tablet-right-5 {
-    margin-left: 41.66667%;
+    right: auto;
+    left: 41.66667%;
   }
   .grid-tablet-left-5 {
-    margin-right: 41.66667%;
+    right: 41.66667%;
+    left: auto;
   }
   .grid-tablet-6 {
     width: 50%;
   }
   .grid-tablet-right-6 {
-    margin-left: 50%;
+    right: auto;
+    left: 50%;
   }
   .grid-tablet-left-6 {
-    margin-right: 50%;
+    right: 50%;
+    left: auto;
   }
   .grid-tablet-7 {
     width: 58.33333%;
   }
   .grid-tablet-right-7 {
-    margin-left: 58.33333%;
+    right: auto;
+    left: 58.33333%;
   }
   .grid-tablet-left-7 {
-    margin-right: 58.33333%;
+    right: 58.33333%;
+    left: auto;
   }
   .grid-tablet-8 {
     width: 66.66667%;
   }
   .grid-tablet-right-8 {
-    margin-left: 66.66667%;
+    right: auto;
+    left: 66.66667%;
   }
   .grid-tablet-left-8 {
-    margin-right: 66.66667%;
+    right: 66.66667%;
+    left: auto;
   }
   .grid-tablet-9 {
     width: 75%;
   }
   .grid-tablet-right-9 {
-    margin-left: 75%;
+    right: auto;
+    left: 75%;
   }
   .grid-tablet-left-9 {
-    margin-right: 75%;
+    right: 75%;
+    left: auto;
   }
   .grid-tablet-10 {
     width: 83.33333%;
   }
   .grid-tablet-right-10 {
-    margin-left: 83.33333%;
+    right: auto;
+    left: 83.33333%;
   }
   .grid-tablet-left-10 {
-    margin-right: 83.33333%;
+    right: 83.33333%;
+    left: auto;
   }
   .grid-tablet-11 {
     width: 91.66667%;
   }
   .grid-tablet-right-11 {
-    margin-left: 91.66667%;
+    right: auto;
+    left: 91.66667%;
   }
   .grid-tablet-left-11 {
-    margin-right: 91.66667%;
+    right: 91.66667%;
+    left: auto;
   }
   .grid-tablet-12 {
     width: 100%;
   }
   .grid-tablet-right-12 {
-    margin-left: 100%;
+    right: auto;
+    left: 100%;
   }
   .grid-tablet-left-12 {
-    margin-right: 100%;
+    right: 100%;
+    left: auto;
   }
 }
 
@@ -465,118 +538,134 @@ html {
     width: 8.33333%;
   }
   .grid-desktop-right-1 {
-    margin-left: 8.33333%;
+    right: auto;
+    left: 8.33333%;
   }
   .grid-desktop-left-1 {
-    margin-right: 8.33333%;
+    right: 8.33333%;
+    left: auto;
   }
   .grid-desktop-2 {
     width: 16.66667%;
   }
   .grid-desktop-right-2 {
-    margin-left: 16.66667%;
+    right: auto;
+    left: 16.66667%;
   }
   .grid-desktop-left-2 {
-    margin-right: 16.66667%;
+    right: 16.66667%;
+    left: auto;
   }
   .grid-desktop-3 {
     width: 25%;
   }
   .grid-desktop-right-3 {
-    margin-left: 25%;
+    right: auto;
+    left: 25%;
   }
   .grid-desktop-left-3 {
-    margin-right: 25%;
+    right: 25%;
+    left: auto;
   }
   .grid-desktop-4 {
     width: 33.33333%;
   }
   .grid-desktop-right-4 {
-    margin-left: 33.33333%;
+    right: auto;
+    left: 33.33333%;
   }
   .grid-desktop-left-4 {
-    margin-right: 33.33333%;
+    right: 33.33333%;
+    left: auto;
   }
   .grid-desktop-5 {
     width: 41.66667%;
   }
   .grid-desktop-right-5 {
-    margin-left: 41.66667%;
+    right: auto;
+    left: 41.66667%;
   }
   .grid-desktop-left-5 {
-    margin-right: 41.66667%;
+    right: 41.66667%;
+    left: auto;
   }
   .grid-desktop-6 {
     width: 50%;
   }
   .grid-desktop-right-6 {
-    margin-left: 50%;
+    right: auto;
+    left: 50%;
   }
   .grid-desktop-left-6 {
-    margin-right: 50%;
+    right: 50%;
+    left: auto;
   }
   .grid-desktop-7 {
     width: 58.33333%;
   }
   .grid-desktop-right-7 {
-    margin-left: 58.33333%;
+    right: auto;
+    left: 58.33333%;
   }
   .grid-desktop-left-7 {
-    margin-right: 58.33333%;
+    right: 58.33333%;
+    left: auto;
   }
   .grid-desktop-8 {
     width: 66.66667%;
   }
   .grid-desktop-right-8 {
-    margin-left: 66.66667%;
+    right: auto;
+    left: 66.66667%;
   }
   .grid-desktop-left-8 {
-    margin-right: 66.66667%;
+    right: 66.66667%;
+    left: auto;
   }
   .grid-desktop-9 {
     width: 75%;
   }
   .grid-desktop-right-9 {
-    margin-left: 75%;
+    right: auto;
+    left: 75%;
   }
   .grid-desktop-left-9 {
-    margin-right: 75%;
+    right: 75%;
+    left: auto;
   }
   .grid-desktop-10 {
     width: 83.33333%;
   }
   .grid-desktop-right-10 {
-    margin-left: 83.33333%;
+    right: auto;
+    left: 83.33333%;
   }
   .grid-desktop-left-10 {
-    margin-right: 83.33333%;
+    right: 83.33333%;
+    left: auto;
   }
   .grid-desktop-11 {
     width: 91.66667%;
   }
   .grid-desktop-right-11 {
-    margin-left: 91.66667%;
+    right: auto;
+    left: 91.66667%;
   }
   .grid-desktop-left-11 {
-    margin-right: 91.66667%;
+    right: 91.66667%;
+    left: auto;
   }
   .grid-desktop-12 {
     width: 100%;
   }
   .grid-desktop-right-12 {
-    margin-left: 100%;
+    right: auto;
+    left: 100%;
   }
   .grid-desktop-left-12 {
-    margin-right: 100%;
+    right: 100%;
+    left: auto;
   }
-}
-
-.grid-left {
-  right: auto;
-}
-
-.grid-right {
-  left: auto;
 }
 
 .flexbox .grid-grow {
@@ -590,14 +679,6 @@ html {
   -webkit-align-self: flex-end;
       -ms-flex-item-align: end;
           align-self: flex-end;
-}
-
-.flexbox .grid-left {
-  margin-right: auto;
-}
-
-.flexbox .grid-right {
-  margin-left: auto;
 }
 
 .row-right {
