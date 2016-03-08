@@ -31,7 +31,7 @@ $breakpoints: (
 $break-dir: '>=' !default;
 
 $enable-extra-grid: false !default;
-$extra-grid-name: 'fifth' !default;
+$extra-grid-name: 'fifth-' !default;
 $extra-columns: 5 !default;
 
 $grid-framework: '' !default;
@@ -198,13 +198,6 @@ html {
     right: $local-size;
     left: auto;
   }
-
-  @if $enable-extra-grid {
-    .#{$global-name-space}#{$extra-grid-name}-#{$i}- {
-      width: grid-size-special($i);
-    }
-  }
-
 }
 
 @each $size, $breakpoint in $breakpoints {
@@ -228,13 +221,26 @@ html {
         right: $local-size;
         left: auto;
       }
+    }
+  }
+}
 
-      @if $enable-extra-grid {
+
+@if $enable-extra-grid {
+  @for $i from 1 through $extra-columns {
+    .#{$global-name-space}#{$extra-grid-name}#{$i} {
+      width: grid-size-special($i);
+    }
+  }
+
+
+  @each $size, $breakpoint in $breakpoints {
+    @include media('screen', '#{$break-dir}#{$breakpoint}') {
+      @for $i from 1 through $extra-columns {
         .#{$global-name-space}#{$extra-grid-name}#{$size}-#{$i} {
           width: grid-size-special($i);
         }
       }
-
     }
   }
 }
