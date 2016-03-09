@@ -4,6 +4,7 @@
   "description": "Just a Flex based grid",
   "homepage": "https://flexeble.space/",
   "main": "dist/_flex_e_ble.scss",
+  "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
     "prepare": "bower install && npm install",
     "start": "gulp",
@@ -40,5 +41,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
     "run-sequence": "^1.1.5"
+  },
+  "dependencies": {
+    "include-media": "^1.4.2"
   }
 }
