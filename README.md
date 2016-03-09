@@ -1,5 +1,7 @@
 # flex_e_ble
 
+[![NPM](https://nodei.co/npm/flex_e_ble.png)](https://npmjs.org/package/flex_e_ble)
+
 A simple yet *flexible* class naming structure on top of a `flex` based grid.
 
 Also provides a `inline-block` fall back for IE8 & 9
