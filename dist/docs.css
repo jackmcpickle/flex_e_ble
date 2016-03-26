@@ -61,3 +61,7 @@
 .button:hover, .button:focus, .button:active {
   background-color: #2b2b2b;
 }
+
+.h150 {
+  height: 150px;
+}
