@@ -46,3 +46,39 @@ $white: #fff;
     background-color: darken($base-color, 10%);
   }
 }
+.github-corner {
+
+  &:hover {
+    .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+
+      @media (max-width: 500px) {
+        animation: none;
+      }
+
+    }
+  }
+
+  @media (max-width: 500px) {
+    .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
