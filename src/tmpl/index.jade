@@ -6,9 +6,11 @@ html(lang="en" class="flexbox")
     link(rel="stylesheet", href="docs.css")
     script.
       window.toggleFlexbox = function(e) {
-        e.preventDefault
-        var html = document.getElementsByTagName('html')[0]
-        html.className = html.className === 'flexbox' ? '' : 'flexbox'
+        e.preventDefault();
+        var html = document.getElementsByTagName('html')[0];
+        var hasFlexbox = html.className === 'flexbox';
+        html.className = hasFlexbox ? '' : 'flexbox';
+        e.target.textContent = hasFlexbox ? 'Toggle Compatibility - flexbox off' : 'Toggle Compatibility - flexbox on';
       }
   body
     a(href="https://github.com/jackmcpickle/flex_e_ble/")
@@ -19,7 +21,7 @@ html(lang="en" class="flexbox")
 
       h2.heading-2 Basic - 
         em (IE8,9) Compatibility 
-      button.button(onclick='toggleFlexbox(event)') Toggle Compatibility
+      button.button(onclick='toggleFlexbox(event)') Toggle Compatibility - flexbox on
 
       p Centered aligned grid with 
       
