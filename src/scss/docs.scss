@@ -18,6 +18,7 @@ $white: #fff;
 }
 
 .heading-2 {
+  margin-top: 3em;
   color: $base-color;
   font-size: 20px;
   font-weight: 300;
@@ -28,8 +29,10 @@ $white: #fff;
 }
 
 .demo-row {
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin: 20px 0;
+}
+
+.example {
   border-bottom: 1px solid $base-bgd;
 }
 
