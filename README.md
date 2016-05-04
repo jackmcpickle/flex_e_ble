@@ -2,29 +2,30 @@
 
 [![NPM](https://nodei.co/npm/flex_e_ble.png)](https://npmjs.org/package/flex_e_ble)
 
-A simple yet *flexible* class naming structure on top of a `flex` based grid.
+A simple yet *flexible* class naming structure on top of a `flex` based grid. 
 
-Also provides a `inline-block` fall back for IE8 & 9
-
-Use a grid system is the the same across your projects but adapts to the naming conventions that your are used to.
+Reasons
+* Provides a `inline-block` fall back for IE8 & 9
+* Can assist you in migrating your current Bootstrap and Foundation grids to flexbox as a drop in replacement.
+* Use a grid system that is the same across your projects but adapts to the naming conventions that your are used to.
 
 See the website [flexeble.space](https://flexeble.space/) for demo examples
 
 ## Requirements
 
-* [modernizr](https://modernizr.com/download?flexbox-setclasses-shiv) for flexbox fallback
+* [modernizr](https://modernizr.com/download?flexbox-setclasses-shiv) to provide flexbox detection
 * [include-media](https://github.com/eduardoboucas/include-media) for responsive grid generation
 
 ## Install
 
-* `npm install flex_e_ble include-media`
-* `bower install flex_e_ble include-media`
+* `npm install flex_e_ble`
+* `bower install flex_e_ble`
 
 ## How it works
 
-Flex_e_ble grid system is based on [purecss.io](http://purecss.io/)
+Flex_e_ble grid system is based on [purecss.io](http://purecss.io/) grid work.
 
-[Read why](http://purecss.io/grids/#using-grids-with-custom-fonts) they using negative letter-spacing to remove the white-space from the inline-block fallback display
+[Read why](http://purecss.io/grids/#using-grids-with-custom-fonts) they using negative letter-spacing to remove the white-space from the inline-block fallback display.
 
 Row css looks like
 ```sass
