@@ -6,7 +6,7 @@
   "main": "dist/_flex_e_ble.scss",
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
-    "prepare": "bower install && npm install",
+    "prepare": "npm install",
     "start": "gulp",
     "test": "gulp lint",
     "prepublish": "gulp build"
@@ -43,6 +43,6 @@
     "run-sequence": "^1.1.5"
   },
   "dependencies": {
-    "include-media": "^1.4.2"
+    "include-media": "^1.4.3"
   }
 }
