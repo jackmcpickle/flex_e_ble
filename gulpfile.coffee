@@ -3,7 +3,7 @@ sass         = require 'gulp-sass'
 sourcemaps   = require 'gulp-sourcemaps'
 postcss      = require 'gulp-postcss'
 autoprefixer = require 'autoprefixer'
-minifyCSS    = require 'gulp-minify-css'
+cssnano      = require 'gulp-cssnano'
 rename       = require 'gulp-rename'
 runSequence  = require 'run-sequence'
 concat       = require 'gulp-concat'
@@ -42,6 +42,7 @@ _paths = {
 gulp.task 'styles', ->
   gulp.src _paths.scss
   .pipe sass
+    includePaths: 'node_modules'
     outputStyle: 'expanded'
   .on('error', sass.logError)
   .pipe postcss _processors
@@ -50,10 +51,7 @@ gulp.task 'styles', ->
 
 gulp.task 'minify', ->
   gulp.src _paths.build + '/*.css'
-  .pipe minifyCSS
-    keepBreaks: false
-    aggressiveMerging: false
-    roundingPrecision: -1
+  .pipe cssnano safe: true
   .pipe rename
     suffix: '.min'
   .pipe gulp.dest _paths.build
