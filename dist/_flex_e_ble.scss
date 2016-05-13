@@ -258,8 +258,24 @@ $local-dash: '' !default;
     flex-grow: 1;
   }
 
+  &top {
+    align-self: flex-start;
+  }
+
+  &middle {
+    align-self: center;
+  }
+
   &bottom {
     align-self: flex-end;
+  }
+
+  &base {
+    align-self: baseline;
+  }
+
+  &stretch {
+    align-self: stretch;
   }
 }
 
@@ -300,8 +316,24 @@ $local-dash: '' !default;
     text-align: inherit;
   }
 
+  &-top {
+    align-items: flex-start;
+  }
+
+  &-middle {
+    align-items: center;
+  }
+
   &-bottom {
-    align-content: flex-end;
+    align-items: flex-end;
+  }
+
+  &-base {
+    align-items: baseline;
+  }
+
+  &-stretch {
+    align-items: stretch;
   }
 
   &-between {
