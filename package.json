@@ -42,6 +42,6 @@
     "run-sequence": "^1.2.0"
   },
   "dependencies": {
-    "include-media": "^1.4.4"
+    "include-media": "^1.4.6"
   }
 }
