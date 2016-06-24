@@ -1,124 +1,3 @@
-// Must be added to html tag either manaully or feature detect eg modernizr
-$flexbox-enable-class: '.flexbox' !default;
-$special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
-$default-text-align: left;
-$total-columns: 12 !default;
-
-// Change to make grid break inclusive or exculsive
-
-$column-gutter: 15px !default;
-$auto-column-gutters: false !default;
-$grid-padding-name: 'pad' !default;
-$independant-grid-name: '' !default;
-
-// Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
-$global-name-space: '' !default;
-$container-name: 'container' !default; // Could be wrapper
-$grid-name: 'grid-' !default; // Could be col or column
-$base-grid-name: '' !default; // Does your base grid have a sufix.
-$row-name: 'row' !default; // Could be flex
-$right-name: 'right' !default; // Could be push
-$left-name: 'left' !default; // Could be push
-
-// Loop over these breakpoints and pass keys into grid classes
-$breakpoints: (
-  'small': 480px,
-  'medium': 768px,
-  'large': 1024px,
-  'xlarge': 1180px
-) !default;
-
-$break-dir: '>=' !default;
-
-$enable-extra-grid: false !default;
-$extra-grid-name: 'fifth-' !default;
-$extra-columns: 5 !default;
-
-$grid-framework: '' !default;
-
-@if $grid-framework == 'bootstrap' {
-  $grid-name: 'col-';
-  $base-grid-name: 'xs-';
-  $column-gutter: 15px;
-  $auto-column-gutters: true;
-  $right-name: 'push';
-  $left-name: 'pull';
-  $breakpoints: (
-    'sm': 480px,
-    'md': 768px,
-    'lg': 1024px,
-    'xl': 1180px
-  );
-
-}
-
-@if $grid-framework == 'foundation' {
-  $column-gutter: 0.9375rem;
-  $auto-column-gutters: false;
-  $independant-grid-name: 'column';
-  $grid-name: '';
-  $base-grid-name: 'small';
-  $breakpoints: (
-    'medium': 768px,
-    'large': 1024px
-  );
-}
-
-$master-grid-name: #{$global-name-space}#{$grid-name} !default;
-
-@if $independant-grid-name != '' {
-  $master-grid-name: $independant-grid-name !default;
-}
-
-@mixin build-row {
-  display: block;
-  position: relative;
-
-  letter-spacing: -0.31em; // Webkit: collapse white-space between units
-  text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
-  box-sizing: border-box;
-}
-
-@mixin build-flex-row {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-@mixin build-grid {
-  display: inline-block;
-  position: relative;
-
-  letter-spacing: normal;
-  text-align: $default-text-align;
-  text-rendering: auto;
-  word-spacing: normal;
-  vertical-align: top;
-
-  box-sizing: border-box;
-}
-
-@function grid-size($n) {
-  @return percentage($n / $total-columns)
-}
-
-@function grid-size-special($n) {
-  @return percentage($n / $extra-columns)
-}
-
-$smallest-size: nth(nth($breakpoints, 1), 1);
-
-@mixin build-column-gutter {
-
-  padding-right: ($column-gutter / 2);
-  padding-left: ($column-gutter / 2);
-
-
-  @include media('screen', '>=#{$smallest-size}') {
-    padding-right: ($column-gutter);
-    padding-left: ($column-gutter);
-  }
-}
-
 html {
   font-family: $special-font-stack;
 }
@@ -138,45 +17,6 @@ html {
       max-width: $breakpoint;
     }
   }
-}
-
-.#{$global-name-space}#{$row-name} {
-  @include build-row;
-  width: 100%;
-}
-
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row;
-
-  // clearfix breaks flexgrid row
-  &.clearfix {
-    &:before,
-    &:after {
-      content: initial;
-    }
-  }
-}
-
-[class*='#{$master-grid-name}'] {
-  @include build-grid;
-  @if $auto-column-gutters {
-    @include build-column-gutter;
-  }
-
-  // For grids that are also rows
-  &.#{$global-name-space}#{$row-name} {
-    @include build-row;
-    display: inline-block;
-  }
-
-  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-    @include build-flex-row;
-  }
-}
-
-
-.#{$global-name-space}#{$grid-padding-name} {
-  @include build-column-gutter;
 }
 
 @for $i from 1 through $total-columns {
@@ -243,6 +83,45 @@ html {
       }
     }
   }
+}
+
+.#{$global-name-space}#{$row-name} {
+  @include build-row;
+  width: 100%;
+}
+
+#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
+  @include build-flex-row;
+
+  // clearfix breaks flexgrid row
+  &.clearfix {
+    &:before,
+    &:after {
+      content: initial;
+    }
+  }
+}
+
+[class*='#{$master-grid-name}'] {
+  @include build-grid;
+  @if $auto-column-gutters {
+    @include build-column-gutter;
+  }
+
+  // For grids that are also rows
+  &.#{$global-name-space}#{$row-name} {
+    @include build-row;
+    display: inline-block;
+  }
+
+  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
+    @include build-flex-row;
+  }
+}
+
+
+.#{$global-name-space}#{$grid-padding-name} {
+  @include build-column-gutter;
 }
 
 $local-dash: '' !default;
@@ -343,4 +222,125 @@ $local-dash: '' !default;
   &-around {
     justify-content: space-around;
   }
+}
+
+@mixin build-row {
+  display: block;
+  position: relative;
+
+  letter-spacing: -0.31em; // Webkit: collapse white-space between units
+  text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+  box-sizing: border-box;
+}
+
+@mixin build-flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@mixin build-grid {
+  display: inline-block;
+  position: relative;
+
+  letter-spacing: normal;
+  text-align: $default-text-align;
+  text-rendering: auto;
+  word-spacing: normal;
+  vertical-align: top;
+
+  box-sizing: border-box;
+}
+
+@function grid-size($n) {
+  @return percentage($n / $total-columns);
+}
+
+@function grid-size-special($n) {
+  @return percentage($n / $extra-columns);
+}
+
+$smallest-size: nth(nth($breakpoints, 1), 1);
+
+@mixin build-column-gutter {
+
+  padding-right: ($column-gutter / 2);
+  padding-left: ($column-gutter / 2);
+
+
+  @include media('screen', '>=#{$smallest-size}') {
+    padding-right: ($column-gutter);
+    padding-left: ($column-gutter);
+  }
+}
+
+// Must be added to html tag either manaully or feature detect eg modernizr
+$flexbox-enable-class: '.flexbox' !default;
+$special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
+$default-text-align: left !default;
+$total-columns: 12 !default;
+
+// Change to make grid break inclusive or exculsive
+
+$column-gutter: 15px !default;
+$auto-column-gutters: false !default;
+$grid-padding-name: 'pad' !default;
+$independant-grid-name: '' !default;
+
+// Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
+$global-name-space: '' !default;
+$container-name: 'container' !default; // Could be wrapper
+$grid-name: 'grid-' !default; // Could be col or column
+$base-grid-name: '' !default; // Does your base grid have a sufix.
+$row-name: 'row' !default; // Could be flex
+$right-name: 'right' !default; // Could be push
+$left-name: 'left' !default; // Could be push
+
+// Loop over these breakpoints and pass keys into grid classes
+$breakpoints: (
+  'small': 480px,
+  'medium': 768px,
+  'large': 1024px,
+  'xlarge': 1180px
+) !default;
+
+$break-dir: '>=' !default;
+
+$enable-extra-grid: false !default;
+$extra-grid-name: 'fifth-' !default;
+$extra-columns: 5 !default;
+
+$grid-framework: '' !default;
+
+@if $grid-framework == 'bootstrap' {
+  $grid-name: 'col-';
+  $base-grid-name: 'xs-';
+  $column-gutter: 15px;
+  $auto-column-gutters: true;
+  $right-name: 'push';
+  $left-name: 'pull';
+  $breakpoints: (
+    'sm': 480px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1180px
+  );
+
+}
+
+@if $grid-framework == 'foundation' {
+  $column-gutter: 0.9375rem;
+  $auto-column-gutters: false;
+  $independant-grid-name: 'column';
+  $grid-name: '';
+  $base-grid-name: 'small';
+  $breakpoints: (
+    'medium': 768px,
+    'large': 1024px
+  );
+}
+
+$master-grid-name: #{$global-name-space}#{$grid-name} !default;
+
+@if $independant-grid-name != '' {
+  $master-grid-name: $independant-grid-name !default;
 }

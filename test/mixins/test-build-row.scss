@@ -1,0 +1,39 @@
+@include test-module('Rows') {
+
+  // Testing Mixins
+  @include test('Buid row [mixin]') {
+    @include assert('Should output css to build non flex row') {
+      @include input {
+        .row {
+          @include build-row;
+        }
+      }
+      @include expect {
+        .row {
+          display: block;
+          position: relative;
+          letter-spacing: -0.31em;
+          text-rendering: optimizespeed;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  // Testing Mixins
+  @include test('Buid flex row [mixin]') {
+    @include assert('Should output css to build flex row') {
+      @include input {
+        .row {
+          @include build-flex-row;
+        }
+      }
+      @include expect {
+        .row {
+          display: flex;
+          flex-flow: row wrap;
+        }
+      }
+    }
+  }
+}

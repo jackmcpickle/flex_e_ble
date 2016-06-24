@@ -1,0 +1,42 @@
+@include test-module('Grids') {
+
+  @include test('Buid grid [mixin]') {
+    @include assert('Should output css to build a grid') {
+      @include input {
+        .grid {
+          @include build-grid;
+        }
+      }
+      @include expect {
+        .grid {
+          display: inline-block;
+          position: relative;
+
+          letter-spacing: normal;
+          text-align: left;
+          text-rendering: auto;
+          word-spacing: normal;
+          vertical-align: top;
+
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  @include test('Buid gutter [mixin]') {
+    @include assert('Should output css to build a gutter') {
+      @include input {
+        .gutter {
+          @include build-column-gutter;
+        }
+      }
+      @include expect {
+        .gutter {
+          padding-right: 7.5px;
+          padding-left: 7.5px;
+        }
+      }
+    }
+  }
+}

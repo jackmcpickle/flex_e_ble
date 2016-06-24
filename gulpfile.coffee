@@ -13,7 +13,7 @@ jade         = require 'gulp-jade'
 csslint      = require 'gulp-csslint'
 sassLint     = require 'gulp-sass-lint'
 
-_browsers = [ '> 2%', 'last 3 versions' ]
+_browsers = [ '> 5%', 'last 3 versions' ]
 
 _processors = [
   autoprefixer( browsers: _browsers )
@@ -24,19 +24,14 @@ _jadeLocals = {
 }
 
 _paths = {
-  scss: './src/scss/**/*.scss'
-  build: './dist'
-  build_scss: [
-    './src/scss/modules/_vars.scss'
-    './src/scss/modules/_mixins.scss'
-    './src/scss/modules/_build_container.scss'
-    './src/scss/modules/_build_rows.scss'
-    './src/scss/modules/_build_grids.scss'
-    './src/scss/modules/_grid_states.scss'
-  ]
-  dist_file: '_flex_e_ble.scss'
-  jade: './src/tmpl/*.jade'
-  build_css: ['./dist/*.css', '!./dist/*.min.css']
+  scss       : './src/scss/**/*.scss'
+  build      : './dist'
+  build_css  : './dist/css'
+  build_scss : './src/scss/modules/*.*'
+  dist_file  : '_flex_e_ble.scss'
+  jade       : './src/tmpl/*.jade'
+  build_docs : './dist/docs'
+  built_css  : ['./dist/css/*.css', '!./dist/*.min.css']
 }
 
 gulp.task 'styles', ->
@@ -47,7 +42,7 @@ gulp.task 'styles', ->
   .on('error', sass.logError)
   .pipe postcss _processors
   .pipe sourcemaps.write()
-  .pipe gulp.dest _paths.build
+  .pipe gulp.dest _paths.build_css
 
 gulp.task 'minify', ->
   gulp.src _paths.build + '/*.css'
@@ -66,12 +61,13 @@ gulp.task 'jade', ->
   .pipe jade
     locals: _jadeLocals
     pretty: true
-  .pipe gulp.dest _paths.build
+  .pipe gulp.dest _paths.build_docs
 
 gulp.task 'csslint', ->
-  gulp.src(_paths.build_css)
+  gulp.src(_paths.built_css)
   .pipe csslint()
   .pipe csslint.reporter()
+  .pipe csslint.failReporter()
 
 gulp.task 'sassLint', ['styles'], ->
   gulp.src(_paths.scss)

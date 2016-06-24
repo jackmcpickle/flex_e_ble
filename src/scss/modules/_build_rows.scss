@@ -23,8 +23,7 @@
 
   // For grids that are also rows
   &.#{$global-name-space}#{$row-name} {
-    @include build-row;
-    display: inline-block;
+    @include build-row('inline-block');
   }
 
   #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {

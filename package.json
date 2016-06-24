@@ -8,8 +8,9 @@
   "scripts": {
     "prepare": "npm install",
     "start": "gulp",
-    "test": "gulp lint",
-    "prepublish": "gulp build"
+    "lint": "gulp lint",
+    "test": "npm run lint && mocha",
+    "prepublish": "npm test"
   },
   "keywords": [
     "flex",
