@@ -19,6 +19,15 @@ html {
   }
 }
 
+[class*='#{$master-grid-name}'] {
+  @include build-grid;
+
+  @if $auto-column-gutters {
+    @include build-column-gutter;
+  }
+}
+
+
 @for $i from 1 through $total-columns {
   $local-size: grid-size($i);
 
@@ -86,39 +95,36 @@ html {
 }
 
 .#{$global-name-space}#{$row-name} {
-  @include build-row;
-  width: 100%;
-}
 
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row;
-
-  // clearfix breaks flexgrid row
-  &.clearfix {
-    &:before,
-    &:after {
-      content: initial;
-    }
+  @include disable-if-flexbox-pure {
+    @include build-row;
+    width: 100%;
   }
-}
 
-[class*='#{$master-grid-name}'] {
-  @include build-grid;
-  @if $auto-column-gutters {
-    @include build-column-gutter;
+  @include flexbox-enabled-class {
+    @include build-flex-row;
+
+    // clearfix breaks flexgrid row
+    &.clearfix {
+      &:before,
+      &:after {
+        content: initial;
+      }
+    }
   }
 
   // For grids that are also rows
-  &.#{$global-name-space}#{$row-name} {
-    @include build-row;
-    display: inline-block;
-  }
+  &[class*='#{$master-grid-name}'] {
 
-  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-    @include build-flex-row;
+    @include disable-if-flexbox-pure {
+      @include build-row($display: inline-block);
+    }
+
+    @include flexbox-enabled-class {
+      @include build-flex-row;
+    }
   }
 }
-
 
 .#{$global-name-space}#{$grid-padding-name} {
   @include build-column-gutter;
@@ -131,101 +137,107 @@ $local-dash: '' !default;
 }
 
 
-#{$flexbox-enable-class} .#{$master-grid-name}#{$local-dash} {
 
-  &grow {
-    flex-grow: 1;
-  }
+.#{$master-grid-name}#{$local-dash} {
+  @include flexbox-enabled-class {
+    &grow {
+      flex-grow: 1;
+    }
 
-  &top {
-    align-self: flex-start;
-  }
+    &top {
+      align-self: flex-start;
+    }
 
-  &middle {
-    align-self: center;
-  }
+    &middle {
+      align-self: center;
+    }
 
-  &bottom {
-    align-self: flex-end;
-  }
+    &bottom {
+      align-self: flex-end;
+    }
 
-  &base {
-    align-self: baseline;
-  }
+    &base {
+      align-self: baseline;
+    }
 
-  &stretch {
-    align-self: stretch;
+    &stretch {
+      align-self: stretch;
+    }
   }
 }
 
 .#{$global-name-space}#{$row-name} {
 
-  &-right {
-    text-align: right;
-  }
-
-  &-center {
-    text-align: center;
-  }
-
-  &-left {
-    text-align: left;
-  }
-
   &-reverse {
     direction: rtl;
   }
-}
-
-// ordering of items flow
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
 
   &-right {
-    justify-content: flex-end;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: right;
+    }
+    @include flexbox-enabled-class {
+      justify-content: flex-end;
+      text-align: inherit;
+    }
   }
 
   &-center {
-    justify-content: center;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: center;
+    }
+    @include flexbox-enabled-class {
+      justify-content: center;
+      text-align: inherit;
+    }
   }
 
   &-left {
-    justify-content: flex-start;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: left;
+    }
+    @include flexbox-enabled-class {
+      justify-content: flex-start;
+      text-align: inherit;
+    }
   }
 
-  &-top {
-    align-items: flex-start;
-  }
 
-  &-middle {
-    align-items: center;
-  }
+  // ordering of items flow
+  @include flexbox-enabled-class {
 
-  &-bottom {
-    align-items: flex-end;
-  }
+    &-top {
+      align-items: flex-start;
+    }
 
-  &-base {
-    align-items: baseline;
-  }
+    &-middle {
+      align-items: center;
+    }
 
-  &-stretch {
-    align-items: stretch;
-  }
+    &-bottom {
+      align-items: flex-end;
+    }
 
-  &-between {
-    justify-content: space-between;
-  }
+    &-base {
+      align-items: baseline;
+    }
 
-  &-around {
-    justify-content: space-around;
+    &-stretch {
+      align-items: stretch;
+    }
+
+    &-between {
+      justify-content: space-between;
+    }
+
+    &-around {
+      justify-content: space-around;
+    }
   }
 }
 
-@mixin build-row {
-  display: block;
+@mixin build-row($display: block) {
+  display: $display;
   position: relative;
 
   letter-spacing: -0.31em; // Webkit: collapse white-space between units
@@ -273,8 +285,26 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
   }
 }
 
+
+@mixin disable-if-flexbox-pure {
+  @if $flexbox-compatibility-enabled {
+    @content;
+  }
+}
+
+@mixin flexbox-enabled-class {
+  @if $flexbox-enable-class != '' {
+    .#{$flexbox-enable-class} & {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
 // Must be added to html tag either manaully or feature detect eg modernizr
-$flexbox-enable-class: '.flexbox' !default;
+$flexbox-enable-class: 'flexbox' !default;
+$flexbox-compatibility-enabled: true !default;
 $special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
 $default-text-align: left !default;
 $total-columns: 12 !default;

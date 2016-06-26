@@ -52,27 +52,15 @@ html {
   content: initial;
 }
 
-[class*='grid-'] {
+.row[class*='grid-'] {
   display: inline-block;
-  position: relative;
-  letter-spacing: normal;
-  text-align: left;
-  text-rendering: auto;
-  word-spacing: normal;
-  vertical-align: top;
-  box-sizing: border-box;
-}
-
-[class*='grid-'].row {
-  display: block;
   position: relative;
   letter-spacing: -0.31em;
   text-rendering: optimizespeed;
   box-sizing: border-box;
-  display: inline-block;
 }
 
-.flexbox [class*='grid-'].row {
+.flexbox .row[class*='grid-'] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -92,6 +80,17 @@ html {
     padding-right: 15px;
     padding-left: 15px;
   }
+}
+
+[class*='grid-'] {
+  display: inline-block;
+  position: relative;
+  letter-spacing: normal;
+  text-align: left;
+  text-rendering: auto;
+  word-spacing: normal;
+  vertical-align: top;
+  box-sizing: border-box;
 }
 
 .grid-1 {
@@ -704,20 +703,12 @@ html {
           align-self: stretch;
 }
 
-.row-right {
-  text-align: right;
-}
-
-.row-center {
-  text-align: center;
-}
-
-.row-left {
-  text-align: left;
-}
-
 .row-reverse {
   direction: rtl;
+}
+
+.row-right {
+  text-align: right;
 }
 
 .flexbox .row-right {
@@ -728,12 +719,20 @@ html {
   text-align: inherit;
 }
 
+.row-center {
+  text-align: center;
+}
+
 .flexbox .row-center {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   text-align: inherit;
+}
+
+.row-left {
+  text-align: left;
 }
 
 .flexbox .row-left {

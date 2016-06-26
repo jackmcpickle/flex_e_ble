@@ -1,0 +1,57 @@
+@mixin flexbox-compatibility-disable-before() {
+  $flexbox-compatibility-enabled: false !global;
+}
+
+@include test-module('Flexbox') {
+
+  @include test('Flexbox compatibility enabled [mixin]') {
+    @include assert('Should output content') {
+      @include input {
+        @include disable-if-flexbox-pure {
+          content: 'test';
+        }
+      }
+
+      @include expect {
+        content: 'test';
+      }
+    }
+  }
+
+  @include test('Flexbox compatibility disabled [mixin]') {
+    @include assert('Should not output content') {
+      @include input {
+        @include flexbox-compatibility-disable-before;
+
+        .module {
+          @include disable-if-flexbox-pure {
+            content: 'test';
+          }
+          content: 'test';
+        }
+      }
+
+      @include expect {
+        content: 'test';
+      }
+    }
+  }
+
+  // @include test('Add Flexbox enabled class [mixin]') {
+  //   @include assert('Should wrap content with flexbox class') {
+  //     @include input {
+  //       .module {
+  //         @include flexbox-enabled-class {
+  //           content: 'test';
+  //         }
+  //       }
+  //     }
+  //
+  //     @include expect {
+  //       .flexbox .module {
+  //         content: 'test';
+  //       }
+  //     }
+  //   }
+  // }
+}

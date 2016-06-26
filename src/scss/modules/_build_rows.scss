@@ -1,36 +1,34 @@
 .#{$global-name-space}#{$row-name} {
-  @include build-row;
-  width: 100%;
-}
 
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row;
-
-  // clearfix breaks flexgrid row
-  &.clearfix {
-    &:before,
-    &:after {
-      content: initial;
-    }
+  @include disable-if-flexbox-pure {
+    @include build-row;
+    width: 100%;
   }
-}
 
-[class*='#{$master-grid-name}'] {
-  @include build-grid;
-  @if $auto-column-gutters {
-    @include build-column-gutter;
+  @include flexbox-enabled-class {
+    @include build-flex-row;
+
+    // clearfix breaks flexgrid row
+    &.clearfix {
+      &:before,
+      &:after {
+        content: initial;
+      }
+    }
   }
 
   // For grids that are also rows
-  &.#{$global-name-space}#{$row-name} {
-    @include build-row('inline-block');
-  }
+  &[class*='#{$master-grid-name}'] {
 
-  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-    @include build-flex-row;
+    @include disable-if-flexbox-pure {
+      @include build-row($display: inline-block);
+    }
+
+    @include flexbox-enabled-class {
+      @include build-flex-row;
+    }
   }
 }
-
 
 .#{$global-name-space}#{$grid-padding-name} {
   @include build-column-gutter;

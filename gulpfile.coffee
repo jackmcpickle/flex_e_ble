@@ -12,6 +12,7 @@ watch        = require 'gulp-watch'
 jade         = require 'gulp-jade'
 csslint      = require 'gulp-csslint'
 sassLint     = require 'gulp-sass-lint'
+gutil        = require 'gulp-util'
 
 _browsers = [ '> 5%', 'last 3 versions' ]
 
@@ -33,6 +34,15 @@ _paths = {
   build_docs : './dist/docs'
   built_css  : ['./dist/css/*.css', '!./dist/*.min.css']
 }
+
+customReporter = (file) ->
+  errorCount = gutil.colors.cyan(file.csslint.errorCount)
+  errorPath  = gutil.colors.magenta(file.path)
+  gutil.log(errorCount+' errors in '+errorPath)
+
+  file.csslint.results.forEach (result) ->
+    gutil.log(result.error.message+' on line '+result.error.line)
+    throw result.error.message if result.error.type is 'error'
 
 gulp.task 'styles', ->
   gulp.src _paths.scss
@@ -66,8 +76,8 @@ gulp.task 'jade', ->
 gulp.task 'csslint', ->
   gulp.src(_paths.built_css)
   .pipe csslint()
-  .pipe csslint.reporter()
-  .pipe csslint.failReporter()
+  .pipe csslint.reporter(customReporter)
+  # .pipe csslint.failReporter()
 
 gulp.task 'sassLint', ['styles'], ->
   gulp.src(_paths.scss)

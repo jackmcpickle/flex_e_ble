@@ -1,8 +1,14 @@
+@mixin grid-setup-before() {
+  $default-text-align: left !global;
+  $column-gutter: 15px !global;
+}
+
 @include test-module('Grids') {
 
   @include test('Buid grid [mixin]') {
     @include assert('Should output css to build a grid') {
       @include input {
+        @include grid-setup-before;
         .grid {
           @include build-grid;
         }
@@ -27,6 +33,7 @@
   @include test('Buid gutter [mixin]') {
     @include assert('Should output css to build a gutter') {
       @include input {
+        @include grid-setup-before;
         .gutter {
           @include build-column-gutter;
         }

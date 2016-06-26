@@ -1,9 +1,39 @@
+@mixin setup-flexbox-row-before() {
+  $flexbox-compatibility-enabled: false !global;
+  $flexbox-enable-class: '' !global;
+}
+
+@mixin setup-row-before() {
+  $flexbox-compatibility-enabled: true !global;
+  $flexbox-enable-class: '' !global;
+}
+
 @include test-module('Rows') {
 
-  // Testing Mixins
+  @include test('Buid flexbox row [mixin]') {
+    @include assert('Should output css to build non flex row') {
+      @include input {
+        @include setup-flexbox-row-before;
+        .row {
+          @include build-row;
+        }
+      }
+      @include expect {
+        .row {
+          display: block;
+          position: relative;
+          letter-spacing: -0.31em;
+          text-rendering: optimizespeed;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
   @include test('Buid row [mixin]') {
     @include assert('Should output css to build non flex row') {
       @include input {
+        @include setup-row-before;
         .row {
           @include build-row;
         }
@@ -21,9 +51,30 @@
   }
 
   // Testing Mixins
+  @include test('Buid row with $display passed [mixin]') {
+    @include assert('Should output css to build non flex row with inline-block') {
+      @include input {
+        @include setup-row-before;
+        .row {
+          @include build-row($display: inline-block);
+        }
+      }
+      @include expect {
+        .row {
+          display: inline-block;
+          position: relative;
+          letter-spacing: -0.31em;
+          text-rendering: optimizespeed;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
   @include test('Buid flex row [mixin]') {
     @include assert('Should output css to build flex row') {
       @include input {
+        @include setup-row-before;
         .row {
           @include build-flex-row;
         }

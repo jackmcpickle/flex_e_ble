@@ -1,3 +1,12 @@
+[class*='#{$master-grid-name}'] {
+  @include build-grid;
+
+  @if $auto-column-gutters {
+    @include build-column-gutter;
+  }
+}
+
+
 @for $i from 1 through $total-columns {
   $local-size: grid-size($i);
 
