@@ -2,18 +2,23 @@
   $flexbox-compatibility-enabled: false !global;
 }
 
+
 @include test-module('Flexbox') {
 
   @include test('Flexbox compatibility enabled [mixin]') {
     @include assert('Should output content') {
       @include input {
-        @include disable-if-flexbox-pure {
-          content: 'test';
+        .module {
+          @include disable-if-flexbox-pure {
+            width: initial;
+          }
+          content: 'test1';
         }
       }
 
       @include expect {
-        content: 'test';
+        width: initial;
+        content: 'test1';
       }
     }
   }
@@ -25,14 +30,14 @@
 
         .module {
           @include disable-if-flexbox-pure {
-            content: 'test';
+            content: 'test1';
           }
-          content: 'test';
+          content: 'test2';
         }
       }
 
       @include expect {
-        content: 'test';
+        content: 'test2';
       }
     }
   }
