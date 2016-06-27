@@ -28,7 +28,15 @@ _paths = {
   scss       : './src/scss/**/*.scss'
   build      : './dist'
   build_css  : './dist/css'
-  build_scss : './src/scss/modules/*.*'
+  build_scss : [
+    './src/scss/modules/_vars.scss'
+    './src/scss/modules/_mixins.scss'
+    './src/scss/modules/_build_containers.scss'
+    './src/scss/modules/_build_rows.scss'
+    './src/scss/modules/_build_grids.scss'
+    './src/scss/modules/_grid_states.scss'
+    './src/scss/modules/_vars.scss'
+  ]
   dist_file  : '_flex_e_ble.scss'
   jade       : './src/tmpl/*.jade'
   build_docs : './dist/docs'
