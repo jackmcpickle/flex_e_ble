@@ -4,6 +4,10 @@
   @if $auto-column-gutters {
     @include build-column-gutter;
   }
+
+  &.row {
+    @include build-row($display: inline-block);
+  }
 }
 
 

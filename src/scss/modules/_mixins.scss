@@ -1,15 +1,18 @@
 @mixin build-row($display: block) {
-  display: $display;
-  position: relative;
 
+  @include disable-if-flexbox-pure {
+    display: $display;
+  }
+
+  @include flexbox-enabled-class {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  position: relative;
   letter-spacing: -0.31em; // Webkit: collapse white-space between units
   text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
   box-sizing: border-box;
-}
-
-@mixin build-flex-row {
-  display: flex;
-  flex-flow: row wrap;
 }
 
 @mixin build-grid {

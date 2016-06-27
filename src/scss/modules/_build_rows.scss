@@ -1,31 +1,17 @@
 .#{$global-name-space + $row-name} {
+  @include build-row;
 
   @include disable-if-flexbox-pure {
-    @include build-row;
     width: 100%;
   }
 
   @include flexbox-enabled-class {
-    @include build-flex-row;
-
     // clearfix breaks flexgrid row
     &.clearfix {
       &:before,
       &:after {
         content: initial;
       }
-    }
-  }
-
-  // For grids that are also rows
-  &[class*='#{$master-grid-name}'] {
-
-    @include disable-if-flexbox-pure {
-      @include build-row($display: inline-block);
-    }
-
-    @include flexbox-enabled-class {
-      @include build-flex-row;
     }
   }
 }
