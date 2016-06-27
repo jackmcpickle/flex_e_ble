@@ -6,10 +6,10 @@
   "main": "dist/_flex_e_ble.scss",
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
-    "prepare": "npm install",
     "start": "gulp",
-    "test": "gulp lint",
-    "prepublish": "gulp build"
+    "lint": "gulp lint",
+    "test": "npm run lint && mocha",
+    "prepublish": "npm test"
   },
   "keywords": [
     "flex",
@@ -40,6 +40,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.8",
     "run-sequence": "^1.2.0"
+    "mocha": "^2.5.3",
+    "sass-true": "^2.0.3",
   },
   "dependencies": {
     "include-media": "^1.4.6"
