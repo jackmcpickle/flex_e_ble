@@ -1,42 +1,55 @@
+[class*='#{$master-grid-name}'] {
+  @include build-grid;
+
+  @if $auto-column-gutters {
+    @include build-column-gutter;
+  }
+
+  &.row {
+    @include build-row($display: inline-block);
+  }
+}
+
+
 @for $i from 1 through $total-columns {
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $i} {
     width: $local-size;
   }
 
   // Offset right
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$right-name}-#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $right-name + '-' + $i} {
     right: auto;
     left: $local-size;
   }
 
   // Offset left
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $left-name + '-' + $i} {
     right: $local-size;
     left: auto;
   }
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media('screen', '#{$break-dir}#{$breakpoint}') {
+  @include media('screen', '#{$break-dir + $breakpoint}') {
     @for $i from 1 through $total-columns {
       $local-size: grid-size($i);
 
       // Responsive Grid
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $i} {
         width: $local-size;
       }
 
       // Responsive offset right
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $right-name + '-' + $i} {
         right: auto;
         left: $local-size;
       }
 
       // Responsive offset left
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $left-name + '-' + $i} {
         right: $local-size;
         left: auto;
       }
@@ -47,16 +60,16 @@
 
 @if $enable-extra-grid {
   @for $i from 1 through $extra-columns {
-    .#{$global-name-space}#{$extra-grid-name}#{$i} {
+    .#{$global-name-space + $extra-grid-name + $i} {
       width: grid-size-special($i);
     }
   }
 
 
   @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir}#{$breakpoint}') {
+    @include media('screen', '#{$break-dir + $breakpoint}') {
       @for $i from 1 through $extra-columns {
-        .#{$global-name-space}#{$extra-grid-name}#{$size}-#{$i} {
+        .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);
         }
       }

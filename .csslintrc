@@ -8,7 +8,7 @@
    "duplicate-background-images": 2,
    "duplicate-properties": 2,
    "empty-rules": 2,
-   "fallback-colors": 2,
+   "fallback-colors": 1,
    "floats": true,
    "font-faces": true,
    "font-sizes": 2,

@@ -1,0 +1,30 @@
+@mixin columns-before() {
+  $total-columns: 12 !global;
+  $extra-columns: 5 !global;
+}
+
+@include test-module('Grid Calculations') {
+
+  @include test('Grid size [function]') {
+    @include columns-before;
+    $size: 3;
+
+    $test: grid-size($size);
+    $expect: 25%;
+
+    @include assert-equal($test, $expect,
+      'Must return a percentage of the total-columns based on the size');
+
+  }
+
+  @include test('Special grid size [function]') {
+    @include columns-before;
+    $size: 2;
+    $test: grid-size-special($size);
+    $expect: 40%;
+
+    @include assert-equal($test, $expect,
+      'Must return a percentage of the special-total-columns based on the size');
+
+  }
+}

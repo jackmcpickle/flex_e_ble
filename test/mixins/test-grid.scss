@@ -1,0 +1,49 @@
+@mixin grid-setup-before() {
+  $default-text-align: left !global;
+  $column-gutter: 15px !global;
+}
+
+@include test-module('Grids') {
+
+  @include test('Buid grid [mixin]') {
+    @include assert('Should output css to build a grid') {
+      @include input {
+        @include grid-setup-before;
+        .grid {
+          @include build-grid;
+        }
+      }
+      @include expect {
+        .grid {
+          display: inline-block;
+          position: relative;
+
+          letter-spacing: normal;
+          text-align: left;
+          text-rendering: auto;
+          word-spacing: normal;
+          vertical-align: top;
+
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  @include test('Buid gutter [mixin]') {
+    @include assert('Should output css to build a gutter') {
+      @include input {
+        @include grid-setup-before;
+        .gutter {
+          @include build-column-gutter;
+        }
+      }
+      @include expect {
+        .gutter {
+          padding-right: 7.5px;
+          padding-left: 7.5px;
+        }
+      }
+    }
+  }
+}

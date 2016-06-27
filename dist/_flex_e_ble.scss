@@ -1,7 +1,8 @@
 // Must be added to html tag either manaully or feature detect eg modernizr
-$flexbox-enable-class: '.flexbox' !default;
+$flexbox-enable-class: 'flexbox' !default;
+$flexbox-compatibility-enabled: true !default;
 $special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
-$default-text-align: left;
+$default-text-align: left !default;
 $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
@@ -70,18 +71,21 @@ $master-grid-name: #{$global-name-space}#{$grid-name} !default;
   $master-grid-name: $independant-grid-name !default;
 }
 
-@mixin build-row {
-  display: block;
-  position: relative;
+@mixin build-row($display: block) {
 
+  @include disable-if-flexbox-pure {
+    display: $display;
+  }
+
+  @include flexbox-enabled-class {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  position: relative;
   letter-spacing: -0.31em; // Webkit: collapse white-space between units
   text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
   box-sizing: border-box;
-}
-
-@mixin build-flex-row {
-  display: flex;
-  flex-flow: row wrap;
 }
 
 @mixin build-grid {
@@ -98,11 +102,11 @@ $master-grid-name: #{$global-name-space}#{$grid-name} !default;
 }
 
 @function grid-size($n) {
-  @return percentage($n / $total-columns)
+  @return percentage($n / $total-columns);
 }
 
 @function grid-size-special($n) {
-  @return percentage($n / $extra-columns)
+  @return percentage($n / $extra-columns);
 }
 
 $smallest-size: nth(nth($breakpoints, 1), 1);
@@ -119,105 +123,97 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
   }
 }
 
-html {
-  font-family: $special-font-stack;
-}
 
-.#{$global-name-space}#{$row-name} {
-  [class*='#{$master-grid-name}'] {
-    font-family: $special-font-stack;
+@mixin disable-if-flexbox-pure {
+  @if $flexbox-compatibility-enabled {
+    @content;
   }
 }
 
-.#{$global-name-space}#{$container-name} {
-  margin-right: auto;
-  margin-left: auto;
-
-  @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir}#{$size}') {
-      max-width: $breakpoint;
+@mixin flexbox-enabled-class {
+  @if $flexbox-enable-class != '' {
+    .#{$flexbox-enable-class} & {
+      @content;
     }
+  } @else {
+    @content;
   }
 }
 
-.#{$global-name-space}#{$row-name} {
+.#{$global-name-space + $row-name} {
   @include build-row;
-  width: 100%;
-}
 
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
-  @include build-flex-row;
+  @include disable-if-flexbox-pure {
+    width: 100%;
+  }
 
-  // clearfix breaks flexgrid row
-  &.clearfix {
-    &:before,
-    &:after {
-      content: initial;
+  @include flexbox-enabled-class {
+    // clearfix breaks flexgrid row
+    &.clearfix {
+      &:before,
+      &:after {
+        content: initial;
+      }
     }
   }
+}
+
+.#{$global-name-space + $grid-padding-name} {
+  @include build-column-gutter;
 }
 
 [class*='#{$master-grid-name}'] {
   @include build-grid;
+
   @if $auto-column-gutters {
     @include build-column-gutter;
   }
 
-  // For grids that are also rows
-  &.#{$global-name-space}#{$row-name} {
-    @include build-row;
-    display: inline-block;
-  }
-
-  #{$flexbox-enable-class} &.#{$global-name-space}#{$row-name} {
-    @include build-flex-row;
+  &.row {
+    @include build-row($display: inline-block);
   }
 }
 
-
-.#{$global-name-space}#{$grid-padding-name} {
-  @include build-column-gutter;
-}
 
 @for $i from 1 through $total-columns {
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $i} {
     width: $local-size;
   }
 
   // Offset right
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$right-name}-#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $right-name + '-' + $i} {
     right: auto;
     left: $local-size;
   }
 
   // Offset left
-  .#{$global-name-space}#{$grid-name}#{$base-grid-name}#{$left-name}-#{$i} {
+  .#{$global-name-space + $grid-name + $base-grid-name + $left-name + '-' + $i} {
     right: $local-size;
     left: auto;
   }
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media('screen', '#{$break-dir}#{$breakpoint}') {
+  @include media('screen', '#{$break-dir + $breakpoint}') {
     @for $i from 1 through $total-columns {
       $local-size: grid-size($i);
 
       // Responsive Grid
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $i} {
         width: $local-size;
       }
 
       // Responsive offset right
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$right-name}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $right-name + '-' + $i} {
         right: auto;
         left: $local-size;
       }
 
       // Responsive offset left
-      .#{$global-name-space}#{$grid-name}#{$size}-#{$left-name}-#{$i} {
+      .#{$global-name-space + $grid-name + $size + '-' + $left-name + '-' + $i} {
         right: $local-size;
         left: auto;
       }
@@ -228,16 +224,16 @@ html {
 
 @if $enable-extra-grid {
   @for $i from 1 through $extra-columns {
-    .#{$global-name-space}#{$extra-grid-name}#{$i} {
+    .#{$global-name-space + $extra-grid-name + $i} {
       width: grid-size-special($i);
     }
   }
 
 
   @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir}#{$breakpoint}') {
+    @include media('screen', '#{$break-dir + $breakpoint}') {
       @for $i from 1 through $extra-columns {
-        .#{$global-name-space}#{$extra-grid-name}#{$size}-#{$i} {
+        .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);
         }
       }
@@ -252,95 +248,101 @@ $local-dash: '' !default;
 }
 
 
-#{$flexbox-enable-class} .#{$master-grid-name}#{$local-dash} {
 
-  &grow {
-    flex-grow: 1;
-  }
+.#{$master-grid-name + $local-dash} {
+  @include flexbox-enabled-class {
+    &grow {
+      flex-grow: 1;
+    }
 
-  &top {
-    align-self: flex-start;
-  }
+    &top {
+      align-self: flex-start;
+    }
 
-  &middle {
-    align-self: center;
-  }
+    &middle {
+      align-self: center;
+    }
 
-  &bottom {
-    align-self: flex-end;
-  }
+    &bottom {
+      align-self: flex-end;
+    }
 
-  &base {
-    align-self: baseline;
-  }
+    &base {
+      align-self: baseline;
+    }
 
-  &stretch {
-    align-self: stretch;
+    &stretch {
+      align-self: stretch;
+    }
   }
 }
 
-.#{$global-name-space}#{$row-name} {
-
-  &-right {
-    text-align: right;
-  }
-
-  &-center {
-    text-align: center;
-  }
-
-  &-left {
-    text-align: left;
-  }
+.#{$global-name-space + $row-name} {
 
   &-reverse {
     direction: rtl;
   }
-}
-
-// ordering of items flow
-#{$flexbox-enable-class} .#{$global-name-space}#{$row-name} {
 
   &-right {
-    justify-content: flex-end;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: right;
+    }
+    @include flexbox-enabled-class {
+      justify-content: flex-end;
+      text-align: inherit;
+    }
   }
 
   &-center {
-    justify-content: center;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: center;
+    }
+    @include flexbox-enabled-class {
+      justify-content: center;
+      text-align: inherit;
+    }
   }
 
   &-left {
-    justify-content: flex-start;
-    text-align: inherit;
+    @include disable-if-flexbox-pure {
+      text-align: left;
+    }
+    @include flexbox-enabled-class {
+      justify-content: flex-start;
+      text-align: inherit;
+    }
   }
 
-  &-top {
-    align-items: flex-start;
-  }
 
-  &-middle {
-    align-items: center;
-  }
+  // ordering of items flow
+  @include flexbox-enabled-class {
 
-  &-bottom {
-    align-items: flex-end;
-  }
+    &-top {
+      align-items: flex-start;
+    }
 
-  &-base {
-    align-items: baseline;
-  }
+    &-middle {
+      align-items: center;
+    }
 
-  &-stretch {
-    align-items: stretch;
-  }
+    &-bottom {
+      align-items: flex-end;
+    }
 
-  &-between {
-    justify-content: space-between;
-  }
+    &-base {
+      align-items: baseline;
+    }
 
-  &-around {
-    justify-content: space-around;
+    &-stretch {
+      align-items: stretch;
+    }
+
+    &-between {
+      justify-content: space-between;
+    }
+
+    &-around {
+      justify-content: space-around;
+    }
   }
 }
