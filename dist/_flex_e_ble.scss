@@ -252,64 +252,68 @@ $local-dash: '' !default;
 .#{$master-grid-name + $local-dash} {
   @include flexbox-enabled-class {
     &grow {
-      flex-grow: 1;
+      flex-grow: 1 !important;
     }
 
     &top {
-      align-self: flex-start;
+      align-self: flex-start !important;
     }
 
     &middle {
-      align-self: center;
+      align-self: center !important;
     }
 
     &bottom {
-      align-self: flex-end;
+      align-self: flex-end !important;
     }
 
     &base {
-      align-self: baseline;
+      align-self: baseline !important;
     }
 
     &stretch {
-      align-self: stretch;
+      align-self: stretch !important;
     }
   }
 }
 
 .#{$global-name-space + $row-name} {
 
+  &-column {
+    flex-flow: column wrap !important;
+  }
+
   &-reverse {
-    direction: rtl;
+    direction: rtl !important;
   }
 
   &-right {
     @include disable-if-flexbox-pure {
-      text-align: right;
+      text-align: right !important;
     }
     @include flexbox-enabled-class {
-      justify-content: flex-end;
-      text-align: inherit;
+      justify-content: flex-end !important;
+      text-align: inherit !important;
     }
   }
 
   &-center {
     @include disable-if-flexbox-pure {
-      text-align: center;
+      text-align: center !important;
     }
     @include flexbox-enabled-class {
-      justify-content: center;
-      text-align: inherit;
+      justify-content: center !important;
+      text-align: inherit !important;
     }
   }
 
   &-left {
     @include disable-if-flexbox-pure {
-      text-align: left;
+      text-align: left !important;
     }
     @include flexbox-enabled-class {
-      justify-content: flex-start;
-      text-align: inherit;
+      justify-content: flex-start !important;
+      text-align: inherit !important;
     }
   }
 
@@ -318,31 +322,31 @@ $local-dash: '' !default;
   @include flexbox-enabled-class {
 
     &-top {
-      align-items: flex-start;
+      align-items: flex-start !important;
     }
 
     &-middle {
-      align-items: center;
+      align-items: center !important;
     }
 
     &-bottom {
-      align-items: flex-end;
+      align-items: flex-end !important;
     }
 
     &-base {
-      align-items: baseline;
+      align-items: baseline !important;
     }
 
     &-stretch {
-      align-items: stretch;
+      align-items: stretch !important;
     }
 
     &-between {
-      justify-content: space-between;
+      justify-content: space-between !important;
     }
 
     &-around {
-      justify-content: space-around;
+      justify-content: space-around !important;
     }
   }
 }
