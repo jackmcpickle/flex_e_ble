@@ -40,7 +40,7 @@ _paths = {
   dist_file  : '_flex_e_ble.scss'
   jade       : './src/tmpl/*.jade'
   build_docs : './dist/docs'
-  built_css  : ['./dist/css/*.css', '!./dist/*.min.css']
+  built_css  : ['./dist/css/*.css', '!./dist/css/*.min.css']
 }
 
 _customReporter = (file) ->
@@ -66,7 +66,7 @@ gulp.task 'sass', ->
 
 
 gulp.task 'minify', ->
-  gulp.src _paths.build_css + '/*.css'
+  gulp.src _paths.built_css
   .pipe cssnano safe: true
   .pipe rename
     suffix: '.min'
