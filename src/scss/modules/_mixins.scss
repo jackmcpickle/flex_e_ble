@@ -1,5 +1,5 @@
-@mixin build-row {
-  display: block;
+@mixin build-row($display: block) {
+  display: $display;
   position: relative;
 
   letter-spacing: -0.31em; // Webkit: collapse white-space between units
@@ -26,11 +26,11 @@
 }
 
 @function grid-size($n) {
-  @return percentage($n / $total-columns)
+  @return percentage($n / $total-columns);
 }
 
 @function grid-size-special($n) {
-  @return percentage($n / $extra-columns)
+  @return percentage($n / $extra-columns);
 }
 
 $smallest-size: nth(nth($breakpoints, 1), 1);
@@ -44,5 +44,22 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
   @include media('screen', '>=#{$smallest-size}') {
     padding-right: ($column-gutter);
     padding-left: ($column-gutter);
+  }
+}
+
+
+@mixin disable-if-flexbox-pure {
+  @if $flexbox-compatibility-enabled {
+    @content;
+  }
+}
+
+@mixin flexbox-enabled-class {
+  @if $flexbox-enable-class != '' {
+    .#{$flexbox-enable-class} & {
+      @content;
+    }
+  } @else {
+    @content;
   }
 }
