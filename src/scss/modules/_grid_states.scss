@@ -36,6 +36,10 @@ $local-dash: '' !default;
 
 .#{$global-name-space + $row-name} {
 
+  &-column {
+    flex-flow: column wrap !important;
+  }
+
   &-reverse {
     direction: rtl;
   }
