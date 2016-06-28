@@ -2,6 +2,8 @@
 
 [![NPM](https://nodei.co/npm/flex_e_ble.png)](https://npmjs.org/package/flex_e_ble)
 
+[![Build Status](https://travis-ci.org/jackmcpickle/flex_e_ble.svg?branch=master)](https://travis-ci.org/jackmcpickle/flex_e_ble)
+
 A simple yet *flexible* class naming structure on top of a `flex` based grid. 
 
 Reasons
