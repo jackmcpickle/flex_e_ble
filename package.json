@@ -42,7 +42,7 @@
     "gulp-watch": "^4.3.8",
     "mocha": "^2.5.3",
     "run-sequence": "^1.2.0",
-    "sass-true": "^2.0.3",
+    "sass-true": "^2.1.1",
     "sassdoc": "^2.1.20"
   },
   "dependencies": {
