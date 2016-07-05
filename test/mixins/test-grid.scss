@@ -7,42 +7,41 @@
 
   @include test('Buid grid [mixin]') {
     @include assert('Should output css to build a grid') {
-      @include input {
+      @include output {
         @include grid-setup-before;
-        .grid {
-          @include build-grid;
-        }
+        @include build-grid;
       }
       @include expect {
-        .grid {
-          display: inline-block;
-          position: relative;
+        display: inline-block;
+        position: relative;
 
-          letter-spacing: normal;
-          text-align: left;
-          text-rendering: auto;
-          word-spacing: normal;
-          vertical-align: top;
+        letter-spacing: normal;
+        text-align: left;
+        text-rendering: auto;
+        word-spacing: normal;
+        vertical-align: top;
 
-          box-sizing: border-box;
-        }
+        box-sizing: border-box;
       }
     }
   }
 
   @include test('Buid gutter [mixin]') {
     @include assert('Should output css to build a gutter') {
-      @include input {
+      @include output {
         @include grid-setup-before;
-        .gutter {
-          @include build-column-gutter;
-        }
+        @include build-column-gutter;
       }
       @include expect {
-        .gutter {
-          padding-right: 7.5px;
-          padding-left: 7.5px;
+
+        padding-right: 7.5px;
+        padding-left: 7.5px;
+
+        @media screen and (min-width: 320px) {
+          padding-right: 15px;
+          padding-left: 15px;
         }
+
       }
     }
   }

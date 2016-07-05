@@ -7,13 +7,11 @@
 
   @include test('Flexbox compatibility enabled [mixin]') {
     @include assert('Should output content') {
-      @include input {
-        .module {
-          @include disable-if-flexbox-pure {
-            width: initial;
-          }
-          content: 'test1';
+      @include output {
+        @include disable-if-flexbox-pure {
+          width: initial;
         }
+        content: 'test1';
       }
 
       @include expect {
@@ -25,15 +23,12 @@
 
   @include test('Flexbox compatibility disabled [mixin]') {
     @include assert('Should not output duplicate content') {
-      @include input {
+      @include output {
         @include flexbox-compatibility-disable-before;
-
-        .module {
-          @include disable-if-flexbox-pure {
-            content: 'test1';
-          }
-          content: 'test2';
+        @include disable-if-flexbox-pure {
+          content: 'test1';
         }
+        content: 'test2';
       }
 
       @include expect {
