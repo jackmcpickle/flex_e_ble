@@ -12,9 +12,8 @@ html {
   margin-right: auto;
   margin-left: auto;
 
-  @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir + $size}') {
-      max-width: $breakpoint;
-    }
+  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints) );
+  @include media('screen', '#{$break-dir + $last-breakpoint}') {
+    max-width: $last-breakpoint;
   }
 }
