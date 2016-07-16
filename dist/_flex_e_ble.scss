@@ -140,6 +140,26 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
   }
 }
 
+html {
+  font-family: $special-font-stack;
+}
+
+.#{$global-name-space + $row-name} {
+  [class*='#{$master-grid-name}'] {
+    font-family: $special-font-stack;
+  }
+}
+
+.#{$global-name-space + $container-name} {
+  margin-right: auto;
+  margin-left: auto;
+
+  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints) );
+  @include media('screen', '#{$break-dir + $last-breakpoint}') {
+    max-width: $last-breakpoint;
+  }
+}
+
 .#{$global-name-space + $row-name} {
   @include build-row;
 
