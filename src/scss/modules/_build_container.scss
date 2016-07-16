@@ -12,7 +12,7 @@ html {
   margin-right: auto;
   margin-left: auto;
 
-  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints) );
+  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints));
   @include media('screen', '#{$break-dir + $last-breakpoint}') {
     max-width: $last-breakpoint;
   }
