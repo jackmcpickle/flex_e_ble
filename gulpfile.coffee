@@ -31,7 +31,7 @@ _paths = {
   build_scss : [
     './src/scss/modules/_vars.scss'
     './src/scss/modules/_mixins.scss'
-    './src/scss/modules/_build_containers.scss'
+    './src/scss/modules/_build_container.scss'
     './src/scss/modules/_build_rows.scss'
     './src/scss/modules/_build_grids.scss'
     './src/scss/modules/_grid_states.scss'
