@@ -29,7 +29,6 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
-    "gulp-csslint": "^1.0.0",
     "gulp-cssnano": "2.1.2",
     "gulp-jade": "^1.1.0",
     "gulp-notify": "^2.2.0",
