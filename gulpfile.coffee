@@ -10,7 +10,6 @@ concat       = require 'gulp-concat'
 clean        = require 'gulp-clean'
 watch        = require 'gulp-watch'
 jade         = require 'gulp-jade'
-csslint      = require 'gulp-csslint'
 sassLint     = require 'gulp-sass-lint'
 gutil        = require 'gulp-util'
 
@@ -42,16 +41,6 @@ _paths = {
   build_docs : './dist/docs'
   built_css  : ['./dist/css/*.css', '!./dist/css/*.min.css']
 }
-
-_customReporter = (file) ->
-  errorCount = gutil.colors.cyan(file.csslint.errorCount)
-  errorPath  = gutil.colors.magenta(file.path)
-  gutil.log(errorCount+' errors in '+errorPath)
-
-  file.csslint.results.forEach (result) ->
-    gutil.log(result.error.message+' on line '+result.error.line)
-    throw result.error.message if result.error.type is 'error'
-
 
 gulp.task 'sass', ->
   gulp.src _paths.scss
@@ -87,12 +76,6 @@ gulp.task 'jade', ->
   .pipe gulp.dest _paths.build_docs
 
 
-gulp.task 'csslint', ['sass'], ->
-  gulp.src(_paths.built_css)
-  .pipe csslint()
-  .pipe csslint.reporter(_customReporter)
-
-
 gulp.task 'sassLint', ['sass'], ->
   gulp.src(_paths.scss)
   .pipe sassLint()
@@ -118,7 +101,7 @@ gulp.task 'build', ['jade', 'sass', 'merge']
 gulp.task 'watch', ->
   runSequence 'build', 'watch'
 
-gulp.task 'lint', ['sassLint', 'csslint']
+gulp.task 'lint', ['sassLint']
 
 gulp.task 'default', ->
   runSequence ['clean'], ['build'], ['merge'], ['minify']
