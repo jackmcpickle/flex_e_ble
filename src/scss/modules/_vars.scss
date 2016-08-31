@@ -15,7 +15,7 @@ $independant-grid-name: '' !default;
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
 $container-name: 'container' !default; // Could be wrapper
-$grid-name: 'grid-' !default; // Could be col or column
+$grid-name: 'grid' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
@@ -32,14 +32,14 @@ $breakpoints: (
 $break-dir: '>=' !default;
 
 $enable-extra-grid: false !default;
-$extra-grid-name: 'fifth-' !default;
+$extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
 
 $grid-framework: '' !default;
 
 @if $grid-framework == 'bootstrap' {
-  $grid-name: 'col-';
-  $base-grid-name: 'xs-';
+  $grid-name: 'col';
+  $base-grid-name: 'xs';
   $column-gutter: 15px;
   $auto-column-gutters: true;
   $right-name: 'push';
@@ -63,10 +63,4 @@ $grid-framework: '' !default;
     'medium': 768px,
     'large': 1024px
   );
-}
-
-$master-grid-name: #{$global-name-space}#{$grid-name} !default;
-
-@if $independant-grid-name != '' {
-  $master-grid-name: $independant-grid-name !default;
 }

@@ -1,0 +1,37 @@
+
+@function grid-size($n) {
+  @return percentage($n / $total-columns);
+}
+
+@function grid-size-special($n) {
+  @return percentage($n / $extra-columns);
+}
+
+@function masterGridName() {
+  $master-grid-name: $grid-name;
+  @if $independant-grid-name != '' {
+    $master-grid-name: $independant-grid-name;
+  }
+
+  $base-name-dash: '';
+  @if $master-grid-name != '' { $base-name-dash: '-'; }
+
+
+  @return $global-name-space + $master-grid-name + $base-name-dash;
+}
+
+@function gridName($increment, $size-name: $base-grid-name) {
+
+  $size-name-dash: '';
+  @if $size-name != '' { $size-name-dash: '-'; }
+
+  @return masterGridName() + $size-name + $size-name-dash + $increment;
+}
+
+@function offsetRightName($increment, $size-name: $base-grid-name) {
+  @return masterGridName() + $size-name + '-' + $right-name + '-' + $increment;
+}
+
+@function offsetLeftName($increment, $size-name: $base-grid-name) {
+  @return masterGridName() + $size-name + '-' + $left-name + '-' + $increment;
+}

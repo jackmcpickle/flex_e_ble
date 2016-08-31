@@ -28,14 +28,6 @@
   box-sizing: border-box;
 }
 
-@function grid-size($n) {
-  @return percentage($n / $total-columns);
-}
-
-@function grid-size-special($n) {
-  @return percentage($n / $extra-columns);
-}
-
 $smallest-size: nth(nth($breakpoints, 1), 1);
 
 @mixin build-column-gutter {

@@ -1,12 +1,4 @@
-$local-dash: '' !default;
-
-@if str-index($master-grid-name, '-') == null {
-  $local-dash: '-' !default;
-}
-
-
-
-.#{$master-grid-name + $local-dash} {
+.#{masterGridName()} {
   @include flexbox-enabled-class {
     &grow {
       flex-grow: 1 !important;

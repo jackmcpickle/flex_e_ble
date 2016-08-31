@@ -29,6 +29,7 @@ _paths = {
   build_css  : './dist/css'
   build_scss : [
     './src/scss/modules/_vars.scss'
+    './src/scss/modules/_functions.scss'
     './src/scss/modules/_mixins.scss'
     './src/scss/modules/_build_container.scss'
     './src/scss/modules/_build_rows.scss'
