@@ -1,3 +1,10 @@
+@mixin setup-basegrid-before {
+  $global-name-space: '' !global;
+  $grid-name: 'grid'  !global;
+  $base-grid-name: '' !global;
+  $independant-grid-name: '' !global;
+}
+
 @mixin setup-bootstrap-before {
   $global-name-space: '' !global;
   $grid-name: 'col' !global;
@@ -15,10 +22,36 @@
 @include test-module('Frameworks') {
 
   @include test('Base class names [function]') {
+    @include setup-basegrid-before;
     $size: 10;
 
-    $test: gridName($size);
+    $test: grid-name($size);
     $expect: 'grid-10';
+
+    @include assert-equal($test, $expect,
+      'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Base class names with dashes [function]') {
+    @include setup-basegrid-before;
+    $size: 10;
+    $size-name: 'small-';
+
+    $test: grid-name($size, $size-name);
+    $expect: 'grid-small-10';
+
+    @include assert-equal($test, $expect,
+      'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Bootstrap base class names [function]') {
+    @include setup-bootstrap-before;
+    $size: 3;
+
+    $test: grid-name($size);
+    $expect: 'col-xs-3';
 
     @include assert-equal($test, $expect,
       'Must return the correct class names for the vars');
@@ -27,24 +60,39 @@
 
   @include test('Bootstrap class names [function]') {
     @include setup-bootstrap-before;
-    $size: 3;
+    $size: 11;
+    $size-name: 'md';
 
-    $test: gridName($size);
-    $expect: 'col-xs-3';
+    $test: grid-name($size, $size-name);
+    $expect: 'col-md-11';
 
     @include assert-equal($test, $expect,
       'Must return the correct class names for the vars');
 
   }
 
-  @include test('Foundation class names [function]') {
+  @include test('Foundation base class names [function]') {
     @include setup-foundation-before;
     $size: 2;
-    $test: gridName($size);
+
+    $test: grid-name($size);
     $expect: 'small-2';
 
     @include assert-equal($test, $expect,
-      'Must return the correct class names for the vars');
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Foundation class names [function]') {
+    @include setup-foundation-before;
+    $size: 4;
+    $size-name: 'medium';
+
+    $test: grid-name($size, $size-name);
+    $expect: 'medium-4';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
 
   }
 }
