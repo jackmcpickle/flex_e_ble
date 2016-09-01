@@ -15,7 +15,7 @@ $independant-grid-name: '' !default;
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
 $container-name: 'container' !default; // Could be wrapper
-$grid-name: 'grid-' !default; // Could be col or column
+$grid-name: 'grid' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
@@ -32,14 +32,14 @@ $breakpoints: (
 $break-dir: '>=' !default;
 
 $enable-extra-grid: false !default;
-$extra-grid-name: 'fifth-' !default;
+$extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
 
 $grid-framework: '' !default;
 
 @if $grid-framework == 'bootstrap' {
-  $grid-name: 'col-';
-  $base-grid-name: 'xs-';
+  $grid-name: 'col';
+  $base-grid-name: 'xs';
   $column-gutter: 15px;
   $auto-column-gutters: true;
   $right-name: 'push';
@@ -65,10 +65,51 @@ $grid-framework: '' !default;
   );
 }
 
-$master-grid-name: #{$global-name-space}#{$grid-name} !default;
+@function grid-size($n) {
+  @return percentage($n / $total-columns);
+}
 
-@if $independant-grid-name != '' {
-  $master-grid-name: $independant-grid-name !default;
+@function grid-size-special($n) {
+  @return percentage($n / $extra-columns);
+}
+
+@function has-dash($string) {
+  @if $string == '' { @return true; } // return itself if blank
+  @return str-index($string, '-') != null;
+}
+
+// check for dash else add one
+@function dashize($string) {
+  $dashized: $string;
+
+  @if has-dash($string) { @return $dashized; }
+  @return $dashized + '-';
+}
+
+@function master-grid-name() {
+  $master-grid-name: $grid-name;
+
+  // replace $grid-name with $independant-grid-name if available
+  @if $independant-grid-name != '' { $master-grid-name: $independant-grid-name; }
+
+  @return $global-name-space + dashize($master-grid-name);
+}
+
+@function base-grid() {
+  // @debug dashize($grid-name);
+  @return $global-name-space + dashize($grid-name);
+}
+
+@function grid-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $increment;
+}
+
+@function offset-right-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $right-name + '-' + $increment;
+}
+
+@function offset-left-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $left-name + '-' + $increment;
 }
 
 @mixin build-row($display: block) {
@@ -99,14 +140,6 @@ $master-grid-name: #{$global-name-space}#{$grid-name} !default;
   vertical-align: top;
 
   box-sizing: border-box;
-}
-
-@function grid-size($n) {
-  @return percentage($n / $total-columns);
-}
-
-@function grid-size-special($n) {
-  @return percentage($n / $extra-columns);
 }
 
 $smallest-size: nth(nth($breakpoints, 1), 1);
@@ -145,7 +178,7 @@ html {
 }
 
 .#{$global-name-space + $row-name} {
-  [class*='#{$master-grid-name}'] {
+  [class*='#{master-grid-name()}'] {
     font-family: $special-font-stack;
   }
 }
@@ -154,7 +187,7 @@ html {
   margin-right: auto;
   margin-left: auto;
 
-  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints) );
+  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints));
   @include media('screen', '#{$break-dir + $last-breakpoint}') {
     max-width: $last-breakpoint;
   }
@@ -182,7 +215,7 @@ html {
   @include build-column-gutter;
 }
 
-[class*='#{$master-grid-name}'] {
+[class*='#{master-grid-name()}'] {
   @include build-grid;
 
   @if $auto-column-gutters {
@@ -199,18 +232,18 @@ html {
   $local-size: grid-size($i);
 
   // Base grid
-  .#{$global-name-space + $grid-name + $base-grid-name + $i} {
+  .#{grid-name($i)} {
     width: $local-size;
   }
 
   // Offset right
-  .#{$global-name-space + $grid-name + $base-grid-name + $right-name + '-' + $i} {
+  .#{offset-right-name($i)} {
     right: auto;
     left: $local-size;
   }
 
   // Offset left
-  .#{$global-name-space + $grid-name + $base-grid-name + $left-name + '-' + $i} {
+  .#{offset-left-name($i)} {
     right: $local-size;
     left: auto;
   }
@@ -222,18 +255,18 @@ html {
       $local-size: grid-size($i);
 
       // Responsive Grid
-      .#{$global-name-space + $grid-name + $size + '-' + $i} {
+      .#{grid-name($i, $size)} {
         width: $local-size;
       }
 
       // Responsive offset right
-      .#{$global-name-space + $grid-name + $size + '-' + $right-name + '-' + $i} {
+      .#{offset-right-name($i, $size)} {
         right: auto;
         left: $local-size;
       }
 
       // Responsive offset left
-      .#{$global-name-space + $grid-name + $size + '-' + $left-name + '-' + $i} {
+      .#{offset-left-name($i, $size) } {
         right: $local-size;
         left: auto;
       }
@@ -261,15 +294,7 @@ html {
   }
 }
 
-$local-dash: '' !default;
-
-@if str-index($master-grid-name, '-') == null {
-  $local-dash: '-' !default;
-}
-
-
-
-.#{$master-grid-name + $local-dash} {
+.#{master-grid-name()} {
   @include flexbox-enabled-class {
     &grow {
       flex-grow: 1 !important;

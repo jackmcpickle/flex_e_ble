@@ -3,7 +3,7 @@ html {
 }
 
 .#{$global-name-space + $row-name} {
-  [class*='#{$master-grid-name}'] {
+  [class*='#{master-grid-name()}'] {
     font-family: $special-font-stack;
   }
 }

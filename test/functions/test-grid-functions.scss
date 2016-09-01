@@ -1,0 +1,46 @@
+@include test-module('Grid name functions') {
+
+  @include test('Has dash [function]') {
+    $string: 'nodash';
+
+    $test: has-dash($string);
+    $expect: false;
+
+    @include assert-equal($test, $expect,
+      'Return false as string has no dash');
+
+  }
+
+  @include test('Check if string has already has dash [function]') {
+    $string: 'nodash-';
+
+    $test: dashize($string);
+    $expect: 'nodash-';
+
+    @include assert-equal($test, $expect,
+      'Return itself if has dash already');
+
+  }
+
+  @include test('Check if string has no dash [function]') {
+    $string: 'nodash';
+
+    $test: dashize($string);
+    $expect: 'nodash-';
+
+    @include assert-equal($test, $expect,
+      'Add dash if has none');
+
+  }
+
+  @include test('If string is empty [function]') {
+    $string: '';
+
+    $test: dashize($string);
+    $expect: '';
+
+    @include assert-equal($test, $expect,
+      'Should return empty string');
+
+  }
+}

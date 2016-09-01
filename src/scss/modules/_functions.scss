@@ -1,0 +1,46 @@
+@function grid-size($n) {
+  @return percentage($n / $total-columns);
+}
+
+@function grid-size-special($n) {
+  @return percentage($n / $extra-columns);
+}
+
+@function has-dash($string) {
+  @if $string == '' { @return true; } // return itself if blank
+  @return str-index($string, '-') != null;
+}
+
+// check for dash else add one
+@function dashize($string) {
+  $dashized: $string;
+
+  @if has-dash($string) { @return $dashized; }
+  @return $dashized + '-';
+}
+
+@function master-grid-name() {
+  $master-grid-name: $grid-name;
+
+  // replace $grid-name with $independant-grid-name if available
+  @if $independant-grid-name != '' { $master-grid-name: $independant-grid-name; }
+
+  @return $global-name-space + dashize($master-grid-name);
+}
+
+@function base-grid() {
+  // @debug dashize($grid-name);
+  @return $global-name-space + dashize($grid-name);
+}
+
+@function grid-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $increment;
+}
+
+@function offset-right-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $right-name + '-' + $increment;
+}
+
+@function offset-left-name($increment, $size-name: $base-grid-name) {
+  @return base-grid() + dashize($size-name) + $left-name + '-' + $increment;
+}
