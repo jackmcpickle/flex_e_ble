@@ -1,4 +1,4 @@
-.#{masterGridName()} {
+.#{master-grid-name()} {
   @include flexbox-enabled-class {
     &grow {
       flex-grow: 1 !important;

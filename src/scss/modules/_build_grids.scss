@@ -1,4 +1,4 @@
-[class*='#{masterGridName()}'] {
+[class*='#{master-grid-name()}'] {
   @include build-grid;
 
   @if $auto-column-gutters {
@@ -15,18 +15,18 @@
   $local-size: grid-size($i);
 
   // Base grid
-  .#{gridName($i)} {
+  .#{grid-name($i)} {
     width: $local-size;
   }
 
   // Offset right
-  .#{offsetRightName($i)} {
+  .#{offset-right-name($i)} {
     right: auto;
     left: $local-size;
   }
 
   // Offset left
-  .#{offsetLeftName($i)} {
+  .#{offset-left-name($i)} {
     right: $local-size;
     left: auto;
   }
@@ -38,18 +38,18 @@
       $local-size: grid-size($i);
 
       // Responsive Grid
-      .#{gridName($i, $size)} {
+      .#{grid-name($i, $size)} {
         width: $local-size;
       }
 
       // Responsive offset right
-      .#{offsetRightName($i, $size)} {
+      .#{offset-right-name($i, $size)} {
         right: auto;
         left: $local-size;
       }
 
       // Responsive offset left
-      .#{offsetLeftName($i, $size) } {
+      .#{offset-left-name($i, $size) } {
         right: $local-size;
         left: auto;
       }
