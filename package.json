@@ -38,7 +38,7 @@
     "gulp-sass-lint": "^1.2.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.8",
+    "gulp-watch": "^4.3.10",
     "mocha": "^3.0.0",
     "run-sequence": "^1.2.0",
     "sass-true": "^2.1.0",
