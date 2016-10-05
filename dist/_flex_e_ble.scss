@@ -15,7 +15,7 @@ $independant-grid-name: '' !default;
 // Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
 $global-name-space: '' !default;
 $container-name: 'container' !default; // Could be wrapper
-$grid-name: 'grid' !default; // Could be col or column
+$grid-name: 'grid-' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
@@ -38,7 +38,7 @@ $extra-columns: 5 !default;
 $grid-framework: '' !default;
 
 @if $grid-framework == 'bootstrap' {
-  $grid-name: 'col';
+  $grid-name: 'col-';
   $base-grid-name: 'xs';
   $column-gutter: 15px;
   $auto-column-gutters: true;
@@ -92,7 +92,7 @@ $grid-framework: '' !default;
   // replace $grid-name with $independant-grid-name if available
   @if $independant-grid-name != '' { $master-grid-name: $independant-grid-name; }
 
-  @return $global-name-space + dashize($master-grid-name);
+  @return $global-name-space + $master-grid-name;
 }
 
 @function base-grid() {

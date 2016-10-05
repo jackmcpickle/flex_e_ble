@@ -25,7 +25,7 @@
   // replace $grid-name with $independant-grid-name if available
   @if $independant-grid-name != '' { $master-grid-name: $independant-grid-name; }
 
-  @return $global-name-space + dashize($master-grid-name);
+  @return $global-name-space + $master-grid-name;
 }
 
 @function base-grid() {
