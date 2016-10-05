@@ -1,0 +1,72 @@
+@mixin setup-bootstrap-before {
+  $global-name-space: '' !global;
+  $grid-name: 'col-' !global;
+  $base-grid-name: 'xs' !global;
+  $right-name: 'right' !global;
+  $left-name: 'left' !global;
+  $independant-grid-name: '' !global;
+}
+
+@include test-module('Framework bootstrap') {
+
+  @include test('Bootstrap base class names [function]') {
+    @include setup-bootstrap-before;
+    $size: 3;
+
+    $test: grid-name($size);
+    $expect: 'col-xs-3';
+
+    @include assert-equal($test, $expect,
+      'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Bootstrap class names [function]') {
+    @include setup-bootstrap-before;
+    $size: 11;
+    $size-name: 'md';
+
+    $test: grid-name($size, $size-name);
+    $expect: 'col-md-11';
+
+    @include assert-equal($test, $expect,
+      'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Bootstrap grid name [function]') {
+    @include setup-bootstrap-before;
+
+    $test: master-grid-name();
+    $expect: 'col-';
+
+    @include assert-equal($test, $expect,
+      'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Bootstrap right name [function]') {
+    @include setup-bootstrap-before;
+    $increment: 9;
+
+    $test: offset-right-name($increment);
+    $expect: 'col-xs-right-9';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Bootstrap left name [function]') {
+    @include setup-bootstrap-before;
+    $increment: 6;
+    $size-name: 'lg';
+
+    $test: offset-left-name($increment, $size-name);
+    $expect: 'col-lg-left-6';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+}

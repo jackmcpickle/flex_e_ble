@@ -1,0 +1,72 @@
+@mixin setup-foundation-before {
+  $global-name-space: '' !global;
+  $grid-name: ''  !global;
+  $base-grid-name: 'small' !global;
+  $right-name: 'push' !global;
+  $left-name: 'pull' !global;
+  $independant-grid-name: 'columns' !global;
+}
+
+@include test-module('Frameworks') {
+
+  @include test('Foundation base class names [function]') {
+    @include setup-foundation-before;
+    $size: 2;
+
+    $test: grid-name($size);
+    $expect: 'small-2';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Foundation class names [function]') {
+    @include setup-foundation-before;
+    $size: 4;
+    $size-name: 'medium';
+
+    $test: grid-name($size, $size-name);
+    $expect: 'medium-4';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Foundation grid name [function]') {
+    @include setup-foundation-before;
+
+    $test: master-grid-name();
+    $expect: 'columns';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Foundation right name [function]') {
+    @include setup-foundation-before;
+    $increment: 3;
+
+    $test: offset-right-name($increment);
+    $expect: 'small-push-3';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('Foundation left name [function]') {
+    @include setup-foundation-before;
+    $increment: 6;
+    $size-name: 'medium';
+
+    $test: offset-left-name($increment, $size-name);
+    $expect: 'medium-pull-6';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+}

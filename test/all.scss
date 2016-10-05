@@ -6,7 +6,9 @@
 
 @import 'functions/test-grid-calc';
 @import 'functions/test-grid-functions';
-@import 'functions/test-build-frameworks';
+@import 'frameworks/test-frame-base';
+@import 'frameworks/test-frame-bootstrap';
+@import 'frameworks/test-frame-foundation';
 @import 'mixins/test-build-row';
 @import 'mixins/test-grid';
 @import 'mixins/test-flexbox-filters';
