@@ -11,7 +11,7 @@
 }
 
 
-@for $i from 1 through $total-columns {
+@for $i from $starting-columns through $total-columns {
   $local-size: grid-size($i);
 
   // Base grid
@@ -34,7 +34,7 @@
 
 @each $size, $breakpoint in $breakpoints {
   @include media('screen', '#{$break-dir + $breakpoint}') {
-    @for $i from 1 through $total-columns {
+    @for $i from $starting-columns through $total-columns {
       $local-size: grid-size($i);
 
       // Responsive Grid
@@ -59,7 +59,7 @@
 
 
 @if $enable-extra-grid {
-  @for $i from 1 through $extra-columns {
+  @for $i from $starting-columns through $extra-columns {
     .#{$global-name-space + $extra-grid-name + $i} {
       width: grid-size-special($i);
     }
@@ -68,7 +68,7 @@
 
   @each $size, $breakpoint in $breakpoints {
     @include media('screen', '#{$break-dir + $breakpoint}') {
-      @for $i from 1 through $extra-columns {
+      @for $i from $starting-columns through $extra-columns {
         .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);
         }

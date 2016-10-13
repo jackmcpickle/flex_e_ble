@@ -6,6 +6,7 @@ $default-text-align: left !default;
 $total-columns: 12 !default;
 
 // Change to make grid break inclusive or exculsive
+$starting-columns: 1 !default;
 
 $column-gutter: 15px !default;
 $auto-column-gutters: false !default;
