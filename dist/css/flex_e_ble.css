@@ -1,9 +1,9 @@
 html {
-  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .row [class*='grid-'] {
-  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -58,8 +58,6 @@ html {
   letter-spacing: normal;
   text-align: left;
   text-rendering: auto;
-  word-spacing: normal;
-  vertical-align: top;
   box-sizing: border-box;
 }
 

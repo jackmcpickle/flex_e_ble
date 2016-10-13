@@ -1,11 +1,11 @@
 // Must be added to html tag either manaully or feature detect eg modernizr
 $flexbox-enable-class: 'flexbox' !default;
 $flexbox-compatibility-enabled: true !default;
-$special-font-stack: FreeSans, Arimo, 'Droid Sans', Helvetica, Arial, sans-serif !default;
+$special-font-stack: Helvetica, Arial, sans-serif !default;
 $default-text-align: left !default;
-$total-columns: 12 !default;
 
-// Change to make grid break inclusive or exculsive
+$starting-columns: 1 !default;
+$total-columns: 12 !default;
 
 $column-gutter: 15px !default;
 $auto-column-gutters: false !default;
@@ -136,8 +136,6 @@ $grid-framework: '' !default;
   letter-spacing: normal;
   text-align: $default-text-align;
   text-rendering: auto;
-  word-spacing: normal;
-  vertical-align: top;
 
   box-sizing: border-box;
 }
@@ -228,7 +226,7 @@ html {
 }
 
 
-@for $i from 1 through $total-columns {
+@for $i from $starting-columns through $total-columns {
   $local-size: grid-size($i);
 
   // Base grid
@@ -251,7 +249,7 @@ html {
 
 @each $size, $breakpoint in $breakpoints {
   @include media('screen', '#{$break-dir + $breakpoint}') {
-    @for $i from 1 through $total-columns {
+    @for $i from $starting-columns through $total-columns {
       $local-size: grid-size($i);
 
       // Responsive Grid
@@ -276,7 +274,7 @@ html {
 
 
 @if $enable-extra-grid {
-  @for $i from 1 through $extra-columns {
+  @for $i from $starting-columns through $extra-columns {
     .#{$global-name-space + $extra-grid-name + $i} {
       width: grid-size-special($i);
     }
@@ -285,7 +283,7 @@ html {
 
   @each $size, $breakpoint in $breakpoints {
     @include media('screen', '#{$break-dir + $breakpoint}') {
-      @for $i from 1 through $extra-columns {
+      @for $i from $starting-columns through $extra-columns {
         .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);
         }
