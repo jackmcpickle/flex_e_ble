@@ -1,7 +1,7 @@
 {
   "name": "flex_e_ble",
   "version": "1.2.6",
-  "description": "Just a Flex based grid",
+  "description": "A simple yet flexible class naming structure on top of a flexbox based grid.",
   "homepage": "https://flexeble.space/",
   "main": "dist/_flex_e_ble.scss",
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
@@ -12,14 +12,15 @@
     "prepublish": "npm test"
   },
   "keywords": [
-    "flex",
-    "box",
+    "flexeble",
+    "flexible",
+    "flexbox",
     "flex",
     "grid",
     "scss",
     "sass",
-    "grid",
-    "system"
+    "system",
+    "framework"
   ],
   "author": "Jack McNicol <jack@mcpickle.com.au>",
   "license": "MIT",
