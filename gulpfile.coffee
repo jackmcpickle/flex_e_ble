@@ -9,7 +9,7 @@ runSequence  = require 'run-sequence'
 concat       = require 'gulp-concat'
 clean        = require 'gulp-clean'
 watch        = require 'gulp-watch'
-jade         = require 'gulp-jade'
+pug          = require 'gulp-pug'
 sassLint     = require 'gulp-sass-lint'
 gutil        = require 'gulp-util'
 
@@ -71,7 +71,7 @@ gulp.task 'merge', ->
 
 gulp.task 'jade', ->
   gulp.src _paths.jade
-  .pipe jade
+  .pipe pug
     locals: _jadeLocals
     pretty: true
   .pipe gulp.dest _paths.build_docs
