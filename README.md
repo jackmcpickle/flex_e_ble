@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/jackmcpickle/flex_e_ble.svg?branch=master)](https://travis-ci.org/jackmcpickle/flex_e_ble)
 
-A simple yet *flexible* class naming structure on top of a `flex` based grid. 
+A simple yet *flexible* class naming structure on top of a `flex` based grid.
 
 Reasons
 * Provides a `inline-block` fall back for IE8 & 9
@@ -32,12 +32,13 @@ Flex_e_ble grid system is based on [purecss.io](http://purecss.io/) grid work.
 Row css looks like
 ```sass
 .row
+  display: flex
+  flex-flow: row wrap
+  position: relative
   letter-spacing: -0.31em
   text-rendering: optimizespeed
   box-sizing: border-box
-  position: relative
-  display: flex
-  flex-flow: row wrap
+
 ```
 
 Grid css looks like
@@ -46,8 +47,6 @@ Grid css looks like
   display: inline-block
   letter-spacing: normal
   text-rendering: auto
-  word-spacing: normal
-  vertical-align: top
   box-sizing: border-box
 ```
 
