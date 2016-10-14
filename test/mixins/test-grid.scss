@@ -1,6 +1,7 @@
 @mixin grid-setup-before() {
   $default-text-align: left !global;
   $column-gutter: 15px !global;
+  $special-font-stack: Arial !global;
 }
 
 @include test-module('Grids') {
@@ -15,6 +16,7 @@
         display: inline-block;
         position: relative;
 
+        font-family: Arial;
         letter-spacing: normal;
         text-align: left;
         text-rendering: auto;

@@ -2,12 +2,6 @@ html {
   font-family: $special-font-stack;
 }
 
-.#{$global-name-space + $row-name} {
-  [class*='#{master-grid-name()}'] {
-    font-family: $special-font-stack;
-  }
-}
-
 .#{$global-name-space + $container-name} {
   margin-right: auto;
   margin-left: auto;
