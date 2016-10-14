@@ -133,6 +133,7 @@ $grid-framework: '' !default;
   display: inline-block;
   position: relative;
 
+  font-family: $special-font-stack;
   letter-spacing: normal;
   text-align: $default-text-align;
   text-rendering: auto;
@@ -173,12 +174,6 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
 
 html {
   font-family: $special-font-stack;
-}
-
-.#{$global-name-space + $row-name} {
-  [class*='#{master-grid-name()}'] {
-    font-family: $special-font-stack;
-  }
 }
 
 .#{$global-name-space + $container-name} {
