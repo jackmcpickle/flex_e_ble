@@ -95,6 +95,7 @@ gulp.task 'watch', (cb) ->
 
   watch _paths.jade, ->
     gulp.start 'jade'
+  do cb
 
 
 gulp.task 'build', ['jade', 'sass', 'merge']
