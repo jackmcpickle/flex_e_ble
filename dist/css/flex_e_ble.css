@@ -26,8 +26,10 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .flexbox .row.clearfix:before, .flexbox .row.clearfix:after {
@@ -68,8 +70,10 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .grid-1 {
@@ -679,8 +683,10 @@ html {
 }
 
 .row-column {
-  -ms-flex-flow: column wrap !important;
-      flex-flow: column wrap !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-flow: column wrap !important;
+          flex-flow: column wrap !important;
 }
 
 .row-reverse {
