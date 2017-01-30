@@ -11,7 +11,6 @@ const clean        = require('gulp-clean');
 const watch        = require('gulp-watch');
 const pug          = require('gulp-pug');
 const sassLint     = require('gulp-sass-lint');
-const gutil        = require('gulp-util');
 
 const _browsers = [ '> 5%', 'last 3 versions' ];
 
