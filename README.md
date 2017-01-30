@@ -1,5 +1,7 @@
 # flex_e_ble
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jackmcpickle/flex_e_ble.svg)](https://greenkeeper.io/)
+
 [![NPM](https://nodei.co/npm/flex_e_ble.png)](https://npmjs.org/package/flex_e_ble)
 
 [![Build Status](https://travis-ci.org/jackmcpickle/flex_e_ble.svg?branch=master)](https://travis-ci.org/jackmcpickle/flex_e_ble) [![Dev Dependencies](https://david-dm.org/jackmcpickle/flex_e_ble/dev-status.svg)](https://david-dm.org/jackmcpickle/flex_e_ble?type=dev&view=list)
