@@ -32,5 +32,7 @@ tags
 .ctags
 
 # packages
+.bundle
 /node_modules
 /bower_components
+/vendor
