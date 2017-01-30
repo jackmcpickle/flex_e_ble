@@ -10,7 +10,7 @@
 
 @mixin setup-row-before() {
   $flexbox-compatibility-enabled: true !global;
-  $flexbox-enable-class: '.flexbox' !global;
+  $flexbox-enable-class: 'flexbox' !global;
 }
 
 @include test-module('Rows') {
@@ -62,6 +62,11 @@
         letter-spacing: -0.31em;
         text-rendering: optimizespeed;
         box-sizing: border-box;
+
+        .flexbox & {
+          display: flex;
+          flex-flow: row wrap;
+        }
       }
     }
   }
@@ -79,8 +84,12 @@
         letter-spacing: -0.31em;
         text-rendering: optimizespeed;
         box-sizing: border-box;
+
+        .flexbox & {
+          display: flex;
+          flex-flow: row wrap;
+        }
       }
     }
   }
-
 }
