@@ -55,3 +55,12 @@
     @content;
   }
 }
+
+@mixin build-container {
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media('#{$break-dir + $container-breakpoint}') {
+    max-width: $container-breakpoint;
+  }
+}
