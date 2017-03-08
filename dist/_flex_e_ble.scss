@@ -31,6 +31,12 @@ $breakpoints: (
 
 $break-dir: '>=' !default;
 
+$smallest-size: nth(map-values($breakpoints), 1);
+$last-breakpoint: nth(map-values($breakpoints), length($breakpoints));
+
+$container-breakpoint: $last-breakpoint !default;
+$column-gutter-breakpoint: $smallest-size !default;
+
 $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;
@@ -141,15 +147,13 @@ $grid-framework: '' !default;
   box-sizing: border-box;
 }
 
-$smallest-size: nth(nth($breakpoints, 1), 1);
-
 @mixin build-column-gutter {
 
   padding-right: ($column-gutter / 2);
   padding-left: ($column-gutter / 2);
 
 
-  @include media('screen', '>=#{$smallest-size}') {
+  @include media('#{$break-dir + $column-gutter-breakpoint}') {
     padding-right: ($column-gutter);
     padding-left: ($column-gutter);
   }
@@ -172,18 +176,21 @@ $smallest-size: nth(nth($breakpoints, 1), 1);
   }
 }
 
+@mixin build-container {
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media('#{$break-dir + $container-breakpoint}') {
+    max-width: $container-breakpoint;
+  }
+}
+
 html {
   font-family: $special-font-stack;
 }
 
 .#{$global-name-space + $container-name} {
-  margin-right: auto;
-  margin-left: auto;
-
-  $last-breakpoint: nth(map-values($breakpoints), length($breakpoints));
-  @include media('screen', '#{$break-dir + $last-breakpoint}') {
-    max-width: $last-breakpoint;
-  }
+  @include build-container;
 }
 
 .#{$global-name-space + $row-name} {
@@ -243,7 +250,7 @@ html {
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media('screen', '#{$break-dir + $breakpoint}') {
+  @include media('#{$break-dir + $breakpoint}') {
     @for $i from $starting-columns through $total-columns {
       $local-size: grid-size($i);
 
@@ -277,7 +284,7 @@ html {
 
 
   @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir + $breakpoint}') {
+    @include media('#{$break-dir + $breakpoint}') {
       @for $i from $starting-columns through $extra-columns {
         .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);

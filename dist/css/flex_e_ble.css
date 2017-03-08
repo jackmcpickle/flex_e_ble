@@ -7,7 +7,7 @@ html {
   margin-left: auto;
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
   .container {
     max-width: 1024px;
   }
@@ -41,7 +41,7 @@ html {
   padding-left: 7.5px;
 }
 
-@media screen and (min-width: 320px) {
+@media (min-width: 320px) {
   .pad {
     padding-right: 15px;
     padding-left: 15px;
@@ -244,7 +244,7 @@ html {
   left: auto;
 }
 
-@media screen and (min-width: 320px) {
+@media (min-width: 320px) {
   .grid-phone-1 {
     width: 8.33333%;
   }
@@ -379,7 +379,7 @@ html {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .grid-tablet-1 {
     width: 8.33333%;
   }
@@ -514,7 +514,7 @@ html {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
   .grid-desktop-1 {
     width: 8.33333%;
   }
