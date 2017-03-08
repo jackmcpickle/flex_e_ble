@@ -27,15 +27,13 @@
   box-sizing: border-box;
 }
 
-$smallest-size: nth(nth($breakpoints, 1), 1);
-
 @mixin build-column-gutter {
 
   padding-right: ($column-gutter / 2);
   padding-left: ($column-gutter / 2);
 
 
-  @include media('screen', '>=#{$smallest-size}') {
+  @include media('#{$break-dir + $column-gutter-breakpoint}') {
     padding-right: ($column-gutter);
     padding-left: ($column-gutter);
   }

@@ -31,6 +31,9 @@ $breakpoints: (
 
 $break-dir: '>=' !default;
 
+$smallest-size: nth(map-values($breakpoints), 1);
+$column-gutter-breakpoint: $smallest-size !default;
+
 $enable-extra-grid: false !default;
 $extra-grid-name: 'fifth' !default;
 $extra-columns: 5 !default;

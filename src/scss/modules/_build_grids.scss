@@ -33,7 +33,7 @@
 }
 
 @each $size, $breakpoint in $breakpoints {
-  @include media('screen', '#{$break-dir + $breakpoint}') {
+  @include media('#{$break-dir + $breakpoint}') {
     @for $i from $starting-columns through $total-columns {
       $local-size: grid-size($i);
 
@@ -67,7 +67,7 @@
 
 
   @each $size, $breakpoint in $breakpoints {
-    @include media('screen', '#{$break-dir + $breakpoint}') {
+    @include media('#{$break-dir + $breakpoint}') {
       @for $i from $starting-columns through $extra-columns {
         .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
           width: grid-size-special($i);
