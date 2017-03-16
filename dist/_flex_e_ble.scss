@@ -21,6 +21,9 @@ $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
 
+// Set to true to always set column index after grid name eg. grid-1-md instead of grid-md-1
+$column-index-always-before-size: false !default;
+
 // Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
   'small': 480px,
@@ -80,15 +83,19 @@ $grid-framework: '' !default;
 }
 
 @function has-dash($string) {
-  @if $string == '' { @return true; } // return itself if blank
-  @return str-index($string, '-') != null;
+  $has-dash: $string + ''; // allow numbers
+  @if $has-dash == '' { @return true; } // return itself if blank
+  @return str-index($has-dash, '-') != null;
 }
 
 // check for dash else add one
-@function dashize($string) {
+@function dashize($string, $position: 'end') {
   $dashized: $string;
 
   @if has-dash($string) { @return $dashized; }
+  @if ($position == 'start') {
+    @return '-' + $dashized;
+  }
   @return $dashized + '-';
 }
 
@@ -102,20 +109,35 @@ $grid-framework: '' !default;
 }
 
 @function base-grid() {
-  // @debug dashize($grid-name);
   @return $global-name-space + dashize($grid-name);
 }
 
+@function grid-name-order($size-name, $increment) {
+  @if ($column-index-always-before-size) {
+    @return $increment + dashize($size-name, 'start');
+  } @else {
+    @return dashize($size-name) + $increment;
+  }
+}
+
+@function offset-name-order($offset-name, $size-name, $increment) {
+  @if ($column-index-always-before-size) {
+    @return $increment + dashize($offset-name, 'start') + dashize($size-name, 'start');
+  } @else {
+    @return dashize($size-name) + $offset-name + '-' + $increment;
+  }
+}
+
 @function grid-name($increment, $size-name: $base-grid-name) {
-  @return base-grid() + dashize($size-name) + $increment;
+  @return base-grid() + grid-name-order($size-name, $increment);
 }
 
 @function offset-right-name($increment, $size-name: $base-grid-name) {
-  @return base-grid() + dashize($size-name) + $right-name + '-' + $increment;
+  @return base-grid() + offset-name-order($right-name, $size-name, $increment);
 }
 
 @function offset-left-name($increment, $size-name: $base-grid-name) {
-  @return base-grid() + dashize($size-name) + $left-name + '-' + $increment;
+  @return base-grid() + offset-name-order($left-name, $size-name, $increment);
 }
 
 @mixin build-row($display: block) {
