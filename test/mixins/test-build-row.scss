@@ -15,7 +15,7 @@
 
 @include test-module('Rows') {
 
-  @include test('Buid flexbox row [mixin]') {
+  @include test('Build flexbox row [mixin]') {
     @include assert('Should output css to build flex row') {
       @include output {
         @include setup-flexbox-row-before;
@@ -32,7 +32,7 @@
     }
   }
 
-  @include test('Buid compatible flexbox row [mixin]') {
+  @include test('Build compatible flexbox row [mixin]') {
     @include assert('Should output css to build compatible flex row') {
       @include output {
         @include setup-compatible-flexbox-row-before;
@@ -50,7 +50,7 @@
     }
   }
 
-  @include test('Buid row [mixin]') {
+  @include test('Build row [mixin]') {
     @include assert('Should output css to build non flex row') {
       @include output {
         @include setup-row-before;
@@ -72,7 +72,7 @@
   }
 
   // Testing Mixins
-  @include test('Buid row with $display passed [mixin]') {
+  @include test('Build row with $display passed [mixin]') {
     @include assert('Should output css to build non flex row with inline-block') {
       @include output {
         @include setup-row-before;

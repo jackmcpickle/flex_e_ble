@@ -9,7 +9,7 @@
 
 @include test-module('Grids') {
 
-  @include test('Buid grid [mixin]') {
+  @include test('Build grid [mixin]') {
     @include assert('Should output css to build a grid') {
       @include output {
         @include grid-setup-before;
@@ -29,7 +29,7 @@
     }
   }
 
-  @include test('Buid gutter [mixin]') {
+  @include test('Build gutter [mixin]') {
     @include assert('Should output css to build a gutter') {
       @include output {
         @include grid-setup-before;
@@ -49,7 +49,7 @@
     }
   }
 
-  @include test('Buid container [mixin]') {
+  @include test('Build container [mixin]') {
     @include assert('Should output css to build a container') {
       @include output {
         @include grid-setup-before;
