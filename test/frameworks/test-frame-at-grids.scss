@@ -1,0 +1,73 @@
+@mixin setup-atGrid-before {
+  $global-name-space: 'l-' !global;
+  $grid-name: 'grid'  !global;
+  $base-grid-name: '' !global;
+  $right-name: 'push' !global;
+  $left-name: 'pull' !global;
+  $independant-grid-name: '' !global;
+  $column-index-always-before-size: true !global;
+}
+
+@include test-module('Frameworks') {
+
+  @include test('@grid base class names [function]') {
+    @include setup-atGrid-before;
+    $size: 2;
+
+    $test: grid-name($size);
+    $expect: 'l-grid-2';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('@grid class names [function]') {
+    @include setup-atGrid-before;
+    $size: 4;
+    $size-name: '\@md';
+
+    $test: grid-name($size, $size-name);
+    $expect: 'l-grid-4-\@md';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('@grid grid name [function]') {
+    @include setup-atGrid-before;
+
+    $test: master-grid-name();
+    $expect: 'l-grid';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('@grid right name [function]') {
+    @include setup-atGrid-before;
+    $increment: 3;
+
+    $test: offset-right-name($increment);
+    $expect: 'l-grid-3-push';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+
+  @include test('@grid left name [function]') {
+    @include setup-atGrid-before;
+    $increment: 6;
+    $size-name: '\@lg';
+
+    $test: offset-left-name($increment, $size-name);
+    $expect: 'l-grid-6-pull-\@lg';
+
+    @include assert-equal($test, $expect,
+    'Must return the correct class names for the vars');
+
+  }
+}
