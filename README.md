@@ -13,6 +13,8 @@ Reasons
 
 See the website [flexeble.space](https://flexeble.space/) for demo examples
 
+See all [customisable variables](https://github.com/jackmcpickle/flex_e_ble/blob/master/src/scss/modules/_vars.scss)
+
 ## Requirements
 
 * [modernizr](https://modernizr.com/download?flexbox-setclasses-shiv) to provide flexbox detection
