@@ -22,6 +22,17 @@
 
   }
 
+  @include test('Check if number has already has dash [function]') {
+    $string: 100;
+
+    $test: dashize($string);
+    $expect: '100-';
+
+    @include assert-equal($test, $expect,
+      'Return itself if has dash already');
+
+  }
+
   @include test('Check if string has no dash [function]') {
     $string: 'nodash';
 
@@ -41,6 +52,60 @@
 
     @include assert-equal($test, $expect,
       'Should return empty string');
+
+  }
+
+  @include test('Check grid name order with increment first [function]') {
+    $column-index-always-before-size: true !global;
+    $size-name: 'small';
+    $increment: 100;
+
+    $test: grid-name-order($size-name, $increment);
+    $expect: '100-small';
+
+    @include assert-equal($test, $expect,
+      'Should return string with increment at start');
+
+  }
+
+  @include test('Check grid name order with increment last [function]') {
+    $column-index-always-before-size: false !global;
+    $size-name: 'large';
+    $increment: 25;
+
+    $test: grid-name-order($size-name, $increment);
+    $expect: 'large-25';
+
+    @include assert-equal($test, $expect,
+      'Should return string with increment last');
+
+  }
+
+  @include test('Check offset name order with increment first [function]') {
+    $column-index-always-before-size: true !global;
+    $size-name: 'small';
+    $increment: 100;
+    $offset-name: 'pull';
+
+    $test: offset-name-order($offset-name, $size-name, $increment);
+    $expect: '100-pull-small';
+
+    @include assert-equal($test, $expect,
+      'Should return string with increment at start');
+
+  }
+
+  @include test('Check offset name order with increment last [function]') {
+    $column-index-always-before-size: false !global;
+    $size-name: 'large';
+    $increment: 25;
+    $offset-name: 'right';
+
+    $test: offset-name-order($offset-name, $size-name, $increment);
+    $expect: 'large-right-25';
+
+    @include assert-equal($test, $expect,
+      'Should return string with increment last');
 
   }
 }

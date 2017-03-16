@@ -5,6 +5,7 @@
   $right-name: 'push' !global;
   $left-name: 'pull' !global;
   $independant-grid-name: 'columns' !global;
+  $column-index-always-before-size: false !global;
 }
 
 @include test-module('Frameworks') {

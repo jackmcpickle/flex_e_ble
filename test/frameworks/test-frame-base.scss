@@ -5,6 +5,7 @@
   $right-name: 'right' !global;
   $left-name: 'left' !global;
   $independant-grid-name: '' !global;
+  $column-index-always-before-size: false !global;
 }
 
 @include test-module('Framework base') {
