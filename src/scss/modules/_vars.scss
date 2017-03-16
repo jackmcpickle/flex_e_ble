@@ -21,6 +21,9 @@ $row-name: 'row' !default; // Could be flex
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
 
+// Set to true to always set column index after grid name eg. grid-1-md instead of grid-md-1
+$column-index-always-before-size: false !default;
+
 // Loop over these breakpoints and pass keys into grid classes
 $breakpoints: (
   'small': 480px,
