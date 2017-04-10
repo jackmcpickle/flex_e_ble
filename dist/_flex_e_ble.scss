@@ -18,6 +18,7 @@ $container-name: 'container' !default; // Could be wrapper
 $grid-name: 'grid-' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
+$disable-push-pull-classes: false !default;
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
 
@@ -259,16 +260,18 @@ html {
     width: $local-size;
   }
 
-  // Offset right
-  .#{offset-right-name($i)} {
-    right: auto;
-    left: $local-size;
-  }
+  @if not $disable-push-pull-classes {
+    // Offset right
+    .#{offset-right-name($i)} {
+      right: auto;
+      left: $local-size;
+    }
 
-  // Offset left
-  .#{offset-left-name($i)} {
-    right: $local-size;
-    left: auto;
+    // Offset left
+    .#{offset-left-name($i)} {
+      right: $local-size;
+      left: auto;
+    }
   }
 }
 
@@ -282,16 +285,18 @@ html {
         width: $local-size;
       }
 
-      // Responsive offset right
-      .#{offset-right-name($i, $size)} {
-        right: auto;
-        left: $local-size;
-      }
+      @if not $disable-push-pull-classes {
+        // Responsive offset right
+        .#{offset-right-name($i, $size)} {
+          right: auto;
+          left: $local-size;
+        }
 
-      // Responsive offset left
-      .#{offset-left-name($i, $size) } {
-        right: $local-size;
-        left: auto;
+        // Responsive offset left
+        .#{offset-left-name($i, $size) } {
+          right: $local-size;
+          left: auto;
+        }
       }
     }
   }

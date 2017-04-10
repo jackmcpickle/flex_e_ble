@@ -18,6 +18,7 @@ $container-name: 'container' !default; // Could be wrapper
 $grid-name: 'grid-' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
+$disable-push-pull-classes: false !default;
 $right-name: 'right' !default; // Could be push
 $left-name: 'left' !default; // Could be push
 

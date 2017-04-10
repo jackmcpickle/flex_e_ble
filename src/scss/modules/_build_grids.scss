@@ -19,16 +19,18 @@
     width: $local-size;
   }
 
-  // Offset right
-  .#{offset-right-name($i)} {
-    right: auto;
-    left: $local-size;
-  }
+  @if not $disable-push-pull-classes {
+    // Offset right
+    .#{offset-right-name($i)} {
+      right: auto;
+      left: $local-size;
+    }
 
-  // Offset left
-  .#{offset-left-name($i)} {
-    right: $local-size;
-    left: auto;
+    // Offset left
+    .#{offset-left-name($i)} {
+      right: $local-size;
+      left: auto;
+    }
   }
 }
 
@@ -42,16 +44,18 @@
         width: $local-size;
       }
 
-      // Responsive offset right
-      .#{offset-right-name($i, $size)} {
-        right: auto;
-        left: $local-size;
-      }
+      @if not $disable-push-pull-classes {
+        // Responsive offset right
+        .#{offset-right-name($i, $size)} {
+          right: auto;
+          left: $local-size;
+        }
 
-      // Responsive offset left
-      .#{offset-left-name($i, $size) } {
-        right: $local-size;
-        left: auto;
+        // Responsive offset left
+        .#{offset-left-name($i, $size) } {
+          right: $local-size;
+          left: auto;
+        }
       }
     }
   }
