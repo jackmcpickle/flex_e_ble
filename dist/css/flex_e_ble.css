@@ -55,6 +55,7 @@ html {
   letter-spacing: normal;
   text-align: left;
   text-rendering: auto;
+  vertical-align: top;
   box-sizing: border-box;
 }
 
@@ -647,6 +648,14 @@ html {
     right: 100%;
     left: auto;
   }
+}
+
+.grid-bottom {
+  vertical-align: bottom !important;
+}
+
+.grid-middle {
+  vertical-align: middle !important;
 }
 
 .flexbox .grid-grow {

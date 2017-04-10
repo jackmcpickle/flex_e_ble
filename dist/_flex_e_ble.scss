@@ -165,6 +165,7 @@ $grid-framework: '' !default;
   letter-spacing: normal;
   text-align: $default-text-align;
   text-rendering: auto;
+  vertical-align: top;
 
   box-sizing: border-box;
 }
@@ -317,6 +318,15 @@ html {
 }
 
 .#{master-grid-name()} {
+
+  &bottom {
+    vertical-align: bottom !important;
+  }
+
+  &middle {
+    vertical-align: middle !important;
+  }
+
   @include flexbox-enabled-class {
     &grow {
       flex-grow: 1 !important;
