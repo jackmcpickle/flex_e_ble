@@ -4,7 +4,7 @@
 /// @requires disable-if-flexbox-pure
 /// @requires flexbox-enabled-class
 /// @param {string} $display [block] - fallback if flex is not compatible
-/// @group Core Grid
+/// @group Core grid
 
 @mixin build-row($display: block) {
 
@@ -29,7 +29,7 @@
 /// @name build-grid
 /// @require special-font-stack [Helvetica, Arial, sans-serif]
 /// @require default-text-align [left]
-/// @group Core Grid
+/// @group Core grid
 
 @mixin build-grid {
   display: inline-block;
@@ -49,7 +49,7 @@
 /// @name build-column-gutter
 /// @require column-gutter-breakpoint [smallest size of breakpoints ]
 /// @require break-dir ['>=']
-/// @group Core Grid
+/// @group Core grid
 
 @mixin build-column-gutter {
 
@@ -87,11 +87,11 @@
   }
 }
 
-///
-/// @name flexbox-enabled-class
+/// Build a wrapper container
+/// @name build-container
 /// @require $container-max-width [true]
 /// @require $break-dir ['>=']
-/// @group Helpers
+/// @group Core grid
 @mixin build-container {
   margin-right: auto;
   margin-left: auto;

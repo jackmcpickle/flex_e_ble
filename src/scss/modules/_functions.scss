@@ -1,18 +1,27 @@
-@function grid-size($n) {
-  @return percentage($n / $total-columns);
+/// Used to calculate the width percentage
+/// @name grid-size
+/// @requires total-columns
+/// @param {integer} $n - index of total-columns
+/// @group Functions
+@function grid-size($n, $total: $total-columns) {
+  @return percentage($n / $total);
 }
 
-@function grid-size-special($n) {
-  @return percentage($n / $extra-columns);
-}
-
+/// Used to check if string has a -
+/// @name has-dash
+/// @param {string} $string - string to check dash
+/// @group Functions
 @function has-dash($string) {
   $has-dash: $string + ''; // allow numbers
   @if $has-dash == '' { @return true; } // return itself if blank
   @return str-index($has-dash, '-') != null;
 }
 
-// check for dash else add one
+/// Check if string has dash else add one
+/// @name has-dash
+/// @param {string} $string -
+/// @param {any} $position ['end'] - Where to position the dash
+/// @group Functions
 @function dashize($string, $position: 'end') {
   $dashized: $string;
 
@@ -23,6 +32,12 @@
   @return $dashized + '-';
 }
 
+/// Returns the built up name of the grid using the global-name-space and
+/// @name master-grid-name
+/// @required $grid-name
+/// @optional $independant-grid-name
+/// @optional $global-name-space
+/// @group Functions
 @function master-grid-name() {
   $master-grid-name: $grid-name;
 

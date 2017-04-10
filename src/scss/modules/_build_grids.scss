@@ -65,7 +65,7 @@
 @if $enable-extra-grid {
   @for $i from $starting-columns through $extra-columns {
     .#{$global-name-space + $extra-grid-name + $i} {
-      width: grid-size-special($i);
+      width: grid-size($i, $extra-columns);
     }
   }
 
@@ -74,7 +74,7 @@
     @include media('#{$break-dir + $breakpoint}') {
       @for $i from $starting-columns through $extra-columns {
         .#{$global-name-space + $extra-grid-name + $size + '-' + $i} {
-          width: grid-size-special($i);
+          width: grid-size($i, $extra-columns);
         }
       }
     }
