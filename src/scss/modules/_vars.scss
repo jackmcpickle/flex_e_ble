@@ -1,7 +1,25 @@
-// Must be added to html tag either manaully or feature detect eg modernizr
+////
+/// @group Variables
+////
+
+
+/// Used as class flag to enable flexbox properties
+/// Must be added to html tag either manaully or feature detect eg modernizr
+/// @name flexbox-enable-class
+/// @default {string} 'flexbox'
 $flexbox-enable-class: 'flexbox' !default;
+
+/// Used to flag if flexbox compatibility
+/// @name flexbox-compatibility-enabled
+/// @default true
 $flexbox-compatibility-enabled: true !default;
+
+/// Used to help define the whitespace between grid items
+/// @name special-font-stack
 $special-font-stack: Helvetica, Arial, sans-serif !default;
+
+/// The default grid item text-align reset
+/// @name default-text-align
 $default-text-align: left !default;
 
 $starting-columns: 1 !default;
@@ -12,9 +30,14 @@ $auto-column-gutters: false !default;
 $grid-padding-name: 'pad' !default;
 $independant-grid-name: '' !default;
 
-// Use to namespace the whole grid-system. eg 'wtf-' or 'cool-'
+/// Use to namespace the whole grid-system.
+/// @name global-name-space
+/// @examples 'wtf-' or 'cool-'
 $global-name-space: '' !default;
-$container-name: 'container' !default; // Could be wrapper
+/// Wrapper name to create a centering div.
+/// Uses margin-left: auto; margin-right: auto
+/// @name container-name
+$container-name: 'container' !default;
 $grid-name: 'grid-' !default; // Could be col or column
 $base-grid-name: '' !default; // Does your base grid have a sufix.
 $row-name: 'row' !default; // Could be flex
@@ -25,7 +48,10 @@ $left-name: 'left' !default; // Could be push
 // Set to true to always set column index after grid name eg. grid-1-md instead of grid-md-1
 $column-index-always-before-size: false !default;
 
-// Loop over these breakpoints and pass keys into grid classes
+/// The include-media breakpoints.
+/// Loop over these breakpoints and pass keys into grid classes
+/// @name breakpoints
+
 $breakpoints: (
   'small': 480px,
   'medium': 768px,
@@ -33,12 +59,26 @@ $breakpoints: (
   'xlarge': 1180px
 ) !default;
 
+/// The default include-media breakpoint direction
+/// @name break-dir
+/// @example '<'
 $break-dir: '>=' !default;
 
 $smallest-size: nth(map-values($breakpoints), 1);
 $last-breakpoint: nth(map-values($breakpoints), length($breakpoints));
 
-$container-breakpoint: $last-breakpoint !default;
+
+/// Sets the max-width of the container class
+/// @name container-max-width
+$container-max-width: $last-breakpoint !default;
+
+/// Sets the max-width of the container class
+/// @name container-max-width
+/// @deprecated Deprecation for the more appropriate named $container-max-width
+$container-breakpoint: $container-max-width !default;
+
+/// Sets the breakpoint of the gutters of when they half in size
+/// @name column-gutter-breakpoint
 $column-gutter-breakpoint: $smallest-size !default;
 
 $enable-extra-grid: false !default;

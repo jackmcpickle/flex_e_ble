@@ -3,7 +3,7 @@ const gulp         = require('gulp');
 const sass         = require('gulp-sass');
 const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const rename       = require('gulp-rename');
+const sassdoc      = require('sassdoc');
 const runSequence  = require('run-sequence');
 const concat       = require('gulp-concat');
 const clean        = require('gulp-clean');
@@ -43,6 +43,21 @@ const _paths = {
 };
 
 
+const sassDocOptions = {
+  dest: _paths.build_docs,
+  verbose: true,
+  display: {
+    access: ['public', 'private'],
+    alias: true,
+    watermark: true,
+  },
+  // theme: 'neat',
+  basePath: 'https://github.com/jackmcpickle/flex_e_ble/tree/master/dist',
+};
+
+
+
+
 gulp.task( 'sass', () =>
   gulp.src( _paths.scss )
   .pipe( sass({ includePaths: 'node_modules', outputStyle: 'expanded' })
@@ -51,7 +66,7 @@ gulp.task( 'sass', () =>
   .pipe( gulp.dest( _paths.build_css ))
 );
 
-gulp.task( 'merge', () =>
+gulp.task( 'sassMerge', ['sass'], () =>
   gulp.src( _paths.build_scss )
     .pipe( concat( _paths.dist_file ) )
     .pipe( gulp.dest( _paths.build ) )
@@ -63,7 +78,12 @@ gulp.task( 'jade', () =>
   .pipe( gulp.dest( _paths.build_docs ) )
 );
 
-gulp.task( 'sassLint', ['sass'], () =>
+gulp.task( 'sassdoc', ['sassMerge'], () =>
+  gulp.src(`${_paths.build}/*.scss`)
+  .pipe(sassdoc(sassDocOptions))
+);
+
+gulp.task( 'sassLint', ['sassMerge'], () =>
   gulp.src( _paths.scss )
   .pipe( sassLint() )
   .pipe( sassLint.format() )
@@ -76,12 +96,12 @@ gulp.task( 'clean', () =>
 );
 
 gulp.task( 'watch', (cb) => {
-  watch( _paths.scss, () => gulp.start( 'sassLint' ) );
-  watch( _paths.jade, () => gulp.start('jade') );
+  watch( _paths.scss, () => gulp.start( 'sassdoc' ) );
+  watch( _paths.jade, () => gulp.start( 'jade' ) );
   cb();
 });
 
-gulp.task( 'build', (cb) => runSequence('clean', ['jade', 'sass', 'merge'], cb) );
+gulp.task( 'build', (cb) => runSequence('clean', ['jade', 'sass', 'sassMerge'], ['sassdoc'], cb) );
 
 gulp.task( 'lint', ['sassLint']);
 

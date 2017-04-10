@@ -1,93 +1,62 @@
-<!DOCTYPE html>
-<html class="flexbox" lang="en">
-  <head>
-    <title>flex _ e _ ble</title>
-    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@1.3.4/dist/css/flex_e_ble.css">
-    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@1.3.4/dist/css/docs.css">
-    <script>
-      window.toggleFlexbox = function(e) {
-        e.preventDefault();
-        var html = document.getElementsByTagName('html')[0];
-        var hasFlexbox = html.className === 'flexbox';
-        html.className = hasFlexbox ? '' : 'flexbox';
-        e.target.textContent = hasFlexbox ? 'Toggle Compatibility - flexbox off' : 'Toggle Compatibility - flexbox on';
-      }
-    </script>
-  </head>
-  <body><a class="github-corner" href="https://github.com/jackmcpickle/flex_e_ble/">
-      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-      </svg>
-      </a>
-    <div class="container">
-      <h1 class="heading-1">flex_e_ble examples</h1>
-      <h2 class="heading-2">Basic -<em> (IE8,9) Compatibility</em></h2>
-      <button class="button" onclick="toggleFlexbox(event)">Toggle Compatibility - flexbox on</button>
-      <p class="example">Centered aligned grid with</p>
-      <div class="row row-center demo-row">
-        <div class="grid-base pad demo bgd-1">.row-center > .grid-base</div>
-      </div>
-      <p class="example">Right aligned grids</p>
-      <div class="row row-right demo-row">
-        <div class="grid-10 demo bgd-2 pad">.row-right > .grid-10</div>
-      </div>
-      <p class="example">Push grid to center</p>
-      <div class="row demo-row">
-        <div class="grid-4 grid-right-4 demo bgd-5 pad">.grid-4.grid-right-4</div>
-      </div>
-      <p class="example">Push and pull grid Medium</p>
-      <div class="row demo-row">
-        <div class="grid-4 grid-desktop-right-6 demo bgd-3 pad">.grid-4.grid-desktop-right-6</div>
-        <div class="grid-4 grid-desktop-left-2 demo bgd-5 pad">.grid-4.grid-desktop-left-2</div>
-      </div>
-      <p class="example">Basic wrap.example grid</p>
-      <div class="row demo-row">
-        <div class="grid-3 demo bgd-1 pad">.grid-3</div>
-        <div class="grid-5 demo bgd-1 pad">.grid-5</div>
-        <div class="grid-4 demo bgd-1 pad">.grid-4</div>
-        <div class="grid-3 demo bgd-1 pad">.grid-3</div>
-        <div class="grid-3 demo bgd-1 pad">.grid-3</div>
-        <div class="grid-6 demo bgd-1 pad">.grid-6</div>
-      </div>
-      <h2 class="heading-2">Advanced -<em> (IE10,11, Chrome, Safari, Firefox) Compatibility</em></h2>
-      <p class="example">Flex grid with space-around</p>
-      <div class="row row-around demo-row">
-        <div class="grid-4 demo bgd-3 pad">.row-around > .grid-4</div>
-        <div class="grid-4 demo bgd-3 pad">.row-around > .grid-4</div>
-      </div>
-      <p class="example">Flex grid with space-between</p>
-      <div class="row row-between demo-row">
-        <div class="grid-4 demo bgd-4 pad">.row-between > .grid-4</div>
-        <div class="grid-4 demo bgd-4 pad">.row-between > .grid-4</div>
-      </div>
-      <p class="example">Fill gaps on flex grid</p>
-      <div class="row demo-row">
-        <div class="grid-4 demo bgd-1 pad">.grid-4</div>
-        <div class="grid-4 grid-grow demo bgd-2 pad">.grid-4.grid-grow</div>
-        <div class="grid-6 demo bgd-1 grid-grow pad">.grid-6.grid-grow</div>
-        <div class="grid-4 demo bgd-3 pad">.grid-4</div>
-        <div class="grid-4 grid-grow demo bgd-4 pad">.grid-4.grid-grow</div>
-      </div>
-      <p class="example">Auto spreading flex grid</p>
-      <div class="row demo-row">
-        <div class="grid-grow demo bgd-1 pad">.grid-grow</div>
-        <div class="grid-grow demo bgd-2 pad">.grid-grow</div>
-        <div class="grid-grow demo bgd-3 pad">.grid-grow</div>
-        <div class="grid-grow demo bgd-4 pad">.grid-grow</div>
-      </div>
-      <p class="example">Content of different heights -</p>
-      <div class="row row-center demo-row">
-        <div class="grid-6 demo bgd-3 pad">.grid-6 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In condimentum commodo metus eget pulvinar. Maecenas vulputate, massa vitae malesuada dapibus, nulla dui scelerisque quam, eu volutpat arcu sapien quis nisi. Pellentesque gravida facilisis sem, sit amet auctor felis vulputate at.</div>
-        <div class="grid-6 demo bgd-5 pad">.grid-6</div>
-      </div>
-    </div>
-    <script>
-      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-      ga('create','UA-29776404-27','auto');ga('send','pageview')
-      
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-  </body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Flex_e_ble - v1.3.4</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Flex_e_ble - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>A simple yet flexible class naming structure on top of a flexbox based grid.</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://flexeble.space/">Flex_e_ble - v1.3.4</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="core grid"><a href="#core grid">core grid</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="core grid-mixin"><a href="#core grid-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="core grid" data-name="build-row" data-type="mixin"><a href="#core grid-mixin-build-row">build-row</a></li><li class="sidebar__item sassdoc__item" data-group="core grid" data-name="build-grid" data-type="mixin"><a href="#core grid-mixin-build-grid">build-grid</a></li><li class="sidebar__item sassdoc__item" data-group="core grid" data-name="build-column-gutter" data-type="mixin"><a href="#core grid-mixin-build-column-gutter">build-column-gutter</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="helpers"><a href="#helpers">helpers</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="helpers-mixin"><a href="#helpers-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="helpers" data-name="disable-if-flexbox-pure" data-type="mixin"><a href="#helpers-mixin-disable-if-flexbox-pure">disable-if-flexbox-pure</a></li><li class="sidebar__item sassdoc__item" data-group="helpers" data-name="flexbox-enabled-class" data-type="mixin"><a href="#helpers-mixin-flexbox-enabled-class">flexbox-enabled-class</a></li><li class="sidebar__item sassdoc__item" data-group="helpers" data-name="flexbox-enabled-class" data-type="mixin"><a href="#helpers-mixin-flexbox-enabled-class">flexbox-enabled-class</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="variables"><a href="#variables">variables</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="variables-variable"><a href="#variables-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="variables" data-name="flexbox-enable-class" data-type="variable"><a href="#variables-variable-flexbox-enable-class">flexbox-enable-class</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="flexbox-compatibility-enabled" data-type="variable"><a href="#variables-variable-flexbox-compatibility-enabled">flexbox-compatibility-enabled</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="special-font-stack" data-type="variable"><a href="#variables-variable-special-font-stack">special-font-stack</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="default-text-align" data-type="variable"><a href="#variables-variable-default-text-align">default-text-align</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="global-name-space" data-type="variable"><a href="#variables-variable-global-name-space">global-name-space</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="container-name" data-type="variable"><a href="#variables-variable-container-name">container-name</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="breakpoints" data-type="variable"><a href="#variables-variable-breakpoints">breakpoints</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="break-dir" data-type="variable"><a href="#variables-variable-break-dir">break-dir</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="container-max-width" data-type="variable"><a href="#variables-variable-container-max-width">container-max-width</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="container-max-width" data-type="variable"><a href="#variables-variable-container-max-width">container-max-width</a></li><li class="sidebar__item sassdoc__item" data-group="variables" data-name="column-gutter-breakpoint" data-type="variable"><a href="#variables-variable-column-gutter-breakpoint">column-gutter-breakpoint</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="core grid"><div class="container">core grid</div></h1><section class="main__sub-section" id="core grid-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="core grid-mixin-build-row"><h3 class="item__heading"><a class="item__name" href="#mixin-build-row">build-row</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin build-row($display: block) { 
+
+  @include disable-if-flexbox-pure {
+    display: $display;
+  }
+
+  @include flexbox-enabled-class {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  position: relative;
+  letter-spacing: -0.31em; // Webkit: collapse white-space between units
+  text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+  box-sizing: border-box;
+ }" data-collapsed="@mixin build-row($display: block) { ... }"><code>@mixin build-row($display: block) { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L192-L207" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Defines a row with display flex - falls back to display block. Uses negetive letter spacing to remove white space from children</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$display</code></th><td data-label="desc"><p>fallback if flex is not compatible</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>block</code></td></tr></tbody></table></section><section class="main__item container item" id="core grid-mixin-build-grid"><h3 class="item__heading"><a class="item__name" href="#mixin-build-grid">build-grid</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin build-grid() { 
+  display: inline-block;
+  position: relative;
+
+  font-family: $special-font-stack;
+  letter-spacing: normal;
+  text-align: $default-text-align;
+  text-rendering: auto;
+  vertical-align: top;
+
+  box-sizing: border-box;
+ }" data-collapsed="@mixin build-grid() { ... }"><code>@mixin build-grid() { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L217-L228" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Defines a grid item and resets letter spacing between children</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-special-font-stack"><code>special-font-stack</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-default-text-align"><code>default-text-align</code></a></li></ul></section><section class="main__item container item" id="core grid-mixin-build-column-gutter"><h3 class="item__heading"><a class="item__name" href="#mixin-build-column-gutter">build-column-gutter</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin build-column-gutter() { 
+
+  padding-right: ($column-gutter / 2);
+  padding-left: ($column-gutter / 2);
+
+
+  @include media(&#39;#{$break-dir + $column-gutter-breakpoint}&#39;) {
+    padding-right: ($column-gutter);
+    padding-left: ($column-gutter);
+  }
+ }" data-collapsed="@mixin build-column-gutter() { ... }"><code>@mixin build-column-gutter() { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L237-L247" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Build a gutter and resets letter spacing between children</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-break-dir"><code>break-dir</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-column-gutter-breakpoint"><code>column-gutter-breakpoint</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="helpers"><div class="container">helpers</div></h1><section class="main__sub-section" id="helpers-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="helpers-mixin-disable-if-flexbox-pure"><h3 class="item__heading"><a class="item__name" href="#mixin-disable-if-flexbox-pure">disable-if-flexbox-pure</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin disable-if-flexbox-pure() { 
+  @if $flexbox-compatibility-enabled {
+    @content;
+  }
+ }" data-collapsed="@mixin disable-if-flexbox-pure() { ... }"><code>@mixin disable-if-flexbox-pure() { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L253-L257" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used to cleanup unwanted properties if flexbox fallback is not required</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive).</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-flexbox-compatibility-enabled"><code>flexbox-compatibility-enabled</code></a></li></ul></section><section class="main__item container item" id="helpers-mixin-flexbox-enabled-class"><h3 class="item__heading"><a class="item__name" href="#mixin-flexbox-enabled-class">flexbox-enabled-class</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin flexbox-enabled-class() { 
+  @if $flexbox-enable-class != &#39;&#39; {
+    .#{$flexbox-enable-class} &amp; {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+ }" data-collapsed="@mixin flexbox-enabled-class() { ... }"><code>@mixin flexbox-enabled-class() { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L263-L271" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive).</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-flexbox-enable-class"><code>flexbox-enable-class</code></a> &mdash; [true]</li></ul></section><section class="main__item container item" id="helpers-mixin-flexbox-enabled-class"><h3 class="item__heading"><a class="item__name" href="#mixin-flexbox-enabled-class">flexbox-enabled-class</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin flexbox-enabled-class() { 
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media(&#39;#{$break-dir + $container-max-width}&#39;) {
+    max-width: $container-max-width;
+  }
+ }" data-collapsed="@mixin flexbox-enabled-class() { ... }"><code>@mixin flexbox-enabled-class() { ... }</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L278-L285" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-container-max-width"><code>container-max-width</code></a> &mdash; [true]</li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variables-variable-break-dir"><code>break-dir</code></a> &mdash; [&#39;&gt;=&#39;]</li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="variables"><div class="container">variables</div></h1><section class="main__sub-section" id="variables-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="variables-variable-flexbox-enable-class"><h3 class="item__heading"><a class="item__name" href="#variable-flexbox-enable-class">flexbox-enable-class</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$flexbox-enable-class: &#39;flexbox&#39; !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L10-L10" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used as class flag to enable flexbox properties Must be added to html tag either manaully or feature detect eg modernizr</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#helpers-mixin-flexbox-enabled-class"><code>flexbox-enabled-class</code></a></li></ul></section><section class="main__item container item" id="variables-variable-flexbox-compatibility-enabled"><h3 class="item__heading"><a class="item__name" href="#variable-flexbox-compatibility-enabled">flexbox-compatibility-enabled</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$flexbox-compatibility-enabled: true !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L15-L15" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used to flag if flexbox compatibility</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#helpers-mixin-disable-if-flexbox-pure"><code>disable-if-flexbox-pure</code></a></li></ul></section><section class="main__item container item" id="variables-variable-special-font-stack"><h3 class="item__heading"><a class="item__name" href="#variable-special-font-stack">special-font-stack</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$special-font-stack: Helvetica, Arial, sans-serif !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L19-L19" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used to help define the whitespace between grid items</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#core grid-mixin-build-grid"><code>build-grid</code></a></li></ul></section><section class="main__item container item" id="variables-variable-default-text-align"><h3 class="item__heading"><a class="item__name" href="#variable-default-text-align">default-text-align</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$default-text-align: left !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L23-L23" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>The default grid item text-align reset</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#core grid-mixin-build-grid"><code>build-grid</code></a></li></ul></section><section class="main__item container item" id="variables-variable-global-name-space"><h3 class="item__heading"><a class="item__name" href="#variable-global-name-space">global-name-space</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$global-name-space: &#39;&#39; !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L36-L36" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Use to namespace the whole grid-system.</p></div></section><section class="main__item container item" id="variables-variable-container-name"><h3 class="item__heading"><a class="item__name" href="#variable-container-name">container-name</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$container-name: &#39;container&#39; !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L40-L40" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Wrapper name to create a centering div. Uses margin-left: auto; margin-right: auto</p></div></section><section class="main__item container item" id="variables-variable-breakpoints"><h3 class="item__heading"><a class="item__name" href="#variable-breakpoints">breakpoints</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$breakpoints: (
+  &#39;small&#39;: 480px,
+  &#39;medium&#39;: 768px,
+  &#39;large&#39;: 1024px,
+  &#39;xlarge&#39;: 1180px
+) !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L55-L60" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>The include-media breakpoints. Loop over these breakpoints and pass keys into grid classes</p></div></section><section class="main__item container item" id="variables-variable-break-dir"><h3 class="item__heading"><a class="item__name" href="#variable-break-dir">break-dir</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$break-dir: &#39;&gt;=&#39; !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L65-L65" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>The default include-media breakpoint direction</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>&#39;&lt;&#39;</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#core grid-mixin-build-column-gutter"><code>build-column-gutter</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#helpers-mixin-flexbox-enabled-class"><code>flexbox-enabled-class</code></a></li></ul></section><section class="main__item container item" id="variables-variable-container-max-width"><h3 class="item__heading"><a class="item__name" href="#variable-container-max-width">container-max-width</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$container-max-width: $last-breakpoint !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L73-L73" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Sets the max-width of the container class</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#helpers-mixin-flexbox-enabled-class"><code>flexbox-enabled-class</code></a></li></ul></section><section class="main__item container item item--deprecated" id="variables-variable-container-max-width"><h3 class="item__heading"><a class="item__name" href="#variable-container-max-width">container-max-width</a></h3><div class="item__deprecated"><strong>Deprecated!</strong><p>Deprecation for the more appropriate named $container-max-width</p></div><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$container-max-width: $container-max-width !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L78-L78" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Sets the max-width of the container class</p></div></section><section class="main__item container item" id="variables-variable-column-gutter-breakpoint"><h3 class="item__heading"><a class="item__name" href="#variable-column-gutter-breakpoint">column-gutter-breakpoint</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$column-gutter-breakpoint: $smallest-size !default;</code></pre><a href="https://github.com/jackmcpickle/flex_e_ble/tree/master/dist/_flex_e_ble.scss#L82-L82" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Sets the breakpoint of the gutters of when they half in size</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#core grid-mixin-build-column-gutter"><code>build-column-gutter</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://flexeble.space/">Flex_e_ble</a><!-- Version --> <span class="project-info__version">- v1.3.4</span><!-- License --> <span class="project-info__license">, under MIT</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>

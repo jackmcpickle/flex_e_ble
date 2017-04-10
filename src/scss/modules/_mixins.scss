@@ -1,3 +1,11 @@
+/// Defines a row with display flex - falls back to display block.
+/// Uses negetive letter spacing to remove white space from children
+/// @name build-row
+/// @requires disable-if-flexbox-pure
+/// @requires flexbox-enabled-class
+/// @param {string} $display [block] - fallback if flex is not compatible
+/// @group Core Grid
+
 @mixin build-row($display: block) {
 
   @include disable-if-flexbox-pure {
@@ -15,6 +23,14 @@
   box-sizing: border-box;
 }
 
+
+/// Defines a grid item
+/// and resets letter spacing between children
+/// @name build-grid
+/// @require special-font-stack [Helvetica, Arial, sans-serif]
+/// @require default-text-align [left]
+/// @group Core Grid
+
 @mixin build-grid {
   display: inline-block;
   position: relative;
@@ -28,6 +44,13 @@
   box-sizing: border-box;
 }
 
+/// Build a gutter
+/// and resets letter spacing between children
+/// @name build-column-gutter
+/// @require column-gutter-breakpoint [smallest size of breakpoints ]
+/// @require break-dir ['>=']
+/// @group Core Grid
+
 @mixin build-column-gutter {
 
   padding-right: ($column-gutter / 2);
@@ -40,13 +63,20 @@
   }
 }
 
-
+/// Used to cleanup unwanted properties if flexbox fallback is not required
+/// @name disable-if-flexbox-pure
+/// @require flexbox-compatibility-enabled [true]
+/// @group Helpers
 @mixin disable-if-flexbox-pure {
   @if $flexbox-compatibility-enabled {
     @content;
   }
 }
 
+///
+/// @name flexbox-enabled-class
+/// @require $flexbox-enable-class [true]
+/// @group Helpers
 @mixin flexbox-enabled-class {
   @if $flexbox-enable-class != '' {
     .#{$flexbox-enable-class} & {
@@ -57,11 +87,16 @@
   }
 }
 
+///
+/// @name flexbox-enabled-class
+/// @require $container-max-width [true]
+/// @require $break-dir ['>=']
+/// @group Helpers
 @mixin build-container {
   margin-right: auto;
   margin-left: auto;
 
-  @include media('#{$break-dir + $container-breakpoint}') {
-    max-width: $container-breakpoint;
+  @include media('#{$break-dir + $container-max-width}') {
+    max-width: $container-max-width;
   }
 }

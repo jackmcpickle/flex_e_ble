@@ -4,7 +4,7 @@
   $special-font-stack: Arial !global;
   $break-dir: '>=' !global;
   $column-gutter-breakpoint: 320px !global;
-  $container-breakpoint: 1000px !global;
+  $container-max-width: 1000px !global;
 }
 
 @include test-module('Grids') {
