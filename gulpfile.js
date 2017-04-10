@@ -51,13 +51,6 @@ gulp.task( 'sass', () =>
   .pipe( gulp.dest( _paths.build_css ))
 );
 
-gulp.task( 'minify', () =>
-  gulp.src( _paths.built_css )
-  .pipe( cssnano({ safe: true }) )
-  .pipe( rename({ suffix: '.min' }) )
-  .pipe( gulp.dest( _paths.build_docs ))
-);
-
 gulp.task( 'merge', () =>
   gulp.src( _paths.build_scss )
     .pipe( concat( _paths.dist_file ) )
