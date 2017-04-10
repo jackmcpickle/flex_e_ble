@@ -1,7 +1,6 @@
 const fs           = require('fs');
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
-const sourcemaps   = require('gulp-sourcemaps');
 const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const rename       = require('gulp-rename');
@@ -49,7 +48,6 @@ gulp.task( 'sass', () =>
   .pipe( sass({ includePaths: 'node_modules', outputStyle: 'expanded' })
   .on('error', sass.logError))
   .pipe( postcss( _processors ) )
-  .pipe( sourcemaps.write() )
   .pipe( gulp.dest( _paths.build_css ))
 );
 
@@ -83,8 +81,8 @@ gulp.task( 'watch', (cb) => {
   cb();
 });
 
-gulp.task( 'build', () => runSequence(['clean'], ['jade', 'sass'], ['merge']) );
+gulp.task( 'build', (cb) => runSequence('clean', ['jade', 'sass', 'merge'], cb) );
 
 gulp.task( 'lint', ['sassLint']);
 
-gulp.task( 'default', () => runSequence( 'build', 'watch') );
+gulp.task( 'default', (cb) => runSequence( 'build', 'watch', cb) );
