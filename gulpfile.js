@@ -1,9 +1,9 @@
+const fs           = require('fs');
 const gulp         = require('gulp');
 const sass         = require('gulp-sass');
 const sourcemaps   = require('gulp-sourcemaps');
 const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const cssnano      = require('gulp-cssnano');
 const rename       = require('gulp-rename');
 const runSequence  = require('run-sequence');
 const concat       = require('gulp-concat');
@@ -11,7 +11,7 @@ const clean        = require('gulp-clean');
 const watch        = require('gulp-watch');
 const pug          = require('gulp-pug');
 const sassLint     = require('gulp-sass-lint');
-
+const npmVersion   = JSON.parse(fs.readFileSync('./package.json')).version;
 const _browsers = [ '> 5%', 'last 3 versions' ];
 
 const _processors = [
@@ -19,7 +19,8 @@ const _processors = [
 ];
 
 const _jadeLocals = {
-  pageTitle: 'flex _ e _ ble'
+  pageTitle: 'flex _ e _ ble',
+  version: npmVersion
 };
 
 const _paths = {
@@ -42,6 +43,7 @@ const _paths = {
   built_css  : ['./dist/css/*.css', '!./dist/css/*.min.css']
 };
 
+
 gulp.task( 'sass', () =>
   gulp.src( _paths.scss )
   .pipe( sass({ includePaths: 'node_modules', outputStyle: 'expanded' })
@@ -63,7 +65,6 @@ gulp.task( 'jade', () =>
   .pipe( gulp.dest( _paths.build_docs ) )
 );
 
-
 gulp.task( 'sassLint', ['sass'], () =>
   gulp.src( _paths.scss )
   .pipe( sassLint() )
@@ -76,20 +77,14 @@ gulp.task( 'clean', () =>
   .pipe( clean() )
 );
 
-
 gulp.task( 'watch', (cb) => {
   watch( _paths.scss, () => gulp.start( 'sassLint' ) );
   watch( _paths.jade, () => gulp.start('jade') );
   cb();
 });
 
-
-gulp.task( 'build', ['jade', 'sass', 'merge']);
-
-gulp.task( 'watch', () => runSequence( 'build', 'watch') );
+gulp.task( 'build', () => runSequence(['clean'], ['jade', 'sass'], ['merge']) );
 
 gulp.task( 'lint', ['sassLint']);
 
-gulp.task( 'default', () =>
-  runSequence(['clean'], ['build'], ['merge'], ['minify'])
-);
+gulp.task( 'default', () => runSequence( 'build', 'watch') );

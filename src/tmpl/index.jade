@@ -2,8 +2,8 @@ doctype html
 html(lang="en" class="flexbox")
   head
     title= pageTitle
-    link(rel="stylesheet", href="flex_e_ble.min.css")
-    link(rel="stylesheet", href="docs.min.css")
+    link(rel="stylesheet", href=`https://unpkg.com/flex_e_ble@${version}/dist/css/flex_e_ble.css`)
+    link(rel="stylesheet", href=`https://unpkg.com/flex_e_ble@${version}/dist/css/docs.css`)
     script.
       window.toggleFlexbox = function(e) {
         e.preventDefault();
