@@ -12,7 +12,6 @@
   position: relative;
   letter-spacing: -0.31em; // Webkit: collapse white-space between units
   text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
-  box-sizing: border-box;
 }
 
 @mixin build-grid {
@@ -24,8 +23,6 @@
   text-align: $default-text-align;
   text-rendering: auto;
   vertical-align: top;
-
-  box-sizing: border-box;
 }
 
 @mixin build-column-gutter {

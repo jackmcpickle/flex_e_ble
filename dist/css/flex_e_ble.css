@@ -18,7 +18,6 @@ html {
   position: relative;
   letter-spacing: -0.31em;
   text-rendering: optimizespeed;
-  box-sizing: border-box;
   width: 100%;
 }
 
@@ -56,7 +55,6 @@ html {
   text-align: left;
   text-rendering: auto;
   vertical-align: top;
-  box-sizing: border-box;
 }
 
 [class*='grid-'].row {
@@ -64,7 +62,6 @@ html {
   position: relative;
   letter-spacing: -0.31em;
   text-rendering: optimizespeed;
-  box-sizing: border-box;
 }
 
 .flexbox [class*='grid-'].row {
@@ -671,7 +668,6 @@ html {
 
 .flexbox .grid-middle {
   -ms-flex-item-align: center !important;
-      -ms-grid-row-align: center !important;
       align-self: center !important;
 }
 
@@ -687,7 +683,6 @@ html {
 
 .flexbox .grid-stretch {
   -ms-flex-item-align: stretch !important;
-      -ms-grid-row-align: stretch !important;
       align-self: stretch !important;
 }
 
