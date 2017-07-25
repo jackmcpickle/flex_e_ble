@@ -3,7 +3,6 @@ const gulp         = require('gulp');
 const sass         = require('gulp-sass');
 const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
-const rename       = require('gulp-rename');
 const runSequence  = require('run-sequence');
 const concat       = require('gulp-concat');
 const clean        = require('gulp-clean');
