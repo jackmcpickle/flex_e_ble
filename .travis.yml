@@ -8,6 +8,7 @@ before_script:
   - greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 node_js:
+  - '9'
   - '8'
   - '7'
   - '6'
