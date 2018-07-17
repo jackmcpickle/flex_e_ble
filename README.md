@@ -32,24 +32,24 @@ Flex_e_ble grid system is based on [purecss.io](http://purecss.io/) grid work.
 [Read why](http://purecss.io/grids/#using-grids-with-custom-fonts) they using negative letter-spacing to remove the white-space from the inline-block fallback display.
 
 Row css looks like
-```sass
-.row
-  display: flex
-  flex-flow: row wrap
-  position: relative
-  letter-spacing: -0.31em
-  text-rendering: optimizespeed
-  box-sizing: border-box
+```scss
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+  letter-spacing: -0.31em;
+  text-rendering: optimizespeed;
+}
 
 ```
 
 Grid css looks like
-```sass
-[class*=grid-]
-  display: inline-block
-  letter-spacing: normal
-  text-rendering: auto
-  box-sizing: border-box
+```scss
+[class*=grid-] {
+  display: inline-block;
+  letter-spacing: normal;
+  text-rendering: auto;
+}
 ```
 
 ## Usage
@@ -58,11 +58,11 @@ A basic grid class structure is a follows ```.$global-name-space-$grid-name-$bre
 
 
 Make a simple 5 column grid with 30px gutters either side
-```sass
-@import "flex_e_ble"
-$total-columns: 5
-$column-gutter: 30px
-$auto-column-gutters: true
+```scss
+@import "flex_e_ble";
+$total-columns: 5;
+$column-gutter: 30px;
+$auto-column-gutters: true;
 ```
 
 Will output the grid as follows
@@ -79,9 +79,9 @@ Will output the grid as follows
 
 
 Want a Bootstrap class structure?
-```sass
-@import "flex_e_ble"
-$grid-framework: 'bootstrap'
+```scss
+@import "flex_e_ble"''
+$grid-framework: 'bootstrap''
 ```
 
 Outputs a grid using the bootstrap naming convention
@@ -94,9 +94,9 @@ Outputs a grid using the bootstrap naming convention
 ```
 
 Want a Foundation class structure?
-```sass
-@import "flex_e_ble"
-$grid-framework: 'foundation'
+```scss
+@import "flex_e_ble";
+$grid-framework: 'foundation';
 ```
 
 Will output our grid as follows
