@@ -5,8 +5,6 @@ const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const runSequence  = require('run-sequence');
 const concat       = require('gulp-concat');
-const clean        = require('gulp-clean');
-const watch        = require('gulp-watch');
 const pug          = require('gulp-pug');
 const sassLint     = require('gulp-sass-lint');
 const npmVersion   = JSON.parse(fs.readFileSync('./package.json')).version;
@@ -69,14 +67,11 @@ gulp.task( 'sassLint', ['sass'], () =>
   .pipe( sassLint.failOnError() )
 );
 
-gulp.task( 'clean', () =>
-  gulp.src( _paths.build, { read: false } )
-  .pipe( clean() )
-);
+gulp.task('clean', require('del').bind(null, [_paths.build]));
 
 gulp.task( 'watch', (cb) => {
-  watch( _paths.scss, () => gulp.start( 'sassLint' ) );
-  watch( _paths.jade, () => gulp.start('jade') );
+  gulp.watch( _paths.scss, ['sassLint'] );
+  gulp.watch( _paths.jade, ['jade'] );
   cb();
 });
 
