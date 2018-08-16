@@ -9,7 +9,7 @@
     "start": "gulp",
     "build": "gulp build",
     "lint": "gulp lint",
-    "test": "npm run lint && mocha && bundle exec true-cli test/all.scss || true",
+    "test": "npm run lint && mocha",
     "prepublish": "npm test"
   },
   "keywords": [
