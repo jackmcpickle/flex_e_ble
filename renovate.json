@@ -1,18 +1,9 @@
 {
   "extends": [
-    ":separateMajorReleases",
-    ":combinePatchMinorReleases",
-    ":ignoreUnstable",
-    ":prImmediately",
-    ":renovatePrefix",
-    ":semanticPrefixFixDepsChoreOthers",
-    ":updateNotScheduled",
-    ":ignoreModulesAndTests",
-    ":autodetectPinVersions",
-    ":prHourlyLimit2",
-    ":prConcurrentLimit20",
-    "group:monorepos",
-    "helpers:disableTypesNodeMajor",
-    "helpers:oddIsUnstablePackages"
-  ]
+    "config:base"
+  ],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }

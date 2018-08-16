@@ -2,7 +2,10 @@
 
 [![NPM](https://nodei.co/npm/flex_e_ble.png)](https://npmjs.org/package/flex_e_ble)
 
-[![Build Status](https://travis-ci.org/jackmcpickle/flex_e_ble.svg?branch=master)](https://travis-ci.org/jackmcpickle/flex_e_ble) [![Greenkeeper badge](https://badges.greenkeeper.io/jackmcpickle/flex_e_ble.svg)](https://greenkeeper.io/) [![Dev Dependencies](https://david-dm.org/jackmcpickle/flex_e_ble/dev-status.svg)](https://david-dm.org/jackmcpickle/flex_e_ble?type=dev&view=list) ![Total Downloads](https://img.shields.io/npm/dt/flex_e_ble.svg)
+[![Build Status](https://travis-ci.org/jackmcpickle/flex_e_ble.svg?branch=master)](https://travis-ci.org/jackmcpickle/flex_e_ble) [![Dev Dependencies](https://david-dm.org/jackmcpickle/flex_e_ble/dev-status.svg)](https://david-dm.org/jackmcpickle/flex_e_ble?type=dev&view=list) ![Total Downloads](https://img.shields.io/npm/dt/flex_e_ble.svg) [![renovate-app badge][renovate-badge]][renovate-app]
+
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
 
 A simple yet *flexible* class naming structure on top of a `flex` based grid.
 
