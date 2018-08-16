@@ -8,7 +8,7 @@ const concat       = require('gulp-concat');
 const pug          = require('gulp-pug');
 const sassLint     = require('gulp-sass-lint');
 const npmVersion   = JSON.parse(fs.readFileSync('./package.json')).version;
-const _browsers = [ '> 5%', 'last 3 versions' ];
+const _browsers = [">0.25% in AU", "not ie 9", "not op_mini all"];
 
 const _processors = [
   autoprefixer({ browsers: _browsers })
