@@ -39,7 +39,7 @@
     "mocha": "5.2.0",
     "run-sequence": "2.2.1",
     "sass-true": "4.0.0",
-    "sassdoc": "2.5.0"
+    "sassdoc": "2.5.1"
   },
   "dependencies": {
     "include-media": "^1.4.9"
