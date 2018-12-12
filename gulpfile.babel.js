@@ -1,22 +1,15 @@
-const fs           = require('fs');
-const gulp         = require('gulp');
-const sass         = require('gulp-sass');
-const postcss      = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const runSequence  = require('run-sequence');
-const concat       = require('gulp-concat');
-const pug          = require('gulp-pug');
-const sassLint     = require('gulp-sass-lint');
-const npmVersion   = JSON.parse(fs.readFileSync('./package.json')).version;
-const _browsers = [">0.25% in AU", "not ie 9", "not op_mini all"];
+import gulp         from 'gulp';
+import sass         from 'gulp-sass';
+import concat       from 'gulp-concat';
+import pug          from 'gulp-pug';
+import sassLint     from 'gulp-sass-lint';
+import del from 'del';
 
-const _processors = [
-  autoprefixer({ browsers: _browsers })
-];
+import { version } from './package.json';
 
 const _jadeLocals = {
   pageTitle: 'flex _ e _ ble',
-  version: npmVersion
+  version
 };
 
 const _paths = {
@@ -40,43 +33,39 @@ const _paths = {
 };
 
 
-gulp.task( 'sass', () =>
+export const styles = () =>
   gulp.src( _paths.scss )
   .pipe( sass({ includePaths: 'node_modules', outputStyle: 'expanded' })
   .on('error', sass.logError))
-  .pipe( postcss( _processors ) )
   .pipe( gulp.dest( _paths.build_css ))
-);
 
-gulp.task( 'merge', () =>
+
+export const merge = () =>
   gulp.src( _paths.build_scss )
     .pipe( concat( _paths.dist_file ) )
     .pipe( gulp.dest( _paths.build ) )
-);
 
-gulp.task( 'jade', () =>
+export const jade = () =>
   gulp.src( _paths.jade )
   .pipe( pug({ locals: _jadeLocals, pretty: true }) )
   .pipe( gulp.dest( _paths.build_docs ) )
-);
 
-gulp.task( 'sassLint', ['sass'], () =>
+export const lintStyles = () =>
   gulp.src( _paths.scss )
   .pipe( sassLint() )
   .pipe( sassLint.format() )
   .pipe( sassLint.failOnError() )
-);
 
-gulp.task('clean', require('del').bind(null, [_paths.build]));
 
-gulp.task( 'watch', (cb) => {
-  gulp.watch( _paths.scss, ['sassLint'] );
-  gulp.watch( _paths.jade, ['jade'] );
-  cb();
-});
+export const clean = () => del([_paths.build]);
+export const buildStyles = gulp.parallel(lintStyles, styles);
 
-gulp.task( 'build', (cb) => runSequence('clean', ['jade', 'sass', 'merge'], cb) );
+export function watch() {
+  gulp.watch( _paths.scss, buildStyles );
+  gulp.watch( _paths.jade, jade );
+}
 
-gulp.task( 'lint', ['sassLint']);
 
-gulp.task( 'default', (cb) => runSequence( 'build', 'watch', cb) );
+export const build = gulp.series(clean, gulp.parallel(jade, buildStyles, merge));
+
+export default gulp.series(build, watch);
