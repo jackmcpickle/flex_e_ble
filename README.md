@@ -25,8 +25,7 @@ See all [customisable variables](https://github.com/jackmcpickle/flex_e_ble/blob
 
 ## Install
 
-* `npm install flex_e_ble`
-* `bower install flex_e_ble`
+* `npm install flex_e_ble` or copy `dist/_flex_e_ble.scss`
 
 ## How it works
 
@@ -62,7 +61,7 @@ A basic grid class structure is a follows ```.$global-name-space-$grid-name-$bre
 
 Make a simple 5 column grid with 30px gutters either side
 ```scss
-@import "flex_e_ble";
+@import 'flex_e_ble';
 $total-columns: 5;
 $column-gutter: 30px;
 $auto-column-gutters: true;
@@ -83,8 +82,20 @@ Will output the grid as follows
 
 Want a Bootstrap class structure?
 ```scss
-@import "flex_e_ble"''
-$grid-framework: 'bootstrap''
+@import 'flex_e_ble'
+// Bootstrap like
+$grid-name: 'col-';
+$base-grid-name: 'xs';
+$column-gutter: 15px;
+$auto-column-gutters: true;
+$right-name: 'push';
+$left-name: 'pull';
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1180px
+);
 ```
 
 Outputs a grid using the bootstrap naming convention
@@ -98,8 +109,17 @@ Outputs a grid using the bootstrap naming convention
 
 Want a Foundation class structure?
 ```scss
-@import "flex_e_ble";
-$grid-framework: 'foundation';
+@import 'flex_e_ble';
+// foundation like;
+$column-gutter: 0.9375rem;
+$auto-column-gutters: false;
+$independant-grid-name: 'column';
+$grid-name: '';
+$base-grid-name: 'small';
+$breakpoints: (
+  'medium': 768px,
+  'large': 1024px
+);
 ```
 
 Will output our grid as follows
