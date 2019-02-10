@@ -26,17 +26,11 @@
   "author": "Jack McNicol <jack@mcpickle.com.au>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.3.1",
-    "@babel/register": "7.0.0",
-    "del": "3.0.0",
-    "gulp": "4.0.0",
-    "gulp-concat": "2.6.1",
-    "gulp-pug": "4.0.1",
-    "gulp-rename": "1.4.0",
-    "gulp-sass": "4.0.2",
-    "gulp-sass-lint": "1.4.0",
+    "concat": "^1.0.3",
     "mocha": "5.2.0",
+    "node-sass": "^4.11.0",
+    "pug": "^2.0.3",
+    "sass-lint": "^1.12.1",
     "sass-true": "4.0.0"
   },
   "dependencies": {
