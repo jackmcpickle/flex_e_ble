@@ -6,10 +6,10 @@
   "main": "dist/_flex_e_ble.scss",
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "lint": "gulp lintStyles",
+    "start": "node-sass --include-path node_modules --output-style expanded ./src/scss -o ./dist/css",
+    "lint": "sass-lint './src/**/*.scss' -v -q",
     "test": "npm run lint && mocha",
+    "build": "concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
     "prepublish": "npm test"
   },
   "keywords": [
