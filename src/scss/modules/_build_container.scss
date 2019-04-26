@@ -1,7 +1,3 @@
-html {
-  font-family: $special-font-stack;
-}
-
 .#{$global-name-space + $container-name} {
   @include build-container;
 }

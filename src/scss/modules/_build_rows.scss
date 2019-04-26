@@ -1,19 +1,5 @@
 .#{$global-name-space + $row-name} {
   @include build-row;
-
-  @include disable-if-flexbox-pure {
-    width: 100%;
-  }
-
-  @include flexbox-enabled-class {
-    // clearfix breaks flexgrid row
-    &.clearfix {
-      &:before,
-      &:after {
-        content: initial;
-      }
-    }
-  }
 }
 
 .#{$global-name-space + $grid-padding-name} {
