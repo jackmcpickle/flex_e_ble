@@ -2,17 +2,8 @@
 <html class="flexbox" lang="en">
   <head>
     <title>flex _ e _ ble</title>
-    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@1.4.0/dist/css/flex_e_ble.css">
-    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@1.4.0/dist/css/docs.css">
-    <script>
-      window.toggleFlexbox = function(e) {
-        e.preventDefault();
-        var html = document.getElementsByTagName('html')[0];
-        var hasFlexbox = html.className === 'flexbox';
-        html.className = hasFlexbox ? '' : 'flexbox';
-        e.target.textContent = hasFlexbox ? 'Toggle Compatibility - flexbox off' : 'Toggle Compatibility - flexbox on';
-      }
-    </script>
+    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@2/dist/css/flex_e_ble.css">
+    <link rel="stylesheet" href="https://unpkg.com/flex_e_ble@2/dist/css/docs.css">
   </head>
   <body><a class="github-corner" href="https://github.com/jackmcpickle/flex_e_ble/">
       <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
@@ -23,8 +14,8 @@
       </a>
     <div class="container">
       <h1 class="heading-1">flex_e_ble examples</h1>
-      <h2 class="heading-2">Basic -<em> (IE8,9) Compatibility</em></h2>
-      <button class="button" onclick="toggleFlexbox(event)">Toggle Compatibility - flexbox on</button>
+      <p>flex_e_ble 2.0 remove support for non-flex compatible browsers</p>
+    <h2 class="heading-2">Simple</h2>
       <p class="example">Centered aligned grid with</p>
       <div class="row row-center demo-row">
         <div class="grid-base pad demo bgd-1">.row-center > .grid-base</div>
@@ -51,7 +42,7 @@
         <div class="grid-3 demo bgd-1 pad">.grid-3</div>
         <div class="grid-6 demo bgd-1 pad">.grid-6</div>
       </div>
-      <h2 class="heading-2">Advanced -<em> (IE10,11, Chrome, Safari, Firefox) Compatibility</em></h2>
+      <h2 class="heading-2">Advanced</h2>
       <p class="example">Flex grid with space-around</p>
       <div class="row row-around demo-row">
         <div class="grid-4 demo bgd-3 pad">.row-around > .grid-4</div>

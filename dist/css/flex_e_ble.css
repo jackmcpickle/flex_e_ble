@@ -1,7 +1,3 @@
-html {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -13,18 +9,9 @@ html {
 }
 
 .row {
-  display: block;
-  position: relative;
-  letter-spacing: -0.31em;
-  text-rendering: optimizespeed;
-  width: 100%;
-}
-.flexbox .row {
   display: flex;
   flex-flow: row wrap;
-}
-.flexbox .row.clearfix:before, .flexbox .row.clearfix:after {
-  content: initial;
+  position: relative;
 }
 
 .pad {
@@ -41,21 +28,12 @@ html {
 [class*=grid-] {
   display: inline-block;
   position: relative;
-  font-family: Helvetica, Arial, sans-serif;
-  letter-spacing: normal;
   text-align: left;
-  text-rendering: auto;
   vertical-align: top;
 }
 [class*=grid-].row {
   display: inline-block;
   position: relative;
-  letter-spacing: -0.31em;
-  text-rendering: optimizespeed;
-}
-.flexbox [class*=grid-].row {
-  display: flex;
-  flex-flow: row wrap;
 }
 
 .grid-1 {
@@ -733,28 +711,22 @@ html {
     left: auto;
   }
 }
-.grid-bottom {
-  vertical-align: bottom !important;
-}
-.grid-middle {
-  vertical-align: middle !important;
-}
-.flexbox .grid-grow {
+.grid-grow {
   flex-grow: 1 !important;
 }
-.flexbox .grid-top {
+.grid-top {
   align-self: flex-start !important;
 }
-.flexbox .grid-middle {
+.grid-middle {
   align-self: center !important;
 }
-.flexbox .grid-bottom {
+.grid-bottom {
   align-self: flex-end !important;
 }
-.flexbox .grid-base {
+.grid-base {
   align-self: baseline !important;
 }
-.flexbox .grid-stretch {
+.grid-stretch {
   align-self: stretch !important;
 }
 
@@ -765,45 +737,33 @@ html {
   direction: rtl !important;
 }
 .row-right {
-  text-align: right !important;
-}
-.flexbox .row-right {
   justify-content: flex-end !important;
-  text-align: inherit !important;
 }
 .row-center {
-  text-align: center !important;
-}
-.flexbox .row-center {
   justify-content: center !important;
-  text-align: inherit !important;
 }
 .row-left {
-  text-align: left !important;
-}
-.flexbox .row-left {
   justify-content: flex-start !important;
-  text-align: inherit !important;
 }
-.flexbox .row-top {
+.row-top {
   align-items: flex-start !important;
 }
-.flexbox .row-middle {
+.row-middle {
   align-items: center !important;
 }
-.flexbox .row-bottom {
+.row-bottom {
   align-items: flex-end !important;
 }
-.flexbox .row-base {
+.row-base {
   align-items: baseline !important;
 }
-.flexbox .row-stretch {
+.row-stretch {
   align-items: stretch !important;
 }
-.flexbox .row-between {
+.row-between {
   justify-content: space-between !important;
 }
-.flexbox .row-around {
+.row-around {
   justify-content: space-around !important;
 }
 
