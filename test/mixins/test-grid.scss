@@ -20,11 +20,7 @@
       @include expect {
         display: inline-block;
         position: relative;
-
-        font-family: Arial;
-        letter-spacing: normal;
         text-align: left;
-        text-rendering: auto;
         vertical-align: top;
       }
     }

@@ -1,92 +1,29 @@
 @import '../../src/scss/modules/vars';
 
-@mixin setup-compatible-flexbox-row-before() {
-  $flexbox-compatibility-enabled: true !global;
-  $flexbox-enable-class: '' !global;
-}
-
-@mixin setup-flexbox-row-before() {
-  $flexbox-compatibility-enabled: false !global;
-  $flexbox-enable-class: '' !global;
-}
-
-@mixin setup-row-before() {
-  $flexbox-compatibility-enabled: true !global;
-  $flexbox-enable-class: 'flexbox' !global;
-}
-
 @include test-module('Rows') {
 
   @include test('Build flexbox row [mixin]') {
     @include assert('Should output css to build flex row') {
       @include output {
-        @include setup-flexbox-row-before;
         @include build-row;
       }
       @include expect {
         display: flex;
         flex-flow: row wrap;
         position: relative;
-        letter-spacing: -0.31em;
-        text-rendering: optimizespeed;
-      }
-    }
-  }
-
-  @include test('Build compatible flexbox row [mixin]') {
-    @include assert('Should output css to build compatible flex row') {
-      @include output {
-        @include setup-compatible-flexbox-row-before;
-        @include build-row;
-      }
-      @include expect {
-        display: block;
-        display: flex;
-        flex-flow: row wrap;
-        position: relative;
-        letter-spacing: -0.31em;
-        text-rendering: optimizespeed;
-      }
-    }
-  }
-
-  @include test('Build row [mixin]') {
-    @include assert('Should output css to build non flex row') {
-      @include output {
-        @include setup-row-before;
-        @include build-row;
-      }
-      @include expect {
-        display: block;
-        position: relative;
-        letter-spacing: -0.31em;
-        text-rendering: optimizespeed;
-
-        .flexbox & {
-          display: flex;
-          flex-flow: row wrap;
-        }
       }
     }
   }
 
   // Testing Mixins
   @include test('Build row with $display passed [mixin]') {
-    @include assert('Should output css to build non flex row with inline-block') {
+    @include assert('Should output css to build flex row with inline-block') {
       @include output {
-        @include setup-row-before;
         @include build-row($display: inline-block);
       }
       @include expect {
         display: inline-block;
         position: relative;
-        letter-spacing: -0.31em;
-        text-rendering: optimizespeed;
-
-        .flexbox & {
-          display: flex;
-          flex-flow: row wrap;
-        }
       }
     }
   }
