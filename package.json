@@ -6,10 +6,10 @@
   "main": "dist/_flex_e_ble.scss",
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
-    "start": "node-sass --include-path node_modules --output-style expanded ./src/scss -o ./dist/css",
+    "start": "sass --load-path=node_modules ./src/scss:./dist/css --source-map",
     "lint": "sass-lint './src/**/*.scss' -v -q",
-    "test": "npm run lint && mocha",
-    "build": "concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
+    "test": "npm run start && npm run lint && mocha",
+    "build": "npm run start && concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
     "prepublish": "npm test"
   },
   "keywords": [
@@ -30,6 +30,7 @@
     "mocha": "6.1.4",
     "node-sass": "4.11.0",
     "pug": "2.0.3",
+    "sass": "1.19.0",
     "sass-lint": "1.13.0",
     "sass-true": "4.0.0"
   },
