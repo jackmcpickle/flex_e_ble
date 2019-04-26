@@ -1,3 +1,5 @@
+@import '../../src/scss/modules/vars';
+
 @mixin setup-foundation-before {
   $global-name-space: '' !global;
   $grid-name: ''  !global;

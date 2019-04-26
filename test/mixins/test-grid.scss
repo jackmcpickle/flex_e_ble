@@ -1,3 +1,5 @@
+@import '../../src/scss/modules/vars';
+
 @mixin grid-setup-before() {
   $default-text-align: left !global;
   $column-gutter: 15px !global;

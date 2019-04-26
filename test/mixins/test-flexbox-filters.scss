@@ -1,3 +1,5 @@
+@import '../../src/scss/modules/vars';
+
 @mixin flexbox-compatibility-disable-before() {
   $flexbox-compatibility-enabled: false !global;
 }
