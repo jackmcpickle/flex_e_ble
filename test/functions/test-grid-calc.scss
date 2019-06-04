@@ -1,14 +1,11 @@
 @import '../../src/scss/modules/vars';
 
-@mixin columns-before() {
-  $total-columns: 12 !global;
-  $extra-columns: 5 !global;
-}
+// globals
+$extra-columns: 4;
 
 @include test-module('Grid Calculations') {
 
   @include test('Grid size [function]') {
-    @include columns-before;
     $size: 3;
 
     $test: grid-size($size);
@@ -20,10 +17,9 @@
   }
 
   @include test('Special grid size [function]') {
-    @include columns-before;
     $size: 2;
     $test: grid-size-special($size);
-    $expect: 40%;
+    $expect: 50%;
 
     @include assert-equal($test, $expect,
       'Must return a percentage of the special-total-columns based on the size');

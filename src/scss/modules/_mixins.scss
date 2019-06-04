@@ -1,9 +1,9 @@
 @mixin build-row($display: flex) {
   display: $display;
+  position: relative;
   @if ($display == 'flex') {
     flex-flow: row wrap;
   }
-  position: relative;
 }
 
 @mixin build-grid {

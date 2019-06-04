@@ -9,8 +9,8 @@
       }
       @include expect {
         display: flex;
-        flex-flow: row wrap;
         position: relative;
+        flex-flow: row wrap;
       }
     }
   }

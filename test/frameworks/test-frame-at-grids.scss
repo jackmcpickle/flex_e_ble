@@ -1,19 +1,17 @@
 @import '../../src/scss/modules/vars';
 
-@mixin setup-atGrid-before {
-  $global-name-space: 'l-' !global;
-  $grid-name: 'grid'  !global;
-  $base-grid-name: '' !global;
-  $right-name: 'push' !global;
-  $left-name: 'pull' !global;
-  $independant-grid-name: '' !global;
-  $column-index-always-before-size: true !global;
-}
+// globals
+$global-name-space: 'l-';
+$grid-name: 'grid' ;
+$base-grid-name: '';
+$right-name: 'push';
+$left-name: 'pull';
+$independant-grid-name: '';
+$column-index-always-before-size: true;
 
 @include test-module('Frameworks') {
 
   @include test('@grid base class names [function]') {
-    @include setup-atGrid-before;
     $size: 2;
 
     $test: grid-name($size);
@@ -25,7 +23,6 @@
   }
 
   @include test('@grid class names [function]') {
-    @include setup-atGrid-before;
     $size: 4;
     $size-name: '\@md';
 
@@ -38,7 +35,6 @@
   }
 
   @include test('@grid grid name [function]') {
-    @include setup-atGrid-before;
 
     $test: master-grid-name();
     $expect: 'l-grid';
@@ -49,7 +45,6 @@
   }
 
   @include test('@grid right name [function]') {
-    @include setup-atGrid-before;
     $increment: 3;
 
     $test: offset-right-name($increment);
@@ -61,7 +56,6 @@
   }
 
   @include test('@grid left name [function]') {
-    @include setup-atGrid-before;
     $increment: 6;
     $size-name: '\@lg';
 

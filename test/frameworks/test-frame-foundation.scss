@@ -1,19 +1,17 @@
 @import '../../src/scss/modules/vars';
 
-@mixin setup-foundation-before {
-  $global-name-space: '' !global;
-  $grid-name: ''  !global;
-  $base-grid-name: 'small' !global;
-  $right-name: 'push' !global;
-  $left-name: 'pull' !global;
-  $independant-grid-name: 'columns' !global;
-  $column-index-always-before-size: false !global;
-}
+// globals
+$global-name-space: '';
+$grid-name: '';
+$base-grid-name: 'small';
+$right-name: 'push';
+$left-name: 'pull';
+$independant-grid-name: 'columns';
+$column-index-always-before-size: false;
 
 @include test-module('Frameworks') {
 
   @include test('Foundation base class names [function]') {
-    @include setup-foundation-before;
     $size: 2;
 
     $test: grid-name($size);
@@ -25,7 +23,6 @@
   }
 
   @include test('Foundation class names [function]') {
-    @include setup-foundation-before;
     $size: 4;
     $size-name: 'medium';
 
@@ -38,7 +35,6 @@
   }
 
   @include test('Foundation grid name [function]') {
-    @include setup-foundation-before;
 
     $test: master-grid-name();
     $expect: 'columns';
@@ -49,7 +45,6 @@
   }
 
   @include test('Foundation right name [function]') {
-    @include setup-foundation-before;
     $increment: 3;
 
     $test: offset-right-name($increment);
@@ -61,7 +56,6 @@
   }
 
   @include test('Foundation left name [function]') {
-    @include setup-foundation-before;
     $increment: 6;
     $size-name: 'medium';
 

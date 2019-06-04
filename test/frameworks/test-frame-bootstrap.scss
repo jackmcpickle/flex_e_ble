@@ -1,19 +1,17 @@
 @import '../../src/scss/modules/vars';
 
-@mixin setup-bootstrap-before {
-  $global-name-space: '' !global;
-  $grid-name: 'col-' !global;
-  $base-grid-name: 'xs' !global;
-  $right-name: 'right' !global;
-  $left-name: 'left' !global;
-  $independant-grid-name: '' !global;
-  $column-index-always-before-size: false !global;
-}
+// globals
+$global-name-space: '';
+$grid-name: 'col-';
+$base-grid-name: 'xs';
+$right-name: 'right';
+$left-name: 'left';
+$independant-grid-name: '';
+$column-index-always-before-size: false;
 
 @include test-module('Framework bootstrap') {
 
   @include test('Bootstrap base class names [function]') {
-    @include setup-bootstrap-before;
     $size: 3;
 
     $test: grid-name($size);
@@ -25,7 +23,6 @@
   }
 
   @include test('Bootstrap class names [function]') {
-    @include setup-bootstrap-before;
     $size: 11;
     $size-name: 'md';
 
@@ -38,7 +35,6 @@
   }
 
   @include test('Bootstrap grid name [function]') {
-    @include setup-bootstrap-before;
 
     $test: master-grid-name();
     $expect: 'col-';
@@ -49,7 +45,6 @@
   }
 
   @include test('Bootstrap right name [function]') {
-    @include setup-bootstrap-before;
     $increment: 9;
 
     $test: offset-right-name($increment);
@@ -61,7 +56,6 @@
   }
 
   @include test('Bootstrap left name [function]') {
-    @include setup-bootstrap-before;
     $increment: 6;
     $size-name: 'lg';
 

@@ -1,20 +1,15 @@
 @import '../../src/scss/modules/vars';
 
-@mixin grid-setup-before() {
-  $default-text-align: left !global;
-  $column-gutter: 15px !global;
-  $special-font-stack: Arial !global;
-  $break-dir: '>=' !global;
-  $column-gutter-breakpoint: 320px !global;
-  $container-breakpoint: 1000px !global;
-}
+// globals
+$column-gutter: 15px;
+$column-gutter-breakpoint: 320px;
+$container-breakpoint: 1000px;
 
 @include test-module('Grids') {
 
   @include test('Build grid [mixin]') {
     @include assert('Should output css to build a grid') {
       @include output {
-        @include grid-setup-before;
         @include build-grid;
       }
       @include expect {
@@ -29,7 +24,6 @@
   @include test('Build gutter [mixin]') {
     @include assert('Should output css to build a gutter') {
       @include output {
-        @include grid-setup-before;
         @include build-column-gutter;
       }
       @include expect {
@@ -49,7 +43,6 @@
   @include test('Build container [mixin]') {
     @include assert('Should output css to build a container') {
       @include output {
-        @include grid-setup-before;
         @include build-container;
       }
       @include expect {
