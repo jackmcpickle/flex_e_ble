@@ -9,7 +9,9 @@
     "start": "sass --load-path=node_modules ./src/scss:./dist/css --source-map",
     "lint": "sass-lint './src/**/*.scss' -v -q",
     "test": "npm run start && npm run lint && mocha",
-    "build": "npm run start && concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
+    "build": "npm run start && npm run template && npm run combine",
+    "combine": "concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
+    "template": "pug src/tmpl/ -o dist/docs/",
     "prepublish": "npm test"
   },
   "keywords": [
@@ -28,11 +30,10 @@
   "devDependencies": {
     "concat": "1.0.3",
     "mocha": "6.1.4",
-    "node-sass": "4.12.0",
-    "pug": "2.0.3",
+    "pug-cli": "^1.0.0-alpha6",
     "sass": "1.20.3",
-    "sass-lint": "1.13.1",
-    "sass-true": "4.0.0"
+    "sass-lint": "^1.13.1",
+    "sass-true": "5.0.0"
   },
   "dependencies": {
     "include-media": "^1.4.9"
