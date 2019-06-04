@@ -10,8 +10,8 @@
 
 .row {
   display: flex;
-  flex-flow: row wrap;
   position: relative;
+  flex-flow: row wrap;
 }
 
 .pad {
