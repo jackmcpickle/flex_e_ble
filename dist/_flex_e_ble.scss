@@ -194,7 +194,7 @@ $grid-framework: '' !default;
   }
 
   &.row {
-    @include build-row($display: inline-block);
+    @include build-row();
   }
 }
 

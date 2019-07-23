@@ -32,8 +32,9 @@
   vertical-align: top;
 }
 [class*=grid-].row {
-  display: inline-block;
+  display: flex;
   position: relative;
+  flex-flow: row wrap;
 }
 
 .grid-1 {
