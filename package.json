@@ -29,7 +29,7 @@
   "license": "MIT",
   "devDependencies": {
     "concat": "1.0.3",
-    "mocha": "8.3.0",
+    "mocha": "8.3.1",
     "pug-cli": "1.0.0-alpha6",
     "sass": "1.32.8",
     "sass-lint": "1.13.1",
