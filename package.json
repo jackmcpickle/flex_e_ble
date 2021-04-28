@@ -4,14 +4,20 @@
   "description": "A simple yet flexible class naming structure on top of a flexbox based grid.",
   "homepage": "https://flexeble.space/",
   "main": "dist/_flex_e_ble.scss",
+  "files": [
+    "./dist/_flex_e_ble.scss",
+    "./dist/css/docs.css",
+    "./dist/css/flex_e_ble.css"
+  ],
   "repository": "git@github.com:jackmcpickle/flex_e_ble.git",
   "scripts": {
     "start": "sass --load-path=node_modules ./src/scss:./dist/css --source-map",
     "test": "npm run start && mocha",
-    "build": "npm run start && npm run template && npm run combine",
+    "build": "npm test && npm run template && npm run combine",
     "combine": "concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
     "template": "node compile.js",
-    "prepublish": "npm test"
+    "deploy": "gh-pages -d docs",
+    "prepublish": "npm build"
   },
   "keywords": [
     "flexeble",
@@ -28,8 +34,9 @@
   "license": "MIT",
   "devDependencies": {
     "concat": "1.0.3",
+    "gh-pages": "3.1.0",
     "mocha": "8.3.2",
-    "pug": "^3.0.2",
+    "pug": "3.0.2",
     "sass": "1.32.10",
     "sass-true": "6.0.1"
   },
