@@ -1,6 +1,6 @@
 {
   "name": "flex_e_ble",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A simple yet flexible class naming structure on top of a flexbox based grid.",
   "homepage": "https://flexeble.space/",
   "main": "dist/_flex_e_ble.scss",
