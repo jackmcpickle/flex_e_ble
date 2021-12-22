@@ -16,8 +16,7 @@
     "build": "npm test && npm run template && npm run combine",
     "combine": "concat -o dist/_flex_e_ble.scss ./src/scss/modules/_vars.scss ./src/scss/modules/_functions.scss ./src/scss/modules/_mixins.scss ./src/scss/modules/_build_container.scss ./src/scss/modules/_build_rows.scss ./src/scss/modules/_build_grids.scss ./src/scss/modules/_grid_states.scss",
     "template": "node compile.js",
-    "deploy": "npm run template && gh-pages -d docs",
-    "prepublish": "npm build"
+    "deploy": "npm run template && gh-pages -d docs"
   },
   "keywords": [
     "flexeble",
