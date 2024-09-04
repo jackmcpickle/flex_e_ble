@@ -36,7 +36,7 @@
     "gh-pages": "3.2.3",
     "mocha": "9.2.2",
     "pug": "3.0.3",
-    "sass": "1.77.8",
+    "sass": "1.78.0",
     "sass-true": "6.1.0"
   },
   "dependencies": {
