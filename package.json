@@ -37,7 +37,7 @@
     "mocha": "9.2.2",
     "pug": "3.0.3",
     "sass": "1.78.0",
-    "sass-true": "6.1.0"
+    "sass-true": "8.1.0"
   },
   "dependencies": {
     "include-media": "^1.4.9"
