@@ -40,6 +40,6 @@
     "sass-true": "6.1.0"
   },
   "dependencies": {
-    "include-media": "^1.4.9"
+    "include-media": "^2.0.0"
   }
 }
